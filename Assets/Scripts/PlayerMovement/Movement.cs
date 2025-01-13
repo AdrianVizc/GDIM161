@@ -165,7 +165,7 @@ public class Movement : MonoBehaviour
         if(Input.GetKeyDown(crouchKey))
         {
             transform.localScale = new Vector3(transform.localScale.x, crouchYScale, transform.localScale.z);
-            rb.AddForce(Vector3.down * 50f, ForceMode.Impulse);
+            rb.AddForce(Vector3.down * 25f, ForceMode.Impulse);
         }
 
         // End Crouch
