@@ -8,6 +8,8 @@ public abstract class AbilityAbstract : MonoBehaviour
     private Movement pm;
     private AbilityControlHandler ac;
 
+    private PickUp item;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody>();

@@ -22,8 +22,6 @@ public class Shooting : MonoBehaviour
 
     private Camera playerCam;
 
-    private Vector3 lookDir;
-
     private void Start()
     {
         playerCam = Camera.main;
@@ -31,7 +29,6 @@ public class Shooting : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        lookDir = playerCam.transform.forward;
 
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {

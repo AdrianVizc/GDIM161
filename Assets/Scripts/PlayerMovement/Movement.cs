@@ -9,6 +9,8 @@ public class Movement : MonoBehaviour
     [Header("Movement Settings")]
     [SerializeField] private float walkSpeed = 9f;
     [SerializeField] private float sprintSpeed = 14f;
+    public float normAccel = 1f;
+    [HideInInspector] public float accelSpeed;
     [HideInInspector] public float playerSpeed;
     private bool isInputMoving;
 
@@ -77,6 +79,7 @@ public class Movement : MonoBehaviour
         isInputMoving = false;
         currentStamina = staminaAmount;
         staminaRecover = false;
+        accelSpeed = normAccel;
     }
 
     private void FixedUpdate()
@@ -106,7 +109,7 @@ public class Movement : MonoBehaviour
         grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, groundLayer);
 
         // Update stamina bar
-        staminaBar.fillAmount = currentStamina / staminaAmount;
+        //staminaBar.fillAmount = currentStamina / staminaAmount;
 
         // Start sprint restore on sprint key release
         if (Input.GetKeyUp(sprintKey))
@@ -177,11 +180,11 @@ public class Movement : MonoBehaviour
         // On ground
         if (grounded)
         {
-            rb.AddForce(moveDir.normalized * playerSpeed * 10f, ForceMode.Force);
+            rb.AddForce(moveDir.normalized * playerSpeed * accelSpeed * 10f, ForceMode.Force);
         }
         else if (!grounded)
         {
-            rb.AddForce(moveDir.normalized * playerSpeed * 10f * airMultiplier, ForceMode.Force);
+            rb.AddForce(moveDir.normalized * playerSpeed * accelSpeed * 10f * airMultiplier, ForceMode.Force);
         }
 
         // Gravity off when on slope
@@ -310,5 +313,10 @@ public class Movement : MonoBehaviour
     public bool getGrounded()
     {
         return grounded;
+    }
+
+    public Vector3 getMoveDir()
+    {
+        return moveDir;
     }
 }

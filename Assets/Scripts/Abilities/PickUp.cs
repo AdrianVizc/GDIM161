@@ -4,21 +4,20 @@ using UnityEngine;
 
 public class PickUp : MonoBehaviour //FOR TESTING PURPOSES ONLY
 {
-    AbilityAbstract ability;
+    [SerializeField]
+    private AbilityAbstract ability;
 
-    public void Initializing(AbilityAbstract skill)
-    {
-        ability = skill;
-    }
     // Update is called once per frame
     public void OnTriggerEnter(Collider collision)
     {
+        Debug.Log("Picked Up");
         Movement player = collision.GetComponent<Movement>();
 
-        if (player != null)
+        if (collision.CompareTag("Player"))
         {
-            ability.Apply(player);
             Destroy(gameObject);
+            Debug.Log("by Player");
+            ability.Apply(player);
         }
     }
 }
