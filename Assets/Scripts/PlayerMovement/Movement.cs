@@ -1,14 +1,19 @@
+using Photon.Pun.Demo.Cockpit;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Movement : MonoBehaviour
 {
     [Header("Movement Settings")]
     [SerializeField] private float walkSpeed = 9f;
     [SerializeField] private float sprintSpeed = 14f;
+    [SerializeField] private float staminaAmount = 5f;
     private float playerSpeed;
+    private float currentStamina;
     private bool isInputMoving;
+    private bool staminaRecover;
 
     [Header("Jump Settings")]
     [SerializeField] private float jumpForce = 6.5f;
@@ -20,6 +25,9 @@ public class Movement : MonoBehaviour
     [SerializeField] private float crouchSpeed = 4.5f;
     [SerializeField] private float crouchYScale = 0.5f;
     private float startYScale;
+
+    [Header("Stamina Bar")]
+    [SerializeField] private Image staminaBar;
 
     [Header("Ground Check")]
     [SerializeField] private float playerHeight = 2;
@@ -62,11 +70,24 @@ public class Movement : MonoBehaviour
         readyToJump = true;
         startYScale = transform.localScale.y;
         isInputMoving = false;
+        currentStamina = staminaAmount;
+        staminaRecover = false;
     }
 
     private void FixedUpdate()
     {
         MovePlayer();
+
+        Debug.Log(currentStamina);
+        if (state == MovementState.sprinting)
+        {
+            StopStaminaRecover();
+            StaminaHandler();
+        }
+        if(staminaRecover)
+        {
+            StaminaRecovering();
+        }
     }
     private void Update()
     {
@@ -78,6 +99,15 @@ public class Movement : MonoBehaviour
 
         // Ground check
         grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, groundLayer);
+
+        // Update stamina bar
+        staminaBar.fillAmount = currentStamina / staminaAmount;
+
+        // Start sprint restore on sprint key release
+        if (Input.GetKeyUp(sprintKey))
+        {
+            StartStaminaRecover();
+        }
 
         MyInput();
         SpeedControl();
@@ -108,7 +138,7 @@ public class Movement : MonoBehaviour
             state = MovementState.crouching;
             playerSpeed = crouchSpeed;
         }
-        else if(grounded && Input.GetKey(sprintKey)) // Sprinting
+        else if(grounded && Input.GetKey(sprintKey) && StaminaHandler()) // Sprinting
         {
             state = MovementState.sprinting;
             playerSpeed = sprintSpeed;
@@ -133,7 +163,6 @@ public class Movement : MonoBehaviour
         if(OnSlope() && !exitingSlope)
         {
             rb.AddForce(GetSlopeMoveDirection(moveDir) * playerSpeed * 20f, ForceMode.Force);
-            Debug.Log(rb.velocity.y);
             if(isInputMoving)
             {
                 rb.AddForce(Vector3.down * 80f, ForceMode.Force); // Eliminates bounce effect going up
@@ -152,6 +181,43 @@ public class Movement : MonoBehaviour
 
         // Gravity off when on slope
         rb.useGravity = !OnSlope();
+    }
+
+    private bool StaminaHandler()
+    {
+        if(currentStamina >= 0)
+        {
+            currentStamina -= Time.deltaTime;
+            return true;
+        }
+        else
+        {
+            currentStamina = 0;
+        }
+        return false;
+    }
+
+    private void StartStaminaRecover()
+    {
+        staminaRecover = true;
+    }
+
+    private void StaminaRecovering()
+    {
+        if(currentStamina <= staminaAmount)
+        {
+            currentStamina += Time.deltaTime;
+        }
+        else
+        {
+            currentStamina = staminaAmount;
+            StopStaminaRecover();
+        }
+    }
+
+    private void StopStaminaRecover()
+    {
+        staminaRecover = false;
     }
 
     private void MyInput()

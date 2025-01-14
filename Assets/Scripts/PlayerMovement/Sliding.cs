@@ -80,7 +80,6 @@ public class Sliding : MonoBehaviour
         }
         else // Sliding down slope
         {
-            Debug.Log("Sliding down slope");
             rb.AddForce(playerMovement.GetSlopeMoveDirection(inputDirection) * slideForce, ForceMode.Force);
         }
 
