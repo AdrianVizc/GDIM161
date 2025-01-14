@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a51299bb2f0d6448b1fe179606a41ff, type: 3}
   m_Name: Double Jump
   m_EditorClassIdentifier: 
-  name: 
-  cooldownTime: 0
-  activeTime: 0
-  cooldown: 5
+  name: Double Jump
+  cooldownTime: 5
+  activeTime: 0.5

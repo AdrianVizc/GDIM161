@@ -30,7 +30,7 @@ public class AbilityHolder : MonoBehaviour
                     state = AbilityState.active;
                     activeTime = ability.activeTime;
                 }
-            break;
+                break;
             case AbilityState.active:
                 if (activeTime > 0)
                 {
@@ -42,7 +42,7 @@ public class AbilityHolder : MonoBehaviour
                     state = AbilityState.cooldown;
                     cdTime = ability.cooldownTime;
                 }
-            break;
+                break;
             case AbilityState.cooldown:
                 if (cdTime > 0)
                 {
@@ -52,7 +52,7 @@ public class AbilityHolder : MonoBehaviour
                 {
                     state = AbilityState.ready;
                 }
-            break;
+                break;
         }
     }
 }
