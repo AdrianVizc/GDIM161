@@ -29,4 +29,6 @@ public abstract class AbilityAbstract : MonoBehaviour
     {
         return ac;
     }
+
+    public abstract void Apply(PlayerStatus player);
 }

@@ -306,4 +306,9 @@ public class Movement : MonoBehaviour
     {
         return Vector3.ProjectOnPlane(direction, slopeHit.normal).normalized;
     }
+
+    public bool getGrounded()
+    {
+        return grounded;
+    }
 }
