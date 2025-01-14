@@ -69,17 +69,18 @@ public class Sliding : MonoBehaviour
     private void SlidingMovement()
     {
         Vector3 inputDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
-        inputDirection = new Vector3(inputDirection.x, 0, inputDirection.z);
+        Vector3 newDirection = new Vector3(inputDirection.x, 0, inputDirection.z);
 
         // If not on a slope or moving up
         if (!playerMovement.OnSlope() || rb.velocity.y > -0.1f)
         {
-            rb.AddForce(inputDirection.normalized * slideForce, ForceMode.Force);
+            rb.AddForce(newDirection.normalized * slideForce, ForceMode.Force);
 
             slideTimer -= Time.deltaTime;
         }
         else // Sliding down slope
         {
+            Debug.Log("Sliding down slope");
             rb.AddForce(playerMovement.GetSlopeMoveDirection(inputDirection) * slideForce, ForceMode.Force);
         }
 

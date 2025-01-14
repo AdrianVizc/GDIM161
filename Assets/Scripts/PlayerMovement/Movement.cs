@@ -8,6 +8,7 @@ public class Movement : MonoBehaviour
     [SerializeField] private float walkSpeed = 9f;
     [SerializeField] private float sprintSpeed = 14f;
     private float playerSpeed;
+    private bool isInputMoving;
 
     [Header("Jump Settings")]
     [SerializeField] private float jumpForce = 6.5f;
@@ -60,6 +61,7 @@ public class Movement : MonoBehaviour
         rb.freezeRotation = true;
         readyToJump = true;
         startYScale = transform.localScale.y;
+        isInputMoving = false;
     }
 
     private void FixedUpdate()
@@ -68,6 +70,9 @@ public class Movement : MonoBehaviour
     }
     private void Update()
     {
+        // Check if WASD or Jump is being pressed
+        isInputMoving = Input.GetKey(jumpkey) || Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D);
+
         // Rotate player with camera
         transform.rotation = Quaternion.Euler(0, mainCamera.transform.localEulerAngles.y, 0);
 
@@ -80,7 +85,7 @@ public class Movement : MonoBehaviour
 
         if (grounded)
         {
-            if (!Input.GetKey(jumpkey) && !Input.GetKey(KeyCode.W) && !Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.S) && !Input.GetKey(KeyCode.D))
+            if (!isInputMoving)
             {
                 rb.drag = 25f;
             }
@@ -128,8 +133,8 @@ public class Movement : MonoBehaviour
         if(OnSlope() && !exitingSlope)
         {
             rb.AddForce(GetSlopeMoveDirection(moveDir) * playerSpeed * 20f, ForceMode.Force);
-
-            if(rb.velocity.y > 0)
+            Debug.Log(rb.velocity.y);
+            if(isInputMoving)
             {
                 rb.AddForce(Vector3.down * 80f, ForceMode.Force); // Eliminates bounce effect going up
             }
