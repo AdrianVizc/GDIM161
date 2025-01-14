@@ -9,14 +9,19 @@ public class ConnectToServer : MonoBehaviourPunCallbacks
 {
     [SerializeField] private TMP_InputField usernameInputField;
     [SerializeField] private TMP_Text usernameInputText;
-    [SerializeField] private TMP_Text buttonText;
     [SerializeField] private GameObject connectingScreen;
+
+    private string noEnteredNameText;
 
     private List<string> namesList = new List<string>();
 
+    private void Start()
+    {
+        noEnteredNameText = usernameInputText.text;
+    }
     public void OnClickConnect()
     {
-        if (usernameInputField.text.Length == 0 || usernameInputText.text == "Enter Name...​")
+        if (usernameInputField.text.Length == 0 || usernameInputText.text == noEnteredNameText)
         {
             PhotonNetwork.NickName = CreateRandomUsername();
             connectingScreen.SetActive(true);

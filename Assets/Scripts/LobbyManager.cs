@@ -19,16 +19,19 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 
     [SerializeField] private Transform contentObject;
 
+    private string noRoomNameEntered;
+
     private List<string> namesList = new List<string>();
 
     private void Start()
     {
         PhotonNetwork.JoinLobby();
+        noRoomNameEntered = enteredRoomName.text;
     }
 
     public void OnClickCreate()
     {
-        if (roomNameInputField.text.Length == 0 || enteredRoomName.text == "Enter a Room Name...​")
+        if (roomNameInputField.text.Length == 0 || enteredRoomName.text == noRoomNameEntered)
         {
             PhotonNetwork.CreateRoom(CreateRandomRoomName(), new RoomOptions() { MaxPlayers = maxPlayers});
         }
