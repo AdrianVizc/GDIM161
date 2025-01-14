@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 2117734046522821524}
   - component: {fileID: 8991489260483018011}
   - component: {fileID: 3443560365244335146}
+  - component: {fileID: 6216365397733374476}
   m_Layer: 0
   m_Name: PlayerCapsule
   m_TagString: Untagged
@@ -154,9 +155,11 @@ MonoBehaviour:
   walkSpeed: 9
   sprintSpeed: 14
   staminaAmount: 5
+  staminaRecoverMultiplier: 1
   jumpForce: 16
   crouchSpeed: 4.5
   crouchYScale: 0.5
+  staminaBar: {fileID: 0}
   playerHeight: 2
   groundLayer:
     serializedVersion: 2
@@ -199,6 +202,18 @@ MonoBehaviour:
   bulletPrefab: {fileID: 318310983445593299, guid: 6ce7f990e4451894b9d54888c1b108f5, type: 3}
   reloadTimer: 0
   bulletVelocity: 50
+--- !u!114 &6216365397733374476
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 271616554234656563}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bea80904da2a14d4e94c70f70ff6d6ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3068073903033641584
 GameObject:
   m_ObjectHideFlags: 0

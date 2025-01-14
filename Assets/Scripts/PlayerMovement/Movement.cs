@@ -9,7 +9,7 @@ public class Movement : MonoBehaviour
     [Header("Movement Settings")]
     [SerializeField] private float walkSpeed = 9f;
     [SerializeField] private float sprintSpeed = 14f;
-    private float playerSpeed;
+    [HideInInspector] public float playerSpeed;
     private bool isInputMoving;
 
     [Header("Stamina Settings")]
@@ -54,6 +54,7 @@ public class Movement : MonoBehaviour
     private float verticalInput;
     private Vector3 moveDir;
     private Rigidbody rb;
+    private AbilityControlHandler ac;
 
     public MovementState state;
 
@@ -69,6 +70,7 @@ public class Movement : MonoBehaviour
     {
         mainCamera = Camera.main;
         rb = GetComponent<Rigidbody>();
+        ac = GetComponent<AbilityControlHandler>();
         rb.freezeRotation = true;
         readyToJump = true;
         startYScale = transform.localScale.y;
@@ -81,7 +83,6 @@ public class Movement : MonoBehaviour
     {
         MovePlayer();
 
-        Debug.Log(currentStamina);
         if (state == MovementState.sprinting)
         {
             StopStaminaRecover();
@@ -94,8 +95,9 @@ public class Movement : MonoBehaviour
     }
     private void Update()
     {
-        // Check if WASD or Jump is being pressed
-        isInputMoving = Input.GetKey(jumpkey) || Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D);
+        // Check if WASD, Jump, or movement abilities are being pressed
+        isInputMoving = Input.GetKey(jumpkey) || Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D)||
+                        Input.GetKey(ac.movementAbility);
 
         // Rotate player with camera
         transform.rotation = Quaternion.Euler(0, mainCamera.transform.localEulerAngles.y, 0);
