@@ -9,10 +9,13 @@ public class Movement : MonoBehaviour
     [Header("Movement Settings")]
     [SerializeField] private float walkSpeed = 9f;
     [SerializeField] private float sprintSpeed = 14f;
-    [SerializeField] private float staminaAmount = 5f;
     private float playerSpeed;
-    private float currentStamina;
     private bool isInputMoving;
+
+    [Header("Stamina Settings")]
+    [SerializeField] private float staminaAmount = 5f;
+    [SerializeField] private float staminaRecoverMultiplier = 1f;
+    private float currentStamina;
     private bool staminaRecover;
 
     [Header("Jump Settings")]
@@ -206,7 +209,7 @@ public class Movement : MonoBehaviour
     {
         if(currentStamina <= staminaAmount)
         {
-            currentStamina += Time.deltaTime;
+            currentStamina += Time.deltaTime * staminaRecoverMultiplier;
         }
         else
         {
