@@ -19,5 +19,10 @@ public class Dash : AbilityAbstract
         }
     }
 
+    public override void Apply(Movement player)
+    {
+
+    }
+
 
 }

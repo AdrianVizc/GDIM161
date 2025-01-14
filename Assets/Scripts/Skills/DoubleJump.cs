@@ -18,11 +18,17 @@ public class DoubleJump : AbilityAbstract
         
     }
 
-    public override void Apply(PlayerStatus player)
+    public override void Apply(Movement player)
     {
-        if (Input.GetKey(KeyCode.Space) && cdTimer != 0 && person.getGrounded() == false)
-        {
+        person = player;
+        cdTimer = Time.time;
 
+        if (cdTimer != 0 && player.getGrounded() == false)
+        {
+            if (Input.GetKey(KeyCode.Space))
+            {
+                person.Jump();
+            }
         }
     }
 }

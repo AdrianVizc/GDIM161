@@ -274,7 +274,7 @@ public class Movement : MonoBehaviour
         }
     }
 
-    private void Jump()
+    public void Jump()
     {
         exitingSlope = true;
 
