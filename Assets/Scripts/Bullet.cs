@@ -4,21 +4,13 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    [SerializeField]
-    private float bulletSpeed;
-
-    private Rigidbody rb;
-
-    private int bulletDamage = 1;
-    // Start is called before the first frame update
-    void Start()
+    private void OnCollisionEnter(Collision collision)
     {
-        rb = GetComponent<Rigidbody>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        //if (collision.gameObject.CompareTag("Monkey"))
+        //{
+        //    print("Hit Monkey");
+        //    //do dmg
+        //    Destroy(gameObject);
+        //}
     }
 }
