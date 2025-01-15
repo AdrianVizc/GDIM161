@@ -18,21 +18,29 @@ public class Shooting : MonoBehaviour
 
     private float bulletLifeTime = 5f;
 
-    private bool reloading; 
+    private float timer;
 
     private Camera playerCam;
 
     private void Start()
     {
         playerCam = Camera.main;
+        timer = reloadTimer;
     }
     // Update is called once per frame
     void Update()
     {
-
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        if (timer > 0)
         {
-            Shoot();
+            timer -= Time.deltaTime;
+        }
+        else
+        {
+            if (Input.GetKeyDown(KeyCode.Mouse0))
+            {
+                Shoot();
+                timer = reloadTimer;
+            }
         }
     }
 
