@@ -25,6 +25,8 @@ public class Movement : MonoBehaviour
     private float jumpCooldown = 0.25f;
     private float airMultiplier = 0.4f;
     private bool readyToJump;
+    public bool canDoubleJump;
+    public bool spaceAgain;
 
     [Header("Crouch Settings")]
     [SerializeField] private float crouchSpeed = 4.5f;
@@ -80,6 +82,7 @@ public class Movement : MonoBehaviour
         currentStamina = staminaAmount;
         staminaRecover = false;
         accelSpeed = normAccel;
+        canDoubleJump = false;
     }
 
     private void FixedUpdate()
@@ -315,8 +318,16 @@ public class Movement : MonoBehaviour
         return grounded;
     }
 
-    public Vector3 getMoveDir()
+    public void DoubleJump()
     {
-        return moveDir;
+        canDoubleJump = true;
+        if (grounded && canDoubleJump)
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
+                canDoubleJump = false;
+            }
+        }
     }
 }
