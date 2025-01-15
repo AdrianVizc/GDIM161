@@ -40,7 +40,7 @@ public class Movement : MonoBehaviour
     [SerializeField] private float playerHeight = 2;
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private float groundDrag = 5;
-    private bool grounded;
+    [HideInInspector] public bool grounded;
 
     [Header("Slope Check")]
     [SerializeField] private float maxSlopeAngle = 20f;
@@ -288,6 +288,8 @@ public class Movement : MonoBehaviour
         rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
 
         rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
+
+        canDoubleJump = true;
     }
 
     private void ResetJump()
