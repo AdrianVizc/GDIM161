@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Double Jump
   m_EditorClassIdentifier: 
   name: Double Jump
-  cooldownTime: 5
-  activeTime: 3
+  cooldownTime: 2
+  activeTime: 2
