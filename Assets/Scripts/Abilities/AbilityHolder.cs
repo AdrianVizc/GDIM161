@@ -8,6 +8,10 @@ public class AbilityHolder : MonoBehaviour
     private float cdTime;
     private float activeTime;
 
+    private float delay = 3f;
+    private bool pressedFirst = false;
+    private float lastPressedTime;
+
     enum AbilityState
     {
         ready,
@@ -24,11 +28,33 @@ public class AbilityHolder : MonoBehaviour
         switch (state)
         {
             case AbilityState.ready:
-                if (Input.GetKeyDown(key))
+                if (Input.GetKeyDown(key) && ability.name != "Double Jump")
                 {
                     ability.Activate(gameObject);
                     state = AbilityState.active;
                     activeTime = ability.activeTime;
+                }
+                if (Input.GetKeyDown(key) && ability.name == "Double Jump")
+                {
+                    if (pressedFirst)
+                    {
+                        bool pressedTwice = Time.time - lastPressedTime <= delay;
+
+                        if (pressedTwice)
+                        {
+                            ability.Activate(gameObject);
+                            state = AbilityState.active;
+                            activeTime = ability.activeTime;
+                            pressedFirst = false;
+                        }
+                    }
+                    else
+                    {
+                        pressedFirst = true;
+                    }
+
+                    lastPressedTime = Time.time;
+                    
                 }
                 break;
             case AbilityState.active:

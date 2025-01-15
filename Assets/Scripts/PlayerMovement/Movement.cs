@@ -321,10 +321,13 @@ public class Movement : MonoBehaviour
     public void DoubleJump()
     {
         canDoubleJump = true;
-        if (grounded && canDoubleJump)
+
+        if (!grounded && canDoubleJump)
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
+                Debug.Log("DJ");
+                rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
                 rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
                 canDoubleJump = false;
             }
