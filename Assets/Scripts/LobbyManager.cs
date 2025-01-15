@@ -107,4 +107,9 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 
         return namesList[Random.Range(0, namesList.Count)] + randomNumber.ToString();
     }
+
+    public void back()
+    {
+
+    }
 }
