@@ -59,6 +59,8 @@ public class Movement : MonoBehaviour
     private Vector3 moveDir;
     private Rigidbody rb;
     private AbilityControlHandler ac;
+    [SerializeField]
+    public GameObject playerShield;
 
     public MovementState state;
 

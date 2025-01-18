@@ -15,6 +15,7 @@ public class Shield : MonoBehaviour
         if (other.gameObject.CompareTag("Bullet"))
         {
             durability--;
+            Debug.Log("Health: " + durability);
             if (durability <= 0)
             {
                 playerShield.SetActive(false);
@@ -25,5 +26,10 @@ public class Shield : MonoBehaviour
     public void SetDurability(int health)
     {
         durability = health;
+    }
+
+    public int GetDurability()
+    {
+        return durability;
     }
 }
