@@ -9,44 +9,46 @@ public class AbilityBoxHider : MonoBehaviour
     [SerializeField] private bool isButtonActive;
     [Space]
     [SerializeField] private float speed;
-    [SerializeField] private Vector3 targetPosition;
-    [SerializeField] private GameObject childObject;
-
+        
     private bool isSelected;
     private Vector3 startPosition;
+    private Vector3 targetPosition;
+    private GameObject abilitySlot1;
+    private GameObject abilitySlot2;
+    private GameObject abilitySlot3;
 
     private void Start()
     {
         if (!isButtonActive)
         {
             this.gameObject.GetComponent<Image>().enabled = false;
-            this.gameObject.GetComponent<Button>().enabled = false;
+            this.gameObject.GetComponent<Button>().enabled = false; //removes image and button but keeps gameobject so grid layout keeps spacing
         }
 
-        isSelected = false;
+        abilitySlot1 = GameObject.Find("AbilitySlot1");
+        abilitySlot2 = GameObject.Find("AbilitySlot2");
+        abilitySlot3 = GameObject.Find("AbilitySlot3");
 
-        startPosition = transform.localPosition;
+        isSelected = false;    
     }
 
     public void AbilitySelect()
     {
+        targetPosition = abilitySlot1.transform.position;
+        startPosition = transform.position;
+        Debug.Log("start pos " + startPosition);
+        Debug.Log("target pos " + targetPosition);
+
+
         if (!isSelected)
-        {
-
-
-            if (childObject != null)
-            {
-                childObject.transform.SetParent(null);
-                Debug.Log(childObject.name + " has been removed from its parent.");
-            }
-
+        {         
             StartCoroutine(MoveButton());
             
             isSelected = true;
         }
         else if (isSelected)
         {
-            //transform.position = Vector3.MoveTowards(transform.position, startPosition, speed * Time.deltaTime);
+            
             isSelected = false;
         }
     }
@@ -61,10 +63,11 @@ public class AbilityBoxHider : MonoBehaviour
         {
             transform.position = Vector2.Lerp(startPosition, targetPosition, percentDone);
             percentDone = currentTimer / speed;
-            Debug.Log(percentDone);
             currentTimer += Time.deltaTime;
+
             yield return null;
         }
-        
+        transform.position = Vector2.Lerp(startPosition, targetPosition, 1);
+
     }
 }
