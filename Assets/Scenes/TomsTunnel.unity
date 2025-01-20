@@ -3348,7 +3348,7 @@ GameObject:
   - component: {fileID: 1945278484}
   - component: {fileID: 1945278488}
   m_Layer: 0
-  m_Name: Capsule
+  m_Name: AI Shooter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
