@@ -14,11 +14,13 @@ public class Build : MonoBehaviour
     [SerializeField]
     private GameObject brickWall, tempWall;
 
-    private bool placeNow;
+    public bool placeNow;
+    public bool placeWall;
+    public bool tempObjectExists;
 
-    private bool placeWall;
+    public bool ground;
 
-    private bool tempObjectExists;
+    //private float offset = 1.55f;
 
     // Update is called once per frame
     void Update()
@@ -38,6 +40,8 @@ public class Build : MonoBehaviour
             Debug.Log("Starting Placing");
             PlaceWall();
         }
+
+        TouchingGround();
     }
 
     public void SendRay()
@@ -51,14 +55,14 @@ public class Build : MonoBehaviour
                 if (tempObjectExists == false)
                 {
                     Debug.Log("Getting Temp");
-                    tempObject = Instantiate(tempWall, place, Quaternion.identity);
-                    //tempObject = GameObject.Find("Temp Wall");
+                    Instantiate(tempWall, place, Quaternion.identity);
+                    tempObject = GameObject.Find("Temp Wall(Clone)");
                     tempObjectExists = true;
                 }
 
                 if (Input.GetMouseButtonDown(0))
                 {
-                    Debug.Log("Placing");
+                    Debug.Log("Left Click, Placing");
                     Instantiate(objectToPlace, place, Quaternion.identity);
                     placeNow = false;
                     placeWall = false;
@@ -89,5 +93,23 @@ public class Build : MonoBehaviour
     {
         placeNow = true;
         placeWall = true;
+    }
+
+    public void TouchingGround()
+    {
+        Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
+        RaycastHit hit;
+
+        if (Physics.Raycast(ray, out hit))
+        {
+            if (hit.transform.CompareTag("Ground"))
+            {
+                ground = true;
+            }
+            else
+            {
+                ground = false;
+            }
+        }
     }
 }
