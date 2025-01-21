@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class Build : MonoBehaviour
 {
-    public Vector3 place;
+    [SerializeField]
+    private BuildAbility ability;
+
+    private Vector3 place;
 
     private RaycastHit hit;
 
@@ -14,14 +17,16 @@ public class Build : MonoBehaviour
     [SerializeField]
     private GameObject brickWall, tempWall;
 
-    public bool placeNow;
-    public bool placeWall;
-    public bool tempObjectExists;
+    private bool placeNow;
+    private bool placeWall;
+    private bool tempObjectExists;
 
     public bool ground; //for testing purposes only
 
     [SerializeField]
     private float offset = 1.5f;
+
+    private bool rotate;
 
     // Update is called once per frame
     void Update()
@@ -36,10 +41,20 @@ public class Build : MonoBehaviour
             objectToPlace = brickWall; //actual item we want to place
         }
 
-        if (Input.GetKeyDown(KeyCode.F)) //Initiate placing procedure
-        {
+        //if (Input.GetKeyDown(KeyCode.F)) //Initiate placing procedure
+        //{
             //Debug.Log("Starting Placing");
-            PlaceWall();
+            //PlaceWall();
+        //}
+
+        if (Input.GetKeyDown(KeyCode.F) && tempObjectExists == true) //honestly is fine if F activates the ability & rotates, simple click will rotate it back + direction plays a part
+        {
+            rotate = true;
+        }
+
+        if (rotate == true)
+        {
+            RotateWall();
         }
 
         TouchingGround();
@@ -64,12 +79,14 @@ public class Build : MonoBehaviour
                 if (Input.GetMouseButtonDown(0)) //if left mouse button clicked, place the actual wall
                 {
                     //Debug.Log("Left Click, Placing");
-                    Instantiate(objectToPlace, place, Quaternion.identity);
+                    GameObject wall = Instantiate(objectToPlace, place, tempObject.transform.rotation);
                     placeNow = false;
                     placeWall = false;
 
                     Destroy(tempObject); //destroy temp/preview wall
                     tempObjectExists = false;
+
+                    StartCoroutine(DestroyWallOnCD(wall, ability.cooldownTime));
                 }
 
                 if (tempObject != null)
@@ -94,6 +111,18 @@ public class Build : MonoBehaviour
     {
         placeNow = true;
         placeWall = true;
+    }
+
+    public void RotateWall()
+    {
+        tempObject.transform.Rotate(0f, 90f, 0f, Space.World);
+        rotate = false;
+    }
+
+    private IEnumerator DestroyWallOnCD(GameObject wall, float cd)
+    {
+        yield return new WaitForSeconds(cd);
+        Destroy(wall);
     }
 
     public void TouchingGround() //for testing purposes only
