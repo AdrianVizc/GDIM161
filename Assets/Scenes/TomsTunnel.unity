@@ -288,6 +288,55 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1 &473805941
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 473805943}
+  - component: {fileID: 473805942}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &473805942
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 473805941}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f887a6810af4b1748a11490e8c4278b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  place: {x: 0, y: 0, z: 0}
+  objectToPlace: {fileID: 0}
+  tempObject: {fileID: 0}
+  brickWall: {fileID: 4030810809374194481, guid: 24a559ccf93425147b83d3f3145ea09d, type: 3}
+  tempWall: {fileID: 8790792283479184981, guid: 588fb06b7820c6847b1144d071f40ac9, type: 3}
+--- !u!4 &473805943
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 473805941}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -7.8750906, y: 1.7332654, z: 12.323794}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!850595691 &558734704
 LightingSettings:
   m_ObjectHideFlags: 0
@@ -1285,7 +1334,7 @@ GameObject:
   - component: {fileID: 1009506233}
   m_Layer: 6
   m_Name: FlatFloor
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3848,6 +3897,10 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 3443560365244335146, guid: 3abb7637ed96fa94abdfa40c6c1c2290, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3443560365244335146, guid: 3abb7637ed96fa94abdfa40c6c1c2290, type: 3}
       propertyPath: reloadTimer
       value: 1
       objectReference: {fileID: 0}
@@ -3886,3 +3939,4 @@ SceneRoots:
   - {fileID: 813183759}
   - {fileID: 1409597588}
   - {fileID: 1945278487}
+  - {fileID: 473805943}
