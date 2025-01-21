@@ -18,26 +18,27 @@ public class Build : MonoBehaviour
     public bool placeWall;
     public bool tempObjectExists;
 
-    public bool ground;
+    public bool ground; //for testing purposes only
 
-    //private float offset = 1.55f;
+    [SerializeField]
+    private float offset = 1.5f;
 
     // Update is called once per frame
     void Update()
     {
         if (placeNow == true)
         {
-            SendRay();
+            SendRay(); //start raycasting
         }
 
         if (placeWall == true)
         {
-            objectToPlace = brickWall;
+            objectToPlace = brickWall; //actual item we want to place
         }
 
-        if (Input.GetKeyDown(KeyCode.F))
+        if (Input.GetKeyDown(KeyCode.F)) //Initiate placing procedure
         {
-            Debug.Log("Starting Placing");
+            //Debug.Log("Starting Placing");
             PlaceWall();
         }
 
@@ -48,37 +49,37 @@ public class Build : MonoBehaviour
     {
         if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit))
         {
-            place = new Vector3(hit.point.x, hit.point.y, hit.point.z);
+            place = new Vector3(hit.point.x, hit.point.y + offset, hit.point.z); //determine place to put wall based on mouse position
 
-            if (hit.transform.CompareTag("Ground"))
+            if (hit.transform.CompareTag("Ground")) //only allow placement on the ground
             {
-                if (tempObjectExists == false)
+                if (tempObjectExists == false) //if wall preview doesn't exist, create one
                 {
-                    Debug.Log("Getting Temp");
+                    //Debug.Log("Getting Temp");
                     Instantiate(tempWall, place, Quaternion.identity);
                     tempObject = GameObject.Find("Temp Wall(Clone)");
                     tempObjectExists = true;
                 }
 
-                if (Input.GetMouseButtonDown(0))
+                if (Input.GetMouseButtonDown(0)) //if left mouse button clicked, place the actual wall
                 {
-                    Debug.Log("Left Click, Placing");
+                    //Debug.Log("Left Click, Placing");
                     Instantiate(objectToPlace, place, Quaternion.identity);
                     placeNow = false;
                     placeWall = false;
 
-                    Destroy(tempObject);
+                    Destroy(tempObject); //destroy temp/preview wall
                     tempObjectExists = false;
                 }
 
                 if (tempObject != null)
                 {
                     //Debug.Log("Moving Temp");
-                    tempObject.transform.position = place;
+                    tempObject.transform.position = place; //move preview with mouse
                 }
             }
 
-            if (Input.GetMouseButtonDown(1))
+            if (Input.GetMouseButtonDown(1)) //right mouse button to cancel
             {
                 Debug.Log("Stopped Placing");
                 placeNow = false;
@@ -95,7 +96,7 @@ public class Build : MonoBehaviour
         placeWall = true;
     }
 
-    public void TouchingGround()
+    public void TouchingGround() //for testing purposes only
     {
         Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
         RaycastHit hit;
