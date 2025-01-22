@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 606f9193446b5d640be396bdaa8187e3, type: 3}
   m_Name: Build
   m_EditorClassIdentifier: 
-  name: 
-  cooldownTime: 0
-  activeTime: 0
+  name: Build
+  cooldownTime: 7
+  activeTime: 5
