@@ -7,8 +7,7 @@ using UnityEngine.UI;
 public class Movement : MonoBehaviour
 {
     [Header("Movement Settings")]
-    [SerializeField] private float walkSpeed = 9f;
-    [SerializeField] private float sprintSpeed = 14f;
+    [SerializeField] private float moveSpeed = 9f;
     public float normAccel = 1f;
     [HideInInspector] public float accelSpeed;
     [HideInInspector] public float playerSpeed;
@@ -66,7 +65,6 @@ public class Movement : MonoBehaviour
 
     public enum MovementState
     {
-        walking,
         sprinting,
         crouching,
         air
@@ -146,20 +144,10 @@ public class Movement : MonoBehaviour
     // Handles movement state
     private void StateHandler()
     {
-        if(Input.GetKey(crouchKey)) // Crouching
-        {
-            state = MovementState.crouching;
-            playerSpeed = crouchSpeed;
-        }
-        else if(grounded && Input.GetKey(sprintKey) && StaminaHandler()) // Sprinting
+        if (grounded) // Walking
         {
             state = MovementState.sprinting;
-            playerSpeed = sprintSpeed;
-        }
-        else if (grounded) // Walking
-        {
-            state = MovementState.walking;
-            playerSpeed = walkSpeed;
+            playerSpeed = moveSpeed;
         }
         else // Air
         {
@@ -246,17 +234,17 @@ public class Movement : MonoBehaviour
         }
 
         // Crouch
-        if(Input.GetKeyDown(crouchKey))
-        {
-            transform.localScale = new Vector3(transform.localScale.x, crouchYScale, transform.localScale.z);
-            rb.AddForce(Vector3.down * 25f, ForceMode.Impulse);
-        }
-
-        // End Crouch
-        if(Input.GetKeyUp(crouchKey))
-        {
-            transform.localScale = new Vector3(transform.localScale.x, startYScale, transform.localScale.z);
-        }
+        // if(Input.GetKeyDown(crouchKey))
+        // {
+        //     transform.localScale = new Vector3(transform.localScale.x, crouchYScale, transform.localScale.z);
+        //     rb.AddForce(Vector3.down * 25f, ForceMode.Impulse);
+        // }
+        // 
+        // // End Crouch
+        // if(Input.GetKeyUp(crouchKey))
+        // {
+        //     transform.localScale = new Vector3(transform.localScale.x, startYScale, transform.localScale.z);
+        // }
     }
 
     private void SpeedControl()

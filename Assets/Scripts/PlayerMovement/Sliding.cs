@@ -93,9 +93,6 @@ public class Sliding : MonoBehaviour
     {
         sliding = false;
 
-        if (!Input.GetKey(slideKey))
-        {
-            transform.localScale = new Vector3(transform.localScale.x, startYScale, transform.localScale.z);
-        }
+        transform.localScale = new Vector3(transform.localScale.x, startYScale, transform.localScale.z);
     }
 }
