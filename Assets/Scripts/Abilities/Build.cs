@@ -67,7 +67,7 @@ public class Build : MonoBehaviour
         {
             place = new Vector3(hit.point.x, hit.point.y + offset, hit.point.z); //determine place to put wall based on mouse position
 
-            if (hit.transform.CompareTag("Ground")) //only allow placement on the ground
+            if (hit.transform.gameObject.layer == 6) //only allow placement on the ground
             {
                 if (tempObjectExists == false) //if wall preview doesn't exist, create one
                 {
