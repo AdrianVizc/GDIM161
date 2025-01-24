@@ -27,9 +27,9 @@ public class Movement : MonoBehaviour
     public bool canDoubleJump;
     public bool spaceAgain;
 
-    [Header("Crouch Settings")]
-    [SerializeField] private float crouchSpeed = 4.5f;
-    [SerializeField] private float crouchYScale = 0.5f;
+    [Header("Slide Settings")]
+    // [SerializeField] private float crouchSpeed = 4.5f;
+    // [SerializeField] private float crouchYScale = 0.5f;
     private float startYScale;
 
     [Header("Stamina Bar")]
@@ -49,7 +49,6 @@ public class Movement : MonoBehaviour
     [Header("Keybinds")]
     [SerializeField] public KeyCode jumpkey = KeyCode.Space;
     [SerializeField] public KeyCode sprintKey = KeyCode.LeftShift;
-    [SerializeField] public KeyCode crouchKey = KeyCode.LeftControl;
 
     private Camera mainCamera;
 

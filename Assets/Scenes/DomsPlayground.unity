@@ -2616,6 +2616,10 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 2117734046522821524, guid: 3abb7637ed96fa94abdfa40c6c1c2290, type: 3}
+      propertyPath: moveSpeed
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 2117734046522821524, guid: 3abb7637ed96fa94abdfa40c6c1c2290, type: 3}
       propertyPath: playerShield
       value: 
       objectReference: {fileID: 1536600875}
