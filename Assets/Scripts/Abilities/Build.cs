@@ -31,6 +31,7 @@ public class Build : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         if (placeNow == true)
         {
             SendRay(); //start raycasting
@@ -70,8 +71,9 @@ public class Build : MonoBehaviour
             {
                 if (tempObjectExists == false) //if wall preview doesn't exist, create one
                 {
-                    //Debug.Log("Getting Temp");
+                    Debug.Log("Getting Temp");
                     Instantiate(tempWall, place, Quaternion.identity);
+
                     tempObject = GameObject.Find("Temp Wall(Clone)");
                     tempObjectExists = true;
                 }
@@ -101,6 +103,7 @@ public class Build : MonoBehaviour
                 Debug.Log("Stopped Placing");
                 placeNow = false;
                 placeWall = false;
+                tempObjectExists = false;
 
                 Destroy(tempObject);
             }
