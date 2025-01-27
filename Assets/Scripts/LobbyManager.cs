@@ -4,6 +4,7 @@ using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class LobbyManager : MonoBehaviourPunCallbacks
 {
@@ -12,6 +13,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     [SerializeField] private TMP_Text roomNameText;
     [SerializeField] private GameObject lobbyPanel;
     [SerializeField] private GameObject roomPanel;
+    [SerializeField] private GameObject loadingScreen;
     [SerializeField] private int maxPlayers;
 
     [SerializeField] private RoomItem roomItemPrefab;
@@ -21,12 +23,28 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 
     private string noRoomNameEntered;
 
+    private float timeBetweenUpdates = 1.5f;
+    private float nextUpdateTime;
+
     private List<string> namesList = new List<string>();
 
     private void Start()
     {
         PhotonNetwork.JoinLobby();
         noRoomNameEntered = enteredRoomName.text;
+        loadingScreen.SetActive(false);
+    }
+
+    private void Update()
+    {
+        if (PhotonNetwork.Server == ServerConnection.MasterServer)
+        {
+            Debug.Log("Connected");
+        }
+        else
+        {
+            Debug.Log("Not Connected");
+        }
     }
 
     public void OnClickCreate()
@@ -50,19 +68,23 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 
     public override void OnRoomListUpdate(List<RoomInfo> roomList)
     {
-        UpdateRoomList(roomList);
+        if (Time.time >= nextUpdateTime)
+        {
+            UpdateRoomList(roomList);
+            nextUpdateTime = Time.time + timeBetweenUpdates;
+        }        
     }
 
     private void UpdateRoomList(List<RoomInfo> list)
     {
-        foreach (RoomItem item in  roomItemsList)
+        foreach (RoomItem item in roomItemsList)
         {
             Destroy(item.gameObject);
         }
         roomItemsList.Clear();
 
         foreach (RoomInfo room in list)
-        {
+        {           
             RoomItem newRoom = Instantiate(roomItemPrefab, contentObject);
             newRoom.SetRoomName(room.Name);
             roomItemsList.Add(newRoom);
@@ -108,8 +130,59 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         return namesList[Random.Range(0, namesList.Count)] + randomNumber.ToString();
     }
 
-    public void back()
+    public void JoinRoom(string roomName)
     {
+        PhotonNetwork.JoinRoom(roomName);
+    }
 
+    public void OnClickLeaveRoom()
+    {
+        PhotonNetwork.LeaveRoom();    
+    }
+
+    public void OnClickLeaveLobby()
+    {
+        PhotonNetwork.Disconnect();
+        SceneManager.LoadScene("MainMenu");
+    }
+
+    public override void OnLeftRoom()
+    {
+        loadingScreen.SetActive(true);
+
+        PhotonNetwork.Disconnect();
+
+        StartCoroutine(WaitForReconnect());
+    }
+
+    private IEnumerator WaitForReconnect()
+    {
+        loadingScreen.SetActive(true);
+        while (PhotonNetwork.IsConnectedAndReady)
+        {
+            loadingScreen.SetActive(true);
+            yield return null;
+        }
+
+        PhotonNetwork.ConnectUsingSettings();
+
+        while (!PhotonNetwork.IsConnectedAndReady)
+        {
+            loadingScreen.SetActive(true);
+            yield return null;
+        }
+        if (PhotonNetwork.IsConnectedAndReady)
+        {
+            yield return new WaitForSeconds(2f);
+            loadingScreen.SetActive(false);
+            roomPanel.SetActive(false);
+            lobbyPanel.SetActive(true);
+            yield return null;
+        }
+    }
+
+    public override void OnConnectedToMaster()
+    {
+        PhotonNetwork.JoinLobby();
     }
 }

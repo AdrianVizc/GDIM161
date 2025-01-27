@@ -9,7 +9,7 @@ public class ConnectToServer : MonoBehaviourPunCallbacks
 {
     [SerializeField] private TMP_InputField usernameInputField;
     [SerializeField] private TMP_Text usernameInputText;
-    [SerializeField] private GameObject connectingScreen;
+    [SerializeField] private GameObject loadingScreen;
 
     private string noEnteredNameText;
 
@@ -24,13 +24,13 @@ public class ConnectToServer : MonoBehaviourPunCallbacks
         if (usernameInputField.text.Length == 0 || usernameInputText.text == noEnteredNameText)
         {
             PhotonNetwork.NickName = CreateRandomUsername();
-            connectingScreen.SetActive(true);
+            loadingScreen.SetActive(true);
             PhotonNetwork.ConnectUsingSettings();
         }
         else
         {
             PhotonNetwork.NickName = usernameInputText.text;
-            connectingScreen.SetActive(true);
+            loadingScreen.SetActive(true);
             PhotonNetwork.ConnectUsingSettings();
         }
     }
