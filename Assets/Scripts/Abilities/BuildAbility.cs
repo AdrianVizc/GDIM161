@@ -7,7 +7,6 @@ public class BuildAbility : Ability
 {
     public override void Activate(GameObject parent)
     {
-
         Build wallBuild = parent.GetComponentInChildren<Build>();
         wallBuild.PlaceWall();
     }
