@@ -6,7 +6,7 @@ public class Bullet : MonoBehaviour
 {
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision != null)
+        if (collision != null && !collision.gameObject.CompareTag("Bullet"))
         {
             Destroy(gameObject);
         }
