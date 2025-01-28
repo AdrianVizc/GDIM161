@@ -8,7 +8,7 @@ public class BuildAbility : Ability
     public override void Activate(GameObject parent)
     {
         Build wallBuild = parent.GetComponentInChildren<Build>();
-        wallBuild.PlaceWall();
+        wallBuild.Place();
     }
 
     public override void BeginCooldown(GameObject parent)

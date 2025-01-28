@@ -3707,6 +3707,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 216784301}
     - target: {fileID: 6058048739255460037, guid: 3abb7637ed96fa94abdfa40c6c1c2290, type: 3}
+      propertyPath: realObject
+      value: 
+      objectReference: {fileID: 4030810809374194481, guid: 24a559ccf93425147b83d3f3145ea09d, type: 3}
+    - target: {fileID: 6058048739255460037, guid: 3abb7637ed96fa94abdfa40c6c1c2290, type: 3}
+      propertyPath: tempObject
+      value: 
+      objectReference: {fileID: 8790792283479184981, guid: 588fb06b7820c6847b1144d071f40ac9, type: 3}
+    - target: {fileID: 6058048739255460037, guid: 3abb7637ed96fa94abdfa40c6c1c2290, type: 3}
       propertyPath: shootingPoint
       value: 
       objectReference: {fileID: 403508059}

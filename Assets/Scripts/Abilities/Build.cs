@@ -5,20 +5,20 @@ using UnityEngine;
 public class Build : MonoBehaviour
 {
     [SerializeField]
-    private BuildAbility ability;
+    private Ability ability;
 
     private Vector3 place;
 
     private RaycastHit hit;
 
     [SerializeField]
-    private GameObject objectToPlace, tempObject;
+    private GameObject objectToPlace, previewObject;
 
     [SerializeField]
-    private GameObject brickWall, tempWall;
+    private GameObject realObject, tempObject;
 
     private bool placeNow;
-    private bool placeWall;
+    private bool placeObj;
     private bool tempObjectExists;
 
     public bool ground; //for testing purposes only
@@ -48,12 +48,11 @@ public class Build : MonoBehaviour
         if (placeNow == true)
         {
             SendRay(); //start raycasting
-            //FindPlace();
         }
 
-        if (placeWall == true)
+        if (placeObj == true)
         {
-            objectToPlace = brickWall; //actual item we want to place
+            objectToPlace = realObject; //actual item we want to place
         }
 
         //if (Input.GetKeyDown(KeyCode.F)) //Initiate placing procedure
@@ -69,7 +68,7 @@ public class Build : MonoBehaviour
 
         if (rotate == true)
         {
-            RotateWall();
+            Rotate();
         }
 
         TouchingGround();
@@ -85,34 +84,33 @@ public class Build : MonoBehaviour
             {
                 if (tempObjectExists == false) //if wall preview doesn't exist, create one
                 {
-                    //Debug.Log("Getting Temp");
-                    Instantiate(tempWall, place, Quaternion.identity);
+                    Instantiate(tempObject, place, Quaternion.identity);
 
-                    tempObject = GameObject.Find("Temp Wall(Clone)");
+                    //previewObject = GameObject.Find("Temp Wall(Clone)");
+                    previewObject = GameObject.Find(GetPreviewName(tempObject));
 
-                    render = tempObject.GetComponent<Renderer>();
+                    render = previewObject.GetComponent<Renderer>();
                     render.sharedMaterial = materials[0];
                     tempObjectExists = true;
                 }
 
                 if (Input.GetMouseButtonDown(0)) //if left mouse button clicked, place the actual wall
                 {
-                    //Debug.Log("Left Click, Placing");
-                    GameObject wall = Instantiate(objectToPlace, place, tempObject.transform.rotation);
+                    GameObject obj = Instantiate(objectToPlace, place, previewObject.transform.rotation);
                     placeNow = false;
-                    placeWall = false;
+                    placeObj = false;
 
-                    Destroy(tempObject); //destroy temp/preview wall
+                    Destroy(previewObject); //destroy temp/preview wall
                     tempObjectExists = false;
 
-                    StartCoroutine(DestroyWallOnCD(wall, ability.cooldownTime));
+                    Debug.Log("CD Time is " + ability.cooldownTime);
+                    StartCoroutine(DestroyWallOnCD(obj, ability.cooldownTime));
                 }
 
-                if (tempObject != null)
+                if (previewObject != null)
                 {
-                    //Debug.Log("Moving Temp");
                     render.sharedMaterial = materials[0]; //change temp wall to blue = can place
-                    tempObject.transform.position = place; //move preview with mouse
+                    previewObject.transform.position = place; //move preview with mouse
 
                 }
             }
@@ -121,39 +119,39 @@ public class Build : MonoBehaviour
             {
                 //Debug.Log("Stopped Placing");
                 placeNow = false;
-                placeWall = false;
+                placeObj = false;
                 tempObjectExists = false;
 
-                Destroy(tempObject);
+                Destroy(previewObject);
             }
         }
         else //if nothing is hit by raycast
         {
             place = Camera.main.transform.position + Camera.main.transform.forward * placementReach; //use camera to find position of preview placement
 
-            if (tempObject != null)
+            if (previewObject != null)
             {
                 render.sharedMaterial = materials[1]; //change temp wall to red = cannot place
-                tempObject.transform.position = place; //move preview with mouse
+                previewObject.transform.position = place; //move preview with mouse
             }
         }
     }
-    public void PlaceWall()
+    public void Place()
     {
         placeNow = true;
-        placeWall = true;
+        placeObj = true;
     }
 
-    public void RotateWall()
+    public void Rotate()
     {
-        tempObject.transform.Rotate(0f, 90f, 0f, Space.World);
+        previewObject.transform.Rotate(0f, 90f, 0f, Space.World);
         rotate = false;
     }
 
-    private IEnumerator DestroyWallOnCD(GameObject wall, float cd)
+    private IEnumerator DestroyWallOnCD(GameObject obj, float cd)
     {
         yield return new WaitForSeconds(cd);
-        Destroy(wall);
+        Destroy(obj);
     }
 
     public void TouchingGround() //for testing purposes only
@@ -171,5 +169,11 @@ public class Build : MonoBehaviour
                 ground = false;
             }
         }
+    }
+
+    public string GetPreviewName(GameObject tempObject)
+    {
+        Debug.Log("" + tempObject.name + "(Clone)");
+        return "" + tempObject.name + "(Clone)";
     }
 }
