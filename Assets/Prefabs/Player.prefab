@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 3036675519840679012}
   - component: {fileID: 7240661424774157446}
   - component: {fileID: 839387743132239600}
+  - component: {fileID: 6663522162293164664}
   m_Layer: 0
   m_Name: PlayerCapsule
   m_TagString: Player
@@ -156,8 +157,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 533c217ee455ace46930c0bda78c9277, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkSpeed: 9
-  sprintSpeed: 14
+  moveSpeed: 14
   normAccel: 1
   accelSpeed: 0
   playerSpeed: 0
@@ -166,8 +166,6 @@ MonoBehaviour:
   jumpForce: 16
   canDoubleJump: 0
   spaceAgain: 0
-  crouchSpeed: 4.5
-  crouchYScale: 0.5
   staminaBar: {fileID: 0}
   playerHeight: 2
   groundLayer:
@@ -178,7 +176,6 @@ MonoBehaviour:
   maxSlopeAngle: 40
   jumpkey: 32
   sprintKey: 304
-  crouchKey: 306
   playerShield: {fileID: 4111518030631831006}
   state: 0
 --- !u!114 &8991489260483018011
@@ -204,7 +201,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 271616554234656563}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6c7f1d3ef93699143a38a93d59ba9d06, type: 3}
   m_Name: 
@@ -283,6 +280,66 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ability: {fileID: 11400000, guid: 64a28ed62399dc24ea3cd6b362c658bc, type: 2}
   key: 102
+--- !u!114 &6663522162293164664
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 271616554234656563}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21962484f1887c748b3cbdbaa6305b50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ability: {fileID: 11400000, guid: 86201f5be2902ed49890511726054f00, type: 2}
+  key: 323
+--- !u!1 &1177262856051553047
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1616630145978194610}
+  - component: {fileID: 5985435890289177860}
+  m_Layer: 0
+  m_Name: MultishotHolder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1616630145978194610
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1177262856051553047}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -7.8750906, y: -0.9067346, z: 12.323794}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4562865065540698}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5985435890289177860
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1177262856051553047}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb0d60fb34e006e4395e961018b4e754, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  multishotAngle: 15
+  bulletVelocity: 30
 --- !u!1 &3068073903033641584
 GameObject:
   m_ObjectHideFlags: 0
@@ -512,11 +569,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ability: {fileID: 11400000, guid: 64a28ed62399dc24ea3cd6b362c658bc, type: 2}
   objectToPlace: {fileID: 0}
+  previewObject: {fileID: 0}
+  realObject: {fileID: 0}
   tempObject: {fileID: 0}
-  brickWall: {fileID: 4030810809374194481, guid: 24a559ccf93425147b83d3f3145ea09d, type: 3}
-  tempWall: {fileID: 8790792283479184981, guid: 588fb06b7820c6847b1144d071f40ac9, type: 3}
   ground: 0
   offset: 1.5
+  placementReach: 0
+  player: {fileID: 0}
+  floor: {fileID: 0}
+  materials: []
 --- !u!1 &7793487947987882757
 GameObject:
   m_ObjectHideFlags: 0
@@ -552,6 +613,7 @@ Transform:
   - {fileID: 8161004569278225916}
   - {fileID: 5522611876993768479}
   - {fileID: 4359298587237574940}
+  - {fileID: 1616630145978194610}
   m_Father: {fileID: 935636128732293754}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!20 &7194585851064416755
