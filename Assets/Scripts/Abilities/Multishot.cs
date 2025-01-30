@@ -24,43 +24,50 @@ public class Multishot : MonoBehaviour
 
     public void DoMultishot()
     {
+        Ray trace = playerCam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
         Ray leftTrace = playerCam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
         Ray rightTrace = playerCam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
+
         leftTrace.direction = Quaternion.AngleAxis(multishotAngle, playerCam.transform.up) * playerCam.transform.forward;
         rightTrace.direction = Quaternion.AngleAxis(-multishotAngle, playerCam.transform.up) * playerCam.transform.forward;
 
+        Vector3 targetPoint;
         Vector3 leftTargetPoint;
         Vector3 rightTargetPoint;
 
-        if (Physics.Raycast(leftTrace, out RaycastHit hit))
-        {
-            leftTargetPoint = hit.point;
-        }
-        else
-        {
-            leftTargetPoint = leftTrace.GetPoint(100);
-        }
+        targetPoint = FindHitPoint(trace);
+        leftTargetPoint = FindHitPoint(leftTrace);
+        rightTargetPoint = FindHitPoint(rightTrace);
 
-        if (Physics.Raycast(rightTrace, out hit))
-        {
-            rightTargetPoint = hit.point;
-        }
-        else
-        {
-            rightTargetPoint = rightTrace.GetPoint(100);
-        }
-
+        Vector3 middleDirection = targetPoint - shootingPoint.position;
         Vector3 leftDirection = leftTargetPoint - shootingPoint.position;
         Vector3 rightDirection = rightTargetPoint - shootingPoint.position;
 
-        GameObject leftBullet = Instantiate(bulletPrefab, shootingPoint.position, shootingPoint.rotation);
-        GameObject rightBullet = Instantiate(bulletPrefab, shootingPoint.position, shootingPoint.rotation);
+        GameObject middleBullet = CreateBullet();
+        GameObject leftBullet = CreateBullet();
+        GameObject rightBullet = CreateBullet();
 
+        middleBullet.GetComponent<Rigidbody>().AddForce(middleDirection.normalized * bulletVelocity, ForceMode.Impulse);
         leftBullet.GetComponent<Rigidbody>().AddForce(leftDirection.normalized * bulletVelocity, ForceMode.Impulse);
         rightBullet.GetComponent<Rigidbody>().AddForce(rightDirection.normalized * bulletVelocity, ForceMode.Impulse);
 
+        StartCoroutine(DestroyBulletAfterTime(middleBullet, bulletLifeTime));
         StartCoroutine(DestroyBulletAfterTime(leftBullet, bulletLifeTime));
         StartCoroutine(DestroyBulletAfterTime(rightBullet, bulletLifeTime));
+    }
+
+    private Vector3 FindHitPoint(Ray ray)
+    {
+        if (Physics.Raycast(ray, out RaycastHit hit))
+        {
+            return hit.point;
+        }
+        return ray.GetPoint(100);
+    }
+
+    private GameObject CreateBullet()
+    {
+        return Instantiate(bulletPrefab, shootingPoint.position, shootingPoint.rotation);
     }
 
     private IEnumerator DestroyBulletAfterTime(GameObject bullet, float timer)
