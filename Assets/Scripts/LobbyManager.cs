@@ -35,7 +35,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         loadingScreen.SetActive(false);
     }
 
-    private void Update()
+    /*private void Update()
     {
         if (PhotonNetwork.Server == ServerConnection.MasterServer)
         {
@@ -45,7 +45,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         {
             Debug.Log("Not Connected");
         }
-    }
+    }*/
 
     public void OnClickCreate()
     {
