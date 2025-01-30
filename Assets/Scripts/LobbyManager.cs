@@ -75,7 +75,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         }        
     }
 
-    private void UpdateRoomList(List<RoomInfo> list)
+    private void UpdateRoomList(List<RoomInfo> list) //Need to fix. Not updating correctly
     {
         foreach (RoomItem item in roomItemsList)
         {
@@ -155,7 +155,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         StartCoroutine(WaitForReconnect());
     }
 
-    private IEnumerator WaitForReconnect()
+    private IEnumerator WaitForReconnect() 
     {
         loadingScreen.SetActive(true);
         while (PhotonNetwork.IsConnectedAndReady)
@@ -173,7 +173,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         }
         if (PhotonNetwork.IsConnectedAndReady)
         {
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(2f); //fix so you dont need delay (after loading back into lobby you should be able to immediately click create room without it crashing).
             loadingScreen.SetActive(false);
             roomPanel.SetActive(false);
             lobbyPanel.SetActive(true);

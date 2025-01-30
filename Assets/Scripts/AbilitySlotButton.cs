@@ -13,6 +13,7 @@ public class AbilitySlotButton : MonoBehaviour
 
     public void GetAbilitySlotPosition()
     {
+        abilityButtonManager.ClickedAbilitySlot(true);
         abilityButtonManager.SetAbilitySelectPosition(gameObject.transform.position);
     }
 }

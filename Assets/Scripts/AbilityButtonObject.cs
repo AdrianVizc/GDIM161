@@ -12,7 +12,10 @@ public class AbilityButtonObject : MonoBehaviour
     private Vector3 startPosition;
     private Vector3 originalPosition;
     private Vector3 targetPosition;
-    private GameObject abilitySlot;
+    private GameObject abilitySlot1;
+    private GameObject abilitySlot2;
+    private GameObject abilitySlot3;
+    private float tolerance = 0.1f;
 
     AbilityButtonManager abilityButtonManager;
 
@@ -20,23 +23,20 @@ public class AbilityButtonObject : MonoBehaviour
     {
         isSelected = false;
         gotOriginalPosition = false;
+
+        abilitySlot1 = GameObject.Find("AbilitySlot1");
+        abilitySlot2 = GameObject.Find("AbilitySlot2");
+        abilitySlot3 = GameObject.Find("AbilitySlot3");
     }
 
     public void AbilitySelect()
     {
         abilityButtonManager = FindObjectOfType<AbilityButtonManager>();
+        abilityButtonManager.slotHandler();
 
-        /*if (abilityButtonManager == null )
-        {
-            abilitySlot = GameObject.Find("AbilitySlot1");
-            targetPosition = abilitySlot.transform.position;
-        }
-        else
-        {
-            targetPosition = abilityButtonManager.targetPosition;
-        }*/
         targetPosition = abilityButtonManager.targetPosition;
         startPosition = transform.position;
+        
 
         if (!gotOriginalPosition)
         {
@@ -64,6 +64,20 @@ public class AbilityButtonObject : MonoBehaviour
         float currentTimer = Time.deltaTime;
         float percentDone = 0f;
 
+        if (targetPosition == abilitySlot1.transform.position)
+        {
+            Debug.Log(targetPosition);
+            abilityButtonManager.isAbilitySlot1Empty = true;
+        }
+        else if (targetPosition == abilitySlot2.transform.position)
+        {
+            abilityButtonManager.isAbilitySlot2Empty = true;
+        }
+        else if (targetPosition == abilitySlot3.transform.position)
+        {
+            abilityButtonManager.isAbilitySlot3Empty = true;
+        }
+
 
         while (currentTimer < speed)
         {
@@ -73,9 +87,8 @@ public class AbilityButtonObject : MonoBehaviour
 
             yield return null;
         }
-
         transform.position = Vector2.Lerp(startPosition, targetPosition, 1);
-        Debug.Log(targetPosition);
+        abilityButtonManager.ClickedAbilitySlot(false);
     }
 
     private IEnumerator ReturnButton()
@@ -83,16 +96,30 @@ public class AbilityButtonObject : MonoBehaviour
         float currentTimer = Time.deltaTime;
         float percentDone = 0f;
 
+        Debug.Log("Current position is " + transform.position);
+        Debug.Log("pos of slot 1 is " + abilitySlot1.transform.position);
+        if (Vector3.Distance(transform.position, abilitySlot1.transform.position) < tolerance)
+        {
+            Debug.Log("works");
+            abilityButtonManager.isAbilitySlot1Empty = false;
+        }
+        else if (Vector3.Distance(transform.position, abilitySlot2.transform.position) < tolerance)
+        {
+            abilityButtonManager.isAbilitySlot2Empty = false;
+        }
+        else if (Vector3.Distance(transform.position, abilitySlot3.transform.position) < tolerance)
+        {
+            abilityButtonManager.isAbilitySlot3Empty = false;
+        }
 
         while (currentTimer < speed)
         {
-            transform.position = Vector2.Lerp(targetPosition, originalPosition, percentDone);
+            transform.position = Vector2.Lerp(startPosition, originalPosition, percentDone);
             percentDone = currentTimer / speed;
             currentTimer += Time.deltaTime;
 
             yield return null;
         }
-
-        transform.position = Vector2.Lerp(targetPosition, originalPosition, 1);
+        transform.position = Vector2.Lerp(startPosition, originalPosition, 1);
     }
 }
