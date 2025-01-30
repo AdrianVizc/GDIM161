@@ -4,7 +4,12 @@ using UnityEngine;
 
 public class AbilitySlotButton : MonoBehaviour
 {
-    AbilityButtonManager abilityButtonManager = new AbilityButtonManager();
+    private AbilityButtonManager abilityButtonManager;
+
+    private void Start()
+    {
+        abilityButtonManager = this.transform.root.GetComponentInChildren<AbilityButtonManager>();
+    }
 
     public void GetAbilitySlotPosition()
     {

@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class AbilityButtonManager : MonoBehaviour
 {
-    public Vector3 targetPosition;
+    [HideInInspector] public Vector3 targetPosition;
 
     public void SetAbilitySelectPosition(Vector3 position)
     {
