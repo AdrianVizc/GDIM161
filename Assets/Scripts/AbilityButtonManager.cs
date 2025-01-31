@@ -8,11 +8,10 @@ using UnityEngine.UI;
 public class AbilityButtonManager : MonoBehaviour
 {
     [HideInInspector] public Vector3 targetPosition;
-
-    public bool isAbilitySlot1Empty = false;
-    public bool isAbilitySlot2Empty = false;
-    public bool isAbilitySlot3Empty = false;
-    public bool hasClickedSlot = false;
+    [HideInInspector] public bool isAbilitySlot1Empty = false;
+    [HideInInspector] public bool isAbilitySlot2Empty = false;
+    [HideInInspector] public bool isAbilitySlot3Empty = false;
+    [HideInInspector] public bool hasClickedSlot = false;
     private GameObject abilitySlot1;
     private GameObject abilitySlot2;
     private GameObject abilitySlot3;
