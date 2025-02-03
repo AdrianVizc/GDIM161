@@ -288,6 +288,67 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1001 &141777084
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 835038612222740093, guid: 48e6363711860ce4eabef2e7a67137dd, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 14.090607
+      objectReference: {fileID: 0}
+    - target: {fileID: 835038612222740093, guid: 48e6363711860ce4eabef2e7a67137dd, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.6500002
+      objectReference: {fileID: 0}
+    - target: {fileID: 835038612222740093, guid: 48e6363711860ce4eabef2e7a67137dd, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 13.242098
+      objectReference: {fileID: 0}
+    - target: {fileID: 835038612222740093, guid: 48e6363711860ce4eabef2e7a67137dd, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 835038612222740093, guid: 48e6363711860ce4eabef2e7a67137dd, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 835038612222740093, guid: 48e6363711860ce4eabef2e7a67137dd, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 835038612222740093, guid: 48e6363711860ce4eabef2e7a67137dd, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 835038612222740093, guid: 48e6363711860ce4eabef2e7a67137dd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 835038612222740093, guid: 48e6363711860ce4eabef2e7a67137dd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 835038612222740093, guid: 48e6363711860ce4eabef2e7a67137dd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2777086798233706799, guid: 48e6363711860ce4eabef2e7a67137dd, type: 3}
+      propertyPath: m_Name
+      value: Claymore
+      objectReference: {fileID: 0}
+    - target: {fileID: 6634390975165170913, guid: 48e6363711860ce4eabef2e7a67137dd, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a11ca3ce5310e5f40b3f28a893e7da62, type: 2}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 48e6363711860ce4eabef2e7a67137dd, type: 3}
 --- !u!1 &216784301 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3068073903033641584, guid: 3abb7637ed96fa94abdfa40c6c1c2290, type: 3}
@@ -3761,3 +3822,4 @@ SceneRoots:
   - {fileID: 813183759}
   - {fileID: 1409597588}
   - {fileID: 1945278487}
+  - {fileID: 141777084}
