@@ -86,7 +86,7 @@ public class Build : MonoBehaviour
                 {
                     Instantiate(tempObject, place, Quaternion.identity);
 
-                    //previewObject = GameObject.Find("Temp Wall(Clone)");
+                    //previewObject = GameObject.Find("Temp Claymore(Clone)");
                     previewObject = GameObject.Find(GetPreviewName(tempObject));
 
                     render = previewObject.GetComponent<Renderer>();
@@ -104,7 +104,7 @@ public class Build : MonoBehaviour
                     tempObjectExists = false;
 
                     Debug.Log("CD Time is " + ability.cooldownTime);
-                    StartCoroutine(DestroyWallOnCD(obj, ability.cooldownTime));
+                    StartCoroutine(DestroyObjOnCD(obj, ability.cooldownTime));
                 }
 
                 if (previewObject != null)
@@ -148,7 +148,7 @@ public class Build : MonoBehaviour
         rotate = false;
     }
 
-    private IEnumerator DestroyWallOnCD(GameObject obj, float cd)
+    private IEnumerator DestroyObjOnCD(GameObject obj, float cd)
     {
         yield return new WaitForSeconds(cd);
         Destroy(obj);

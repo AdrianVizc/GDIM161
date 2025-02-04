@@ -9,8 +9,7 @@ public class Claymore : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             //blow up do dmg
-            Debug.Log("Detected, destroying");
-            Destroy(this);
+            Destroy(gameObject);
         }
     }
 }

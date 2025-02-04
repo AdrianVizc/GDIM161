@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3183800668113307014}
   - component: {fileID: 6335617214519200191}
   m_Layer: 2
-  m_Name: Claymore
+  m_Name: Temp Claymore
   m_TagString: Bomb
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -63,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c93c5c55bab28044caf85b85b8c857f9, type: 2}
+  - {fileID: 2100000, guid: 32879648feb2f50458844efeb135ce22, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

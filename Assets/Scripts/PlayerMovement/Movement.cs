@@ -57,8 +57,12 @@ public class Movement : MonoBehaviour
     private Vector3 moveDir;
     private Rigidbody rb;
     private AbilityControlHandler ac;
+
     [SerializeField]
     public GameObject playerShield;
+
+    [SerializeField]
+    private AudioSource explosionAudio;
 
     public MovementState state;
 
@@ -322,6 +326,14 @@ public class Movement : MonoBehaviour
                 rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
                 canDoubleJump = false;
             }
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Bomb"))
+        {
+            explosionAudio.Play();
         }
     }
 }

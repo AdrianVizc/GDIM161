@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 606f9193446b5d640be396bdaa8187e3, type: 3}
-  m_Name: Build
+  m_Name: BuildWall
   m_EditorClassIdentifier: 
-  name: Build
+  name: Build Wall
   cooldownTime: 7
   activeTime: 5
