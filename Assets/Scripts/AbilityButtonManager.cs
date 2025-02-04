@@ -12,6 +12,7 @@ public class AbilityButtonManager : MonoBehaviour
     [HideInInspector] public bool isAbilitySlot2Empty = false;
     [HideInInspector] public bool isAbilitySlot3Empty = false;
     [HideInInspector] public bool hasClickedSlot = false;
+
     private GameObject abilitySlot1;
     private GameObject abilitySlot2;
     private GameObject abilitySlot3;
@@ -52,5 +53,5 @@ public class AbilityButtonManager : MonoBehaviour
     public void ClickedAbilitySlot(bool x)
     {
         hasClickedSlot = x;
-    }
+    }    
 }

@@ -7,6 +7,8 @@ using UnityEngine.UI;
 public class AbilityButtonObject : MonoBehaviour
 {
     [SerializeField] private float speed;
+    [SerializeField] public string abilityName;
+    [SerializeField] public string abilityDescription;
     private bool isSelected;
     private bool gotOriginalPosition;
     private Vector3 startPosition;
@@ -18,6 +20,7 @@ public class AbilityButtonObject : MonoBehaviour
     private float tolerance = 0.1f;
 
     AbilityButtonManager abilityButtonManager;
+    AbilityDescriptionHandler abilityDescriptionHandler;
 
     private void Start()
     {
@@ -26,13 +29,19 @@ public class AbilityButtonObject : MonoBehaviour
 
         abilitySlot1 = GameObject.Find("AbilitySlot1");
         abilitySlot2 = GameObject.Find("AbilitySlot2");
-        abilitySlot3 = GameObject.Find("AbilitySlot3");
+        abilitySlot3 = GameObject.Find("AbilitySlot3");       
     }
 
     public void AbilitySelect()
     {
         abilityButtonManager = FindObjectOfType<AbilityButtonManager>();
-        abilityButtonManager.slotHandler();
+        abilityDescriptionHandler = FindObjectOfType<AbilityDescriptionHandler>();
+
+        abilityDescriptionHandler.SetName(abilityName);
+        abilityDescriptionHandler.SetDescription(abilityDescription);
+        //abilityDescriptionHandler.SetActive(true);
+
+        abilityButtonManager.slotHandler();        
 
         targetPosition = abilityButtonManager.targetPosition;
         startPosition = transform.position;
@@ -46,7 +55,7 @@ public class AbilityButtonObject : MonoBehaviour
         }
 
         if (!isSelected)
-        {
+        {            
             StartCoroutine(MoveButton());
 
             isSelected = true;

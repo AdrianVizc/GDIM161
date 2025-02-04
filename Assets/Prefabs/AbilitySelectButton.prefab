@@ -162,6 +162,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0.25
+  abilityName: 
+  abilityDescription: 
 --- !u!114 &1429727387508295054
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -220,3 +222,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scale: {x: 1.1, y: 1.1, z: 0}
+  button: {fileID: 6073505096315133997}
