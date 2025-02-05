@@ -75,7 +75,6 @@ public class AbilityButtonObject : MonoBehaviour
 
         if (targetPosition == abilitySlot1.transform.position)
         {
-            Debug.Log(targetPosition);
             abilityButtonManager.isAbilitySlot1Empty = true;
         }
         else if (targetPosition == abilitySlot2.transform.position)
@@ -105,11 +104,8 @@ public class AbilityButtonObject : MonoBehaviour
         float currentTimer = Time.deltaTime;
         float percentDone = 0f;
 
-        Debug.Log("Current position is " + transform.position);
-        Debug.Log("pos of slot 1 is " + abilitySlot1.transform.position);
         if (Vector3.Distance(transform.position, abilitySlot1.transform.position) < tolerance)
         {
-            Debug.Log("works");
             abilityButtonManager.isAbilitySlot1Empty = false;
         }
         else if (Vector3.Distance(transform.position, abilitySlot2.transform.position) < tolerance)
