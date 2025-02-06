@@ -26,6 +26,10 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 
     [SerializeField] private Transform contentObject;
 
+    [HideInInspector] public List<PlayerItem> playerItemsList = new List<PlayerItem>();
+    [SerializeField] private PlayerItem playerItemPrefab;
+    [SerializeField] private Transform playerItemParent;
+
     private string noRoomNameEntered;
 
     private float timeBetweenUpdates = 1.5f;
@@ -44,27 +48,15 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         triPanelSpacing.SetActive(false);
     }
 
-    /*private void Update()
-    {
-        if (PhotonNetwork.Server == ServerConnection.MasterServer)
-        {
-            Debug.Log("Connected");
-        }
-        else
-        {
-            Debug.Log("Not Connected");
-        }
-    }*/
-
     public void OnClickCreate()
     {
         if (roomNameInputField.text.Length == 0 || enteredRoomName.text == noRoomNameEntered)
         {
-            PhotonNetwork.CreateRoom(CreateRandomRoomName(), new RoomOptions() { MaxPlayers = maxPlayers});
+            PhotonNetwork.CreateRoom(CreateRandomRoomName(), new RoomOptions() { MaxPlayers = maxPlayers, BroadcastPropsChangeToAll = true });
         }
         else
         {
-            PhotonNetwork.CreateRoom(enteredRoomName.text, new RoomOptions() { MaxPlayers = maxPlayers });
+            PhotonNetwork.CreateRoom(enteredRoomName.text, new RoomOptions() { MaxPlayers = maxPlayers, BroadcastPropsChangeToAll = true });
         }
         loadingScreen.SetActive(true);
     }
@@ -77,6 +69,8 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         roomPanel.SetActive(true);
         loadingScreen.SetActive(false);
         roomNameText.text = "Room Name: " + PhotonNetwork.CurrentRoom.Name;
+
+        UpdatePlayerList();
     }
 
     public override void OnRoomListUpdate(List<RoomInfo> roomList)
@@ -215,5 +209,41 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         leaveRoomButton.SetActive(false);
         triPanelSpacing.SetActive(true);
         backButton.SetActive(true);
+    }
+
+    private void UpdatePlayerList()
+    {
+        foreach (PlayerItem item in playerItemsList)
+        {
+            Destroy(item.gameObject);
+        }
+        playerItemsList.Clear();
+
+        if (PhotonNetwork.CurrentRoom == null)
+        {
+            return;
+        }
+
+        foreach (KeyValuePair<int, Player> player in PhotonNetwork.CurrentRoom.Players)
+        {
+            PlayerItem newPlayerItem = Instantiate(playerItemPrefab, playerItemParent);
+            newPlayerItem.SetPlayerInfo(player.Value);
+            if (player.Value == PhotonNetwork.LocalPlayer)
+            {
+                newPlayerItem.ApplyLocalChanges();
+            }
+
+            playerItemsList.Add(newPlayerItem);
+        }
+    }
+
+    public override void OnPlayerEnteredRoom(Player newPlayer)
+    {
+        UpdatePlayerList();
+    }
+
+    public override void OnPlayerLeftRoom(Player otherPlayer)
+    {
+        UpdatePlayerList();
     }
 }
