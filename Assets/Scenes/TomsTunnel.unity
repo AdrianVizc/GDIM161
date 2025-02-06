@@ -2589,6 +2589,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1637607166}
   - component: {fileID: 1637607167}
+  - component: {fileID: 1637607168}
   m_Layer: 0
   m_Name: Tracker
   m_TagString: Untagged
@@ -2618,7 +2619,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1637607165}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f887a6810af4b1748a11490e8c4278b1, type: 3}
   m_Name: 
@@ -2631,11 +2632,23 @@ MonoBehaviour:
   ground: 0
   offset: 0.25
   placementReach: 5
-  player: {fileID: 216784301}
-  floor: {fileID: 1009506231}
   materials:
   - {fileID: 2100000, guid: c93c5c55bab28044caf85b85b8c857f9, type: 2}
   - {fileID: 2100000, guid: 32879648feb2f50458844efeb135ce22, type: 2}
+--- !u!114 &1637607168
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1637607165}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f35dce334641a4442816bde9685e4db4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 2118599685}
+  objectToSpawn: {fileID: 4128629997329762016, guid: e57a4bf1c1b164b4abae0dc80f0a28c2, type: 3}
 --- !u!1 &1675577852
 GameObject:
   m_ObjectHideFlags: 0

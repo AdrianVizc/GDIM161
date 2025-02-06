@@ -15,34 +15,17 @@ public class TrackingBot : MonoBehaviour
     private GameObject[] allPlayerObjects;
 
     [SerializeField]
-    private GameObject nearestObj;
-
-    [SerializeField]
-    private GameObject secondNearest;
-
-    [SerializeField]
-    private GameObject playerSelf;
-
-    private float distance;
-    private float nearestDistance = 100000;
+    private GameObject secondNearest; //player is always the closest
 
     // Start is called before the first frame update
     void Start()
     {
         allPlayerObjects = GameObject.FindGameObjectsWithTag("Player");
 
-        //float[] distances = new float[allPlayerObjects.Length];
         for (int i = 0; i < allPlayerObjects.Length; i++)
         {
-            //distances[i] = Vector3.Distance(this.transform.position, allPlayerObjects[i].transform.position);
             allDistances.Add(Vector3.Distance(this.transform.position, allPlayerObjects[i].transform.position));
-            //if (distance < nearestDistance)
-            //{
-            //    nearestObj = allPlayerObjects[i];
-            //    nearestDistance = distance;
-            //}
         }
-        //playerSelf = nearestObj;
 
         allDistances.Sort();
 
@@ -54,7 +37,6 @@ public class TrackingBot : MonoBehaviour
             }
         }
         agent.SetDestination(secondNearest.transform.position);
-        //agent.SetDestination(nearestObj.transform.position);
     }
 
     // Update is called once per frame
