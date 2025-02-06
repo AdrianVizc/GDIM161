@@ -7,8 +7,8 @@ public class TrackingBotAbility : Ability
 {
     public override void Activate(GameObject parent)
     {
-        Build placeBot = GameObject.Find("Tracker").GetComponent<Build>();
-        placeBot.Place();
+        Spawner spawnBot = GameObject.Find("Tracker").GetComponent<Spawner>();
+        spawnBot.Spawn();
     }
 
     public override void BeginCooldown(GameObject parent)

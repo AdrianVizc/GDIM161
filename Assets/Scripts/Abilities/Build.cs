@@ -29,12 +29,6 @@ public class Build : MonoBehaviour
     [SerializeField]
     private float placementReach;
 
-    [SerializeField]
-    private GameObject player;
-
-    [SerializeField]
-    private GameObject floor;
-
     private bool rotate;
 
     [SerializeField]
