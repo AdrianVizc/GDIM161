@@ -14,7 +14,12 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     [SerializeField] private GameObject lobbyPanel;
     [SerializeField] private GameObject roomPanel;
     [SerializeField] private GameObject loadingScreen;
+    [SerializeField] private GameObject triPanelSpacing;
+    [SerializeField] private GameObject backButton;
+    [SerializeField] private GameObject editCharacterButton;
+    [SerializeField] private GameObject leaveRoomButton;
     [SerializeField] private int maxPlayers;
+
 
     [SerializeField] private RoomItem roomItemPrefab;
     List<RoomItem> roomItemsList = new List<RoomItem>();
@@ -33,6 +38,10 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         PhotonNetwork.JoinLobby();
         noRoomNameEntered = enteredRoomName.text;
         loadingScreen.SetActive(false);
+        backButton.SetActive(false);
+        editCharacterButton.SetActive(false);
+        leaveRoomButton.SetActive(false);
+        triPanelSpacing.SetActive(false);
     }
 
     /*private void Update()
@@ -57,12 +66,16 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         {
             PhotonNetwork.CreateRoom(enteredRoomName.text, new RoomOptions() { MaxPlayers = maxPlayers });
         }
+        loadingScreen.SetActive(true);
     }
 
     public override void OnJoinedRoom()
     {
         lobbyPanel.SetActive(false);
+        leaveRoomButton.SetActive(true);
+        editCharacterButton.SetActive(true);
         roomPanel.SetActive(true);
+        loadingScreen.SetActive(false);
         roomNameText.text = "Room Name: " + PhotonNetwork.CurrentRoom.Name;
     }
 
@@ -149,6 +162,8 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     public override void OnLeftRoom()
     {
         loadingScreen.SetActive(true);
+        editCharacterButton.SetActive(false);
+        leaveRoomButton.SetActive(false);
 
         PhotonNetwork.Disconnect();
 
@@ -184,5 +199,21 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     public override void OnConnectedToMaster()
     {
         PhotonNetwork.JoinLobby();
+    }
+
+    public void AbilityScreenBackButton()
+    {
+        leaveRoomButton.SetActive(true);
+        editCharacterButton.SetActive(true);
+        backButton.SetActive(false);
+        triPanelSpacing.SetActive(false);
+    }
+
+    public void EditCharacter()
+    {
+        editCharacterButton.SetActive(false);
+        leaveRoomButton.SetActive(false);
+        triPanelSpacing.SetActive(true);
+        backButton.SetActive(true);
     }
 }

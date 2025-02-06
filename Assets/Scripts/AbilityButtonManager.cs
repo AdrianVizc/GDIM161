@@ -8,9 +8,10 @@ using UnityEngine.UI;
 public class AbilityButtonManager : MonoBehaviour
 {
     [HideInInspector] public Vector3 targetPosition;
-    [HideInInspector] public bool isAbilitySlot1Empty = false;
-    [HideInInspector] public bool isAbilitySlot2Empty = false;
-    [HideInInspector] public bool isAbilitySlot3Empty = false;
+    [HideInInspector] public bool isAbilitySlot1Full = false;
+    [HideInInspector] public bool isAbilitySlot2Full = false;
+    [HideInInspector] public bool isAbilitySlot3Full = false;
+    [HideInInspector] public bool allSlotsFull = false;
     [HideInInspector] public bool hasClickedSlot = false;
 
     private GameObject abilitySlot1;
@@ -24,21 +25,33 @@ public class AbilityButtonManager : MonoBehaviour
         abilitySlot3 = GameObject.Find("AbilitySlot3");
     }
 
+    private void Update()
+    {
+        if (isAbilitySlot1Full && isAbilitySlot2Full && isAbilitySlot3Full)
+        {
+            allSlotsFull = true;
+        }
+        else
+        {
+            allSlotsFull = false;
+        }
+    }
+
     public void slotHandler()
     {
         if (hasClickedSlot)
         {
             return;
         }
-        else if (!isAbilitySlot1Empty)
+        else if (!isAbilitySlot1Full)
         {
             targetPosition = abilitySlot1.transform.position;
         }
-        else if (!isAbilitySlot2Empty)
+        else if (!isAbilitySlot2Full)
         {
             targetPosition = abilitySlot2.transform.position;
         }
-        else if (!isAbilitySlot3Empty)
+        else if (!isAbilitySlot3Full)
         {
             targetPosition = abilitySlot3.transform.position;
         }

@@ -54,7 +54,7 @@ public class AbilityButtonObject : MonoBehaviour
             gotOriginalPosition = true;
         }
 
-        if (!isSelected)
+        if (!isSelected && !abilityButtonManager.allSlotsFull)
         {            
             StartCoroutine(MoveButton());
 
@@ -73,17 +73,21 @@ public class AbilityButtonObject : MonoBehaviour
         float currentTimer = Time.deltaTime;
         float percentDone = 0f;
 
-        if (targetPosition == abilitySlot1.transform.position)
+        if (abilityButtonManager.allSlotsFull)
         {
-            abilityButtonManager.isAbilitySlot1Empty = true;
+            yield break;
+        }
+        else if (targetPosition == abilitySlot1.transform.position)
+        {
+            abilityButtonManager.isAbilitySlot1Full = true;
         }
         else if (targetPosition == abilitySlot2.transform.position)
         {
-            abilityButtonManager.isAbilitySlot2Empty = true;
+            abilityButtonManager.isAbilitySlot2Full = true;
         }
         else if (targetPosition == abilitySlot3.transform.position)
         {
-            abilityButtonManager.isAbilitySlot3Empty = true;
+            abilityButtonManager.isAbilitySlot3Full = true;
         }
 
 
@@ -106,15 +110,15 @@ public class AbilityButtonObject : MonoBehaviour
 
         if (Vector3.Distance(transform.position, abilitySlot1.transform.position) < tolerance)
         {
-            abilityButtonManager.isAbilitySlot1Empty = false;
+            abilityButtonManager.isAbilitySlot1Full = false;
         }
         else if (Vector3.Distance(transform.position, abilitySlot2.transform.position) < tolerance)
         {
-            abilityButtonManager.isAbilitySlot2Empty = false;
+            abilityButtonManager.isAbilitySlot2Full = false;
         }
         else if (Vector3.Distance(transform.position, abilitySlot3.transform.position) < tolerance)
         {
-            abilityButtonManager.isAbilitySlot3Empty = false;
+            abilityButtonManager.isAbilitySlot3Full = false;
         }
 
         while (currentTimer < speed)
