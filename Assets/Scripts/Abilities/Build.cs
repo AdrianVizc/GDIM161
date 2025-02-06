@@ -11,6 +11,10 @@ public class Build : MonoBehaviour
 
     private RaycastHit hit;
 
+    private Shooting shooting;
+    private AbilityHolder[] abilityHolderList;
+    private AbilityHolder multishotAbility;
+
     [SerializeField]
     private GameObject objectToPlace, previewObject;
 
@@ -42,12 +46,35 @@ public class Build : MonoBehaviour
 
     private Renderer render;
 
+    private void Start()
+    {
+        shooting = transform.root.GetComponentInChildren<Shooting>();
+        abilityHolderList = transform.root.GetComponentsInChildren<AbilityHolder>();
+
+        foreach(AbilityHolder ab in abilityHolderList)
+        {
+            if(ab.GetType().GetField("ability").GetValue(ab).ToString() == "Multishot (MultishotAbility)")
+            {
+                multishotAbility = ab;
+                break;
+            }
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {
         if (placeNow == true)
         {
             SendRay(); //start raycasting
+            shooting.enabled = false;
+            multishotAbility.enabled = false;
+
+        }
+        else
+        {
+            shooting.enabled = true;
+            multishotAbility.enabled = true;
         }
 
         if (placeObj == true)
@@ -105,6 +132,8 @@ public class Build : MonoBehaviour
 
                     Debug.Log("CD Time is " + ability.cooldownTime);
                     StartCoroutine(DestroyObjOnCD(obj, ability.cooldownTime));
+
+                    shooting.gameObject.SetActive(true);
                 }
 
                 if (previewObject != null)

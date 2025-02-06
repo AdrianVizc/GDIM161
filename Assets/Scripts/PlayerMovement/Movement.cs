@@ -56,7 +56,6 @@ public class Movement : MonoBehaviour
     private float verticalInput;
     private Vector3 moveDir;
     private Rigidbody rb;
-    private AbilityControlHandler ac;
 
     [SerializeField]
     public GameObject playerShield;
@@ -77,7 +76,6 @@ public class Movement : MonoBehaviour
     {
         mainCamera = Camera.main;
         rb = GetComponent<Rigidbody>();
-        ac = GetComponent<AbilityControlHandler>();
         rb.freezeRotation = true;
         readyToJump = true;
         startYScale = transform.localScale.y;
@@ -105,8 +103,7 @@ public class Movement : MonoBehaviour
     private void Update()
     {
         // Check if WASD, Jump, or movement abilities are being pressed
-        isInputMoving = Input.GetKey(jumpkey) || Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D)||
-                        Input.GetKey(ac.movementAbility);
+        isInputMoving = (Input.GetKey(jumpkey) || Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D));
 
         // Rotate player with camera
         transform.rotation = Quaternion.Euler(0, mainCamera.transform.localEulerAngles.y, 0);
@@ -311,22 +308,6 @@ public class Movement : MonoBehaviour
     public bool getGrounded()
     {
         return grounded;
-    }
-
-    public void DoubleJump()
-    {
-        canDoubleJump = true;
-
-        if (!grounded && canDoubleJump)
-        {
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                Debug.Log("DJ");
-                rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
-                rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
-                canDoubleJump = false;
-            }
-        }
     }
 
     private void OnTriggerEnter(Collider other)
