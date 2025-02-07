@@ -19,6 +19,8 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     [SerializeField] private GameObject editCharacterButton;
     [SerializeField] private GameObject leaveRoomButton;
     [SerializeField] private int maxPlayers;
+    [SerializeField] private GameObject playButton;
+    [SerializeField] private string sceneName;
 
 
     [SerializeField] private RoomItem roomItemPrefab;
@@ -46,6 +48,23 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         editCharacterButton.SetActive(false);
         leaveRoomButton.SetActive(false);
         triPanelSpacing.SetActive(false);
+    }
+
+    private void Update()
+    {
+        if (PhotonNetwork.IsMasterClient && PhotonNetwork.CurrentRoom.PlayerCount >= 2)
+        {
+            playButton.SetActive(true);
+        }
+        else
+        {
+            playButton.SetActive(false);
+        }
+    }
+
+    public void OnClickPlayButton()
+    {
+        PhotonNetwork.LoadLevel(sceneName);
     }
 
     public void OnClickCreate()
@@ -123,6 +142,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         namesList.Add("Nick's Basement ");
         namesList.Add("Adrian's Basement ");
         namesList.Add("Jacky's Basement ");
+        namesList.Add("Jack's Basement ");
         namesList.Add("Thomas's Basement ");
         namesList.Add("Courtyard ");
         namesList.Add("Hall ");

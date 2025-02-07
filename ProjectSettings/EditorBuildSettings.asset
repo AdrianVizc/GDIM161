@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Lobby.unity
     guid: 3f807218b3ff2634182adc6c16e7dc74
+  - enabled: 1
+    path: Assets/Scenes/TomsTunnel.unity
+    guid: 466d6522002c1164493c3844d3ca2194
   m_configObjects: {}

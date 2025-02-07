@@ -25,12 +25,14 @@ public class ConnectToServer : MonoBehaviourPunCallbacks
         {
             PhotonNetwork.NickName = CreateRandomUsername();
             loadingScreen.SetActive(true);
+            PhotonNetwork.AutomaticallySyncScene = true;
             PhotonNetwork.ConnectUsingSettings();
         }
         else
         {
             PhotonNetwork.NickName = usernameInputText.text;
             loadingScreen.SetActive(true);
+            PhotonNetwork.AutomaticallySyncScene = true;
             PhotonNetwork.ConnectUsingSettings();
         }
     }
