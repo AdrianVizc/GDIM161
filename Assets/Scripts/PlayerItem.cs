@@ -26,6 +26,11 @@ public class PlayerItem : MonoBehaviourPunCallbacks
         backgroundImage = GetComponent<Image>();
     }
 
+    private void Start()
+    {
+        PhotonNetwork.SetPlayerCustomProperties(playerProperties);
+    }
+
     public void SetPlayerInfo(Player _player)
     {        
         playerName.text = _player.NickName;
