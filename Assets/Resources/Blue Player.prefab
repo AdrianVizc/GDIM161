@@ -439,7 +439,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_SynchronizeVelocity: 1
   m_SynchronizeAngularVelocity: 0
-  m_TeleportEnabled: 1
+  m_TeleportEnabled: 0
   m_TeleportIfDistanceGreaterThan: 3
 --- !u!1 &646033025668828207
 GameObject:
@@ -595,6 +595,7 @@ MonoBehaviour:
   observableSearch: 2
   ObservedComponents:
   - {fileID: 5353420093644388938}
+  - {fileID: 8718910966868362256}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0

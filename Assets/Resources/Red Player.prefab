@@ -439,7 +439,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_SynchronizeVelocity: 1
   m_SynchronizeAngularVelocity: 0
-  m_TeleportEnabled: 1
+  m_TeleportEnabled: 0
   m_TeleportIfDistanceGreaterThan: 3
 --- !u!1 &646033025668828207
 GameObject:
@@ -551,7 +551,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2608081497269587888}
-  - component: {fileID: 12790316612663577}
+  - component: {fileID: 9062610628056603416}
   m_Layer: 8
   m_Name: Red Player
   m_TagString: Untagged
@@ -575,7 +575,7 @@ Transform:
   - {fileID: 935636128732293754}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &12790316612663577
+--- !u!114 &9062610628056603416
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -595,6 +595,7 @@ MonoBehaviour:
   observableSearch: 2
   ObservedComponents:
   - {fileID: 2204099486854956790}
+  - {fileID: 404568041748202012}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
