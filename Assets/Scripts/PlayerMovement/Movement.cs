@@ -3,9 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Photon.Pun;
 
 public class Movement : MonoBehaviour
 {
+    PhotonView view;
     [Header("Movement Settings")]
     [SerializeField] private float moveSpeed = 9f;
     public float normAccel = 1f;
@@ -71,9 +73,10 @@ public class Movement : MonoBehaviour
         crouching,
         air
     }
-
+    
     private void Start()
     {
+        view = GetComponentInParent<PhotonView>();
         mainCamera = Camera.main;
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
@@ -102,7 +105,48 @@ public class Movement : MonoBehaviour
     }
     private void Update()
     {
-        // Check if WASD, Jump, or movement abilities are being pressed
+        if (view.IsMine)
+        {
+            // Check if WASD, Jump, or movement abilities are being pressed
+            isInputMoving = (Input.GetKey(jumpkey) || Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D));
+
+            // Rotate player with camera
+            transform.rotation = Quaternion.Euler(0, mainCamera.transform.localEulerAngles.y, 0);
+
+            // Ground check
+            grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, groundLayer);
+
+            // Update stamina bar
+            //staminaBar.fillAmount = currentStamina / staminaAmount;
+
+            // Start sprint restore on sprint key release
+            if (Input.GetKeyUp(sprintKey))
+            {
+                StartStaminaRecover();
+            }
+
+            MyInput();
+            SpeedControl();
+            StateHandler();
+
+            if (grounded)
+            {
+                if (!isInputMoving)
+                {
+                    rb.drag = 25f;
+                }
+                else
+                {
+                    rb.drag = groundDrag;
+                }
+            }
+            else
+            {
+                rb.drag = 0;
+            }
+        }
+        
+        /*// Check if WASD, Jump, or movement abilities are being pressed
         isInputMoving = (Input.GetKey(jumpkey) || Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D));
 
         // Rotate player with camera
@@ -138,7 +182,7 @@ public class Movement : MonoBehaviour
         else
         {
             rb.drag = 0;
-        }
+        }*/
     }
 
     // Handles movement state

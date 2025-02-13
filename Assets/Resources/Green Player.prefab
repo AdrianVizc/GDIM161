@@ -24,8 +24,8 @@ GameObject:
   - component: {fileID: 7539369857454960828}
   - component: {fileID: 8366188525886961915}
   - component: {fileID: 1283331094486684570}
-  - component: {fileID: 4163519558983166762}
-  - component: {fileID: 7679372461874309810}
+  - component: {fileID: 3936503967323023988}
+  - component: {fileID: 7182021986338753927}
   m_Layer: 8
   m_Name: PlayerCapsule
   m_TagString: Player
@@ -409,23 +409,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ability: {fileID: 11400000, guid: e461b5ace45b93e4aab26ad8cd1d2f1d, type: 2}
   key: 117
---- !u!114 &4163519558983166762
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 271616554234656563}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SynchronizePosition: 1
-  m_SynchronizeRotation: 1
-  m_SynchronizeScale: 0
-  m_UseLocal: 1
---- !u!114 &7679372461874309810
+--- !u!114 &3936503967323023988
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -441,6 +425,22 @@ MonoBehaviour:
   m_SynchronizeAngularVelocity: 0
   m_TeleportEnabled: 0
   m_TeleportIfDistanceGreaterThan: 3
+--- !u!114 &7182021986338753927
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 271616554234656563}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
 --- !u!1 &646033025668828207
 GameObject:
   m_ObjectHideFlags: 0
@@ -551,7 +551,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2608081497269587888}
-  - component: {fileID: 7235602060506576466}
+  - component: {fileID: 6123903604381401751}
   m_Layer: 8
   m_Name: Green Player
   m_TagString: Untagged
@@ -575,7 +575,7 @@ Transform:
   - {fileID: 935636128732293754}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7235602060506576466
+--- !u!114 &6123903604381401751
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -594,8 +594,8 @@ MonoBehaviour:
   OwnershipTransfer: 0
   observableSearch: 2
   ObservedComponents:
-  - {fileID: 4163519558983166762}
-  - {fileID: 7679372461874309810}
+  - {fileID: 3936503967323023988}
+  - {fileID: 7182021986338753927}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
