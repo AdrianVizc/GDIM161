@@ -18,6 +18,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     [SerializeField] private GameObject backButton;
     [SerializeField] private GameObject editCharacterButton;
     [SerializeField] private GameObject leaveRoomButton;
+    [SerializeField] private GameObject playerListing;
     [SerializeField] private int maxPlayers;
     [SerializeField] private GameObject playButton;
     [SerializeField] private string sceneName;
@@ -221,6 +222,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         editCharacterButton.SetActive(true);
         backButton.SetActive(false);
         triPanelSpacing.SetActive(false);
+        playerListing.SetActive(true);
     }
 
     public void EditCharacter()
@@ -229,6 +231,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         leaveRoomButton.SetActive(false);
         triPanelSpacing.SetActive(true);
         backButton.SetActive(true);
+        playerListing.SetActive(false);
     }
 
     private void UpdatePlayerList()
