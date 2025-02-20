@@ -72,28 +72,4 @@ public class AbilityButtonManager : MonoBehaviour
     {
         hasClickedSlot = x;
     }    
-
-    public int GetSlotNum(GameObject abilityObj)
-    {
-        if (abilityObj.transform.position == abilitySlot1.transform.position)
-        {
-            //Debug.Log("Slot 1");
-            return 1;
-        }
-        else if (abilityObj.transform.position == abilitySlot2.transform.position)
-        {
-            //Debug.Log("Slot 2");
-            return 2;
-        }
-        else if (abilityObj.transform.position == abilitySlot3.transform.position)
-        {
-            //Debug.Log("Slot 3");
-            return 3;
-        }
-        else
-        {
-            //Debug.Log("None");
-            return 0;
-        }
-    }
 }

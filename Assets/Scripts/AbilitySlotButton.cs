@@ -21,9 +21,11 @@ public class AbilitySlotButton : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         //Debug.Log("In Slot: " + abilityButtonManager.targetPosition);
+        //Debug.Log("Collision Position: " + collision.gameObject.transform.position);
         //Debug.Log("Name: " + collision.tag);
+        //Debug.Log(this.tag);
 
-        SetAbilitySlot(abilityButtonManager.GetSlotNum(collision.gameObject), collision.tag);
+        SetAbilitySlot(this.tag, collision.tag);
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -33,9 +35,10 @@ public class AbilitySlotButton : MonoBehaviour
         //PlayerPrefs.DeleteKey(abilityButtonManager.GetSlotNum(collision.gameObject).ToString());
     }
 
-    private void SetAbilitySlot(int slot, string tag)
+    private void SetAbilitySlot(string slot, string tag)
     {
         PlayerPrefs.SetString(slot.ToString(), tag);
-       //Debug.Log(PlayerPrefs.GetString(slot.ToString()));
+        //Debug.Log("KEY: " + slot);
+        //Debug.Log("SAVED: " + PlayerPrefs.GetString(slot.ToString()));
     }
 }
