@@ -62,9 +62,12 @@ public class AbilityToPlayer : MonoBehaviour
         Debug.Log("ABILITY 2: " + PlayerPrefs.GetString("2"));
         Debug.Log("ABILITY 3: " + PlayerPrefs.GetString("3"));
         Debug.Log("OWNER: " + player.name);
+        
+        //if (PlayerPrefs.GetString("1") == wallRef.tag || PlayerPrefs.GetString("2") == wallRef.tag || PlayerPrefs.GetString("3") == wallRef.tag)
+        //{
+        //    Debug.Log("WALL CHOSEN AND FOUND");
+        //}
 
-        //string testThree = PlayerPrefs.GetString("3");
-        //Debug.Log(testThree);
         //three = GameObject.FindWithTag(PlayerPrefs.GetString("3"));
         //three.SetActive(true);
         //Debug.Log("Object: " + three.name);
