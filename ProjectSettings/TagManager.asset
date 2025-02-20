@@ -13,6 +13,8 @@ TagManager:
   - Whack
   - Wall
   - Shield
+  - Mine
+  - Tracker
   layers:
   - Default
   - TransparentFX
