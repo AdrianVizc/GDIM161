@@ -501,7 +501,7 @@ MonoBehaviour:
   ability: {fileID: 11400000, guid: 87496b7f2e10a104f839d46d561363f7, type: 2}
   objectToPlace: {fileID: 0}
   previewObject: {fileID: 0}
-  realObject: {fileID: 2777086798233706799, guid: 48e6363711860ce4eabef2e7a67137dd, type: 3}
+  realObject: {fileID: 2777086798233706799, guid: 1fc9ed8d5ad768249bfd4413893ab2fb, type: 3}
   tempObject: {fileID: 2777086798233706799, guid: e45d91ff72e311b4b9e401852e489433, type: 3}
   ground: 0
   offset: 0
