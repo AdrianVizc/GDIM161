@@ -819,7 +819,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 271616554234656563}
-  objectToSpawn: {fileID: 4128629997329762016, guid: e57a4bf1c1b164b4abae0dc80f0a28c2, type: 3}
+  objectToSpawn: {fileID: 4128629997329762016, guid: 7d99a708644776b4b9373727031e63a3, type: 3}
 --- !u!1 &7194703309195799407
 GameObject:
   m_ObjectHideFlags: 0

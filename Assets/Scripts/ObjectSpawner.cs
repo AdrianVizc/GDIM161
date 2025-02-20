@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 public class Spawner : MonoBehaviour
 {
@@ -12,6 +13,6 @@ public class Spawner : MonoBehaviour
 
     public void Spawn()
     {
-        Instantiate(objectToSpawn, player.transform.position, Quaternion.identity);
+        PhotonNetwork.Instantiate(objectToSpawn.name, player.transform.position, Quaternion.identity);
     }
 }
