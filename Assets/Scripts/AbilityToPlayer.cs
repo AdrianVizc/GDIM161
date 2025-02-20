@@ -73,11 +73,21 @@ public class AbilityToPlayer : MonoBehaviour
             //Debug.Log("LOOKING FOR: " + PlayerPrefs.GetString("Slot3"));
             //Debug.Log("FOREACH: " + (ability.GetType().GetField("ability").GetValue(ability).ToString().Contains(PlayerPrefs.GetString("Slot1"))));
 
-            if ((ability.GetType().GetField("ability").GetValue(ability).ToString().Contains(PlayerPrefs.GetString("Slot1"))) ||
-                (ability.GetType().GetField("ability").GetValue(ability).ToString().Contains(PlayerPrefs.GetString("Slot2"))) ||
-                (ability.GetType().GetField("ability").GetValue(ability).ToString().Contains(PlayerPrefs.GetString("Slot3"))))
+            if ((ability.GetType().GetField("ability").GetValue(ability).ToString().Contains(PlayerPrefs.GetString("Slot1"))))
             {
-                Debug.Log("FOUND: " + ability.GetType().GetField("ability").GetValue(ability).ToString());
+                Debug.Log("FOUND IN SLOT 1: " + ability.GetType().GetField("ability").GetValue(ability).ToString());
+                ability.key = KeyCode.I;
+            }
+            else if (ability.GetType().GetField("ability").GetValue(ability).ToString().Contains(PlayerPrefs.GetString("Slot2")))
+            {
+                Debug.Log("FOUND IN SLOT 2: " + ability.GetType().GetField("ability").GetValue(ability).ToString());
+                ability.key = KeyCode.O;
+            }
+            else if (ability.GetType().GetField("ability").GetValue(ability).ToString().Contains(PlayerPrefs.GetString("Slot3")))
+            {
+                Debug.Log("FOUND IN SLOT 3: " + ability.GetType().GetField("ability").GetValue(ability).ToString());
+                ability.key = KeyCode.P;
+                
             }
             else
             {
