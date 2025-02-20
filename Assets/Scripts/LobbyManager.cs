@@ -49,6 +49,8 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         editCharacterButton.SetActive(false);
         leaveRoomButton.SetActive(false);
         triPanelSpacing.SetActive(false);
+        lobbyPanel.SetActive(true);
+        roomPanel.SetActive(false);
     }
 
     private void Update()
