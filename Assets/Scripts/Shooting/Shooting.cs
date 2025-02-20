@@ -1,3 +1,4 @@
+using Photon.Pun;
 using Photon.Pun.Demo.Asteroids;
 using System.Collections;
 using System.Collections.Generic;
@@ -69,10 +70,11 @@ public class Shooting : MonoBehaviour
         }
 
         //Calculate direction from shootingPoint to targetPoint
+        Debug.Log(targetPoint + " " + shootingPoint);
         Vector3 direction = targetPoint - shootingPoint.position;
 
         //Make bullet
-        GameObject bullet = Instantiate(bulletPrefab, shootingPoint.position, shootingPoint.rotation);
+        GameObject bullet = PhotonNetwork.Instantiate(bulletPrefab.name, shootingPoint.position, shootingPoint.rotation);
 
         //Rotating bullet to shoot direction
         //bullet.transform.forward = direction.normalized;

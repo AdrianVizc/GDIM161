@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 public class Build : MonoBehaviour
 {
@@ -117,7 +118,7 @@ public class Build : MonoBehaviour
 
                 if (Input.GetMouseButtonDown(0)) //if left mouse button clicked, place the actual wall
                 {
-                    GameObject obj = Instantiate(objectToPlace, place, previewObject.transform.rotation);
+                    GameObject obj = PhotonNetwork.Instantiate(objectToPlace.name, place, previewObject.transform.rotation);
                     placeNow = false;
                     placeObj = false;
 
