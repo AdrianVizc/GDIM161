@@ -474,7 +474,7 @@ GameObject:
   - component: {fileID: 5985435890289177860}
   m_Layer: 0
   m_Name: MultishotHolder
-  m_TagString: Untagged
+  m_TagString: Multishot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -555,7 +555,7 @@ GameObject:
   - component: {fileID: 3894852703202023765}
   m_Layer: 0
   m_Name: Barrier
-  m_TagString: Untagged
+  m_TagString: Shield
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -773,7 +773,7 @@ GameObject:
   - component: {fileID: 6058048739255460037}
   m_Layer: 0
   m_Name: WallBuilder
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

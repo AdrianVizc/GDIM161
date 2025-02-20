@@ -7,6 +7,12 @@ TagManager:
   - Bullet
   - Ground
   - Bomb
+  - Dash
+  - Double Jump
+  - Multishot
+  - Whack
+  - Wall
+  - Shield
   layers:
   - Default
   - TransparentFX

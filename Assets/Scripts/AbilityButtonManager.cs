@@ -18,6 +18,11 @@ public class AbilityButtonManager : MonoBehaviour
     private GameObject abilitySlot2;
     private GameObject abilitySlot3;
 
+
+    public string slot1 = "Slot 1: ";
+    public string slot2 = "Slot 2: ";
+    public string slot3 = "Slot 3: ";
+
     private void Start()
     {
         abilitySlot1 = GameObject.Find("AbilitySlot1");
@@ -67,4 +72,28 @@ public class AbilityButtonManager : MonoBehaviour
     {
         hasClickedSlot = x;
     }    
+
+    public int GetSlotNum(GameObject abilityObj)
+    {
+        if (abilityObj.transform.position == abilitySlot1.transform.position)
+        {
+            //Debug.Log("Slot 1");
+            return 1;
+        }
+        else if (abilityObj.transform.position == abilitySlot2.transform.position)
+        {
+            //Debug.Log("Slot 2");
+            return 2;
+        }
+        else if (abilityObj.transform.position == abilitySlot3.transform.position)
+        {
+            //Debug.Log("Slot 3");
+            return 3;
+        }
+        else
+        {
+            //Debug.Log("None");
+            return 0;
+        }
+    }
 }
