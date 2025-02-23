@@ -10,24 +10,8 @@ public class AbilityToPlayer : MonoBehaviour
     [SerializeField] private GameObject multishotRef;
     [SerializeField] private GameObject trackerRef;
     //private GameObject playerRef;
+
     private AbilityHolder[] abilityHolderList;
-    private enum Abilities
-    {
-        Wall,
-        Mine,
-        Multishot,
-        Tracker,
-    }
-
-    private Abilities abilityName;
-
-    private Ability onel;
-    private Ability two2;
-    private Ability three3;
-
-    private GameObject one;
-    private GameObject two;
-    private GameObject three;
 
     private void Awake()
     {
@@ -73,27 +57,27 @@ public class AbilityToPlayer : MonoBehaviour
             //Debug.Log("LOOKING FOR: " + PlayerPrefs.GetString("Slot3"));
             //Debug.Log("FOREACH: " + (ability.GetType().GetField("ability").GetValue(ability).ToString().Contains(PlayerPrefs.GetString("Slot1"))));
 
-            if ((ability.GetType().GetField("ability").GetValue(ability).ToString().Contains("Double Jump")))
+            if ((ability.GetType().GetField("ability").GetValue(ability).ToString().Contains("Double Jump"))) //Special Case for Double Jump
             {
-                Debug.Log("FOUND DOUBLE JUMP, RESETTING KEY" + ability.GetType().GetField("ability").GetValue(ability).ToString());
+                Debug.Log("FOUND DOUBLE JUMP, RESETTING KEY " + ability.GetType().GetField("ability").GetValue(ability).ToString());
                 ability.key = KeyCode.Space;
             }
-            if ((ability.GetType().GetField("ability").GetValue(ability).ToString().Contains(PlayerPrefs.GetString("Slot1"))))
+            else if ((ability.GetType().GetField("ability").GetValue(ability).ToString().Contains(PlayerPrefs.GetString("Slot1")))) //Slot 1
             {
                 Debug.Log("FOUND IN SLOT 1: " + ability.GetType().GetField("ability").GetValue(ability).ToString());
                 ability.key = KeyCode.I;
             }
-            else if (ability.GetType().GetField("ability").GetValue(ability).ToString().Contains(PlayerPrefs.GetString("Slot2")))
+            else if (ability.GetType().GetField("ability").GetValue(ability).ToString().Contains(PlayerPrefs.GetString("Slot2"))) //Slot 2
             {
                 Debug.Log("FOUND IN SLOT 2: " + ability.GetType().GetField("ability").GetValue(ability).ToString());
                 ability.key = KeyCode.O;
             }
-            else if (ability.GetType().GetField("ability").GetValue(ability).ToString().Contains(PlayerPrefs.GetString("Slot3")))
+            else if (ability.GetType().GetField("ability").GetValue(ability).ToString().Contains(PlayerPrefs.GetString("Slot3"))) //Slot 3
             {
                 Debug.Log("FOUND IN SLOT 3: " + ability.GetType().GetField("ability").GetValue(ability).ToString());
                 ability.key = KeyCode.P;
             }
-            else
+            else //Disable the rest
             {
                 Debug.Log("TURNING OFF: " + ability.GetType().GetField("ability").GetValue(ability).ToString());
                 ability.enabled = false;
@@ -103,10 +87,8 @@ public class AbilityToPlayer : MonoBehaviour
         }
     }
 
-    public void SetAbilities(GameObject player)
+    public void SetAbilities(GameObject player) //this honestly does nothing LOL
     {
-        //Initializing();
-
         Debug.Log("ABILITY 1: " + PlayerPrefs.GetString("Slot1"));
         Debug.Log("ABILITY 2: " + PlayerPrefs.GetString("Slot2"));
         Debug.Log("ABILITY 3: " + PlayerPrefs.GetString("Slot3"));

@@ -26,8 +26,9 @@ public class Build : MonoBehaviour
     private bool placeObj;
     private bool tempObjectExists;
 
-    public bool ground; //for testing purposes only
-    public bool multishotPicked;
+    private bool ground; //for testing purposes only
+    private bool multishotPicked;
+    private KeyCode buildKey;
 
     [SerializeField]
     private float offset;
@@ -44,13 +45,15 @@ public class Build : MonoBehaviour
 
     private void Start()
     {
+        Debug.Log("NAME: " + this.name);
         shooting = transform.root.GetComponentInChildren<Shooting>();
         abilityHolderList = transform.root.GetComponentsInChildren<AbilityHolder>();
 
         foreach(AbilityHolder ab in abilityHolderList)
         {
-            if(ab.GetType().GetField("ability").GetValue(ab).ToString() == "Multishot (MultishotAbility)")
+            if (ab.GetType().GetField("ability").GetValue(ab).ToString() == "Multishot (MultishotAbility)")
             {
+                Debug.Log("FOUND MULTISHOT IN BUILD");
                 if (ab.isActiveAndEnabled)
                 {
                     multishotAbility = ab;
@@ -61,8 +64,18 @@ public class Build : MonoBehaviour
                     multishotPicked = false;
                 }
 
-                break;
+                //break;
             }
+
+            //Debug.Log("NAME: " + this.name);
+            //Debug.Log("ab : " + ab.GetType().GetField("ability").GetValue(ab).ToString());
+            //Debug.Log("Contains: " + ab.GetType().GetField("ability").GetValue(ab).ToString().Contains(this.name));
+
+            //if (ab.GetType().GetField("ability").GetValue(ab).ToString().Contains(this.name))
+            //{
+            //    buildKey = ab.key;
+            //    Debug.Log("ACTIVATE KEY: " + buildKey);
+            //}
         }
     }
 
@@ -99,7 +112,7 @@ public class Build : MonoBehaviour
         //PlaceWall();
         //}
 
-        if (Input.GetKeyDown(KeyCode.F) && tempObjectExists == true) //honestly is fine if F activates the ability & rotates, simple click will rotate it back + direction plays a part
+        if (Input.GetKeyDown(KeyCode.F) && tempObjectExists == true)
         {
             rotate = true;
         }
