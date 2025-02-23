@@ -27,6 +27,7 @@ public class Build : MonoBehaviour
     private bool tempObjectExists;
 
     public bool ground; //for testing purposes only
+    public bool multishotPicked;
 
     [SerializeField]
     private float offset;
@@ -50,7 +51,16 @@ public class Build : MonoBehaviour
         {
             if(ab.GetType().GetField("ability").GetValue(ab).ToString() == "Multishot (MultishotAbility)")
             {
-                multishotAbility = ab;
+                if (ab.isActiveAndEnabled)
+                {
+                    multishotAbility = ab;
+                    multishotPicked = true;
+                }
+                else
+                {
+                    multishotPicked = false;
+                }
+
                 break;
             }
         }
@@ -63,13 +73,19 @@ public class Build : MonoBehaviour
         {
             SendRay(); //start raycasting
             shooting.enabled = false;
-            multishotAbility.enabled = false;
+            if (multishotPicked)
+            {
+                multishotAbility.enabled = false;
+            }
 
         }
         else
         {
             shooting.enabled = true;
-            multishotAbility.enabled = true;
+            if (multishotPicked)
+            {
+                multishotAbility.enabled = true;
+            }
         }
 
         if (placeObj == true)
@@ -199,5 +215,10 @@ public class Build : MonoBehaviour
     {
         Debug.Log("" + tempObject.name + "(Clone)");
         return "" + tempObject.name + "(Clone)";
+    }
+
+    private void DisableShooting()
+    {
+
     }
 }
