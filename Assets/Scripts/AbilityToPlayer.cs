@@ -59,8 +59,17 @@ public class AbilityToPlayer : MonoBehaviour
 
             if ((ability.GetType().GetField("ability").GetValue(ability).ToString().Contains("Double Jump"))) //Special Case for Double Jump
             {
-                Debug.Log("FOUND DOUBLE JUMP, RESETTING KEY " + ability.GetType().GetField("ability").GetValue(ability).ToString());
-                ability.key = KeyCode.Space;
+                if (ability.GetType().GetField("ability").GetValue(ability).ToString().Contains(PlayerPrefs.GetString("Slot1")) ||
+                    ability.GetType().GetField("ability").GetValue(ability).ToString().Contains(PlayerPrefs.GetString("Slot2")) ||
+                    ability.GetType().GetField("ability").GetValue(ability).ToString().Contains(PlayerPrefs.GetString("Slot3")) )
+                {
+                    Debug.Log("PICKED DOUBLE JUMP, RESETTING KEY " + ability.GetType().GetField("ability").GetValue(ability).ToString());
+                    ability.key = KeyCode.Space;
+                }
+                else
+                {
+                    ability.enabled = false;
+                }
             }
             else if ((ability.GetType().GetField("ability").GetValue(ability).ToString().Contains(PlayerPrefs.GetString("Slot1")))) //Slot 1
             {
