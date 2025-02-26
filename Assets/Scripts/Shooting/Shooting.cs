@@ -24,15 +24,22 @@ public class Shooting : MonoBehaviour
 
     private Camera playerCam;
 
+    PhotonView view;
+
 
     private void Start()
     {
+        view = GetComponentInParent<PhotonView>();
         playerCam = Camera.main;
         timer = reloadTimer;
     }
     // Update is called once per frame
     void Update()
     {
+        if (!view.IsMine)
+        {
+            return;
+        }
         if (timer > 0)
         {
             timer -= Time.deltaTime;
