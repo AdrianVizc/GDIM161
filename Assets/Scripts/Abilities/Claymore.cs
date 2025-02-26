@@ -1,6 +1,8 @@
+using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
 
 public class Claymore : MonoBehaviour
 {
@@ -9,7 +11,7 @@ public class Claymore : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             //blow up do dmg
-            Destroy(gameObject);
+            PhotonNetwork.Destroy(gameObject);
         }
     }
 }
