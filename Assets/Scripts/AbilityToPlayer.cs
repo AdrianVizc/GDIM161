@@ -114,6 +114,19 @@ public class AbilityToPlayer : MonoBehaviour
         {
             Debug.Log("Different");
         }
+
+        if (PlayerPrefs.HasKey("Slot1"))
+        {
+            PlayerPrefs.DeleteKey("Slot1");
+        }
+        if (PlayerPrefs.HasKey("Slot2"))
+        {
+            PlayerPrefs.DeleteKey("Slot2");
+        }
+        if (PlayerPrefs.HasKey("Slot3"))
+        {
+            PlayerPrefs.DeleteKey("Slot3");
+        }
         //Debug.Log("Wall Ref Tag: " + wallRef.tag);
         //Debug.Log(PlayerPrefs.GetString("1"));
 
