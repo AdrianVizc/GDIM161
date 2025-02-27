@@ -53,7 +53,7 @@ public class Build : MonoBehaviour
         {
             if (ab.GetType().GetField("ability").GetValue(ab).ToString() == "Multishot (MultishotAbility)")
             {
-                Debug.Log("FOUND MULTISHOT IN BUILD");
+                //Debug.Log("FOUND MULTISHOT IN BUILD");
                 if (ab.isActiveAndEnabled)
                 {
                     multishotAbility = ab;

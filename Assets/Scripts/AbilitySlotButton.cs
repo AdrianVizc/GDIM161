@@ -5,11 +5,12 @@ using UnityEngine;
 public class AbilitySlotButton : MonoBehaviour
 {
     private AbilityButtonManager abilityButtonManager;
-
+    private LobbyManager lobbyManager;
 
     private void Start()
     {
         abilityButtonManager = this.transform.root.GetComponentInChildren<AbilityButtonManager>();
+        lobbyManager = GameObject.Find("LobbyManager").GetComponent<LobbyManager>();
     }
 
     public void GetAbilitySlotPosition()
@@ -32,7 +33,14 @@ public class AbilitySlotButton : MonoBehaviour
     {
         //Debug.Log("Left Slot");
         //Debug.Log("Removing: " + abilityButtonManager.GetSlotNum(collision.gameObject).ToString());
-        //PlayerPrefs.DeleteKey(abilityButtonManager.GetSlotNum(collision.gameObject).ToString());
+        //PlayerPrefs.DeleteKey(this.tag.ToString());
+        //PlayerPrefs.SetString(this.tag, null);
+        //Debug.Log("DELETING KEY: " + this.tag.ToString());
+        if (lobbyManager.playClicked == false)
+        {
+            //PlayerPrefs.DeleteKey(this.tag.ToString());
+            PlayerPrefs.SetString(this.tag, null);
+        }
     }
 
     private void SetAbilitySlot(string slot, string tag)

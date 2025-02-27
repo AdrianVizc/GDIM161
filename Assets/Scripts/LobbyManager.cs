@@ -39,6 +39,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     private float nextUpdateTime;
 
     private List<string> namesList = new List<string>();
+    public bool playClicked;
 
     private void Start()
     {
@@ -51,6 +52,8 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         triPanelSpacing.SetActive(false);
         lobbyPanel.SetActive(true);
         roomPanel.SetActive(false);
+
+        playClicked = false;
     }
 
     private void Update()
@@ -67,6 +70,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 
     public void OnClickPlayButton()
     {
+        playClicked = true;
         PhotonNetwork.LoadLevel(sceneName);
     }
 
