@@ -35,11 +35,17 @@ public class InGameUI : MonoBehaviour
             {
                 pauseMenuGameObject.SetActive(true);
                 isPauseMenuOn = true;
+
+                Cursor.visible = true;
+                Cursor.lockState = CursorLockMode.None;
             }
             else
             {
                 pauseMenuGameObject.SetActive(false);
                 isPauseMenuOn = false;
+
+                Cursor.visible = false;
+                Cursor.lockState = CursorLockMode.Locked;
             }
         }
     }
