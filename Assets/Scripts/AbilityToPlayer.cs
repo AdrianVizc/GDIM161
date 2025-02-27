@@ -59,9 +59,9 @@ public class AbilityToPlayer : MonoBehaviour
 
             if ((ability.GetType().GetField("ability").GetValue(ability).ToString().Contains("Double Jump"))) //Special Case for Double Jump
             {
-                if (ability.GetType().GetField("ability").GetValue(ability).ToString().Contains(PlayerPrefs.GetString("Slot1")) ||
-                    ability.GetType().GetField("ability").GetValue(ability).ToString().Contains(PlayerPrefs.GetString("Slot2")) ||
-                    ability.GetType().GetField("ability").GetValue(ability).ToString().Contains(PlayerPrefs.GetString("Slot3")) )
+                if (ability.GetType().GetField("ability").GetValue(ability).ToString().Contains(PlayerPrefs.GetString("Slot1")) && PlayerPrefs.HasKey("Slot1") ||
+                    ability.GetType().GetField("ability").GetValue(ability).ToString().Contains(PlayerPrefs.GetString("Slot2")) && PlayerPrefs.HasKey("Slot2") ||
+                    ability.GetType().GetField("ability").GetValue(ability).ToString().Contains(PlayerPrefs.GetString("Slot3")) && PlayerPrefs.HasKey("Slot3") )
                 {
                     Debug.Log("PICKED DOUBLE JUMP, RESETTING KEY " + ability.GetType().GetField("ability").GetValue(ability).ToString());
                     ability.key = KeyCode.Space;
@@ -71,19 +71,19 @@ public class AbilityToPlayer : MonoBehaviour
                     ability.enabled = false;
                 }
             }
-            else if (ability.GetType().GetField("ability").GetValue(ability).ToString().Contains(PlayerPrefs.GetString("Slot1")) && PlayerPrefs.GetString("Slot1") != null) //Slot 1
+            else if (ability.GetType().GetField("ability").GetValue(ability).ToString().Contains(PlayerPrefs.GetString("Slot1")) && PlayerPrefs.HasKey("Slot1")) //Slot 1
             {
                 Debug.Log("PLAYER PREFS SLOT 1: " + PlayerPrefs.GetString("Slot1"));
                 Debug.Log("FOUND IN SLOT 1: " + ability.GetType().GetField("ability").GetValue(ability).ToString());
                 ability.key = KeyCode.I;
             }
-            else if (ability.GetType().GetField("ability").GetValue(ability).ToString().Contains(PlayerPrefs.GetString("Slot2")) && PlayerPrefs.GetString("Slot2") != null) //Slot 2
+            else if (ability.GetType().GetField("ability").GetValue(ability).ToString().Contains(PlayerPrefs.GetString("Slot2")) && PlayerPrefs.HasKey("Slot2")) //Slot 2
             {
                 Debug.Log("PLAYER PREFS SLOT 2: " + PlayerPrefs.GetString("Slot2"));
                 Debug.Log("FOUND IN SLOT 2: " + ability.GetType().GetField("ability").GetValue(ability).ToString());
                 ability.key = KeyCode.O;
             }
-            else if (ability.GetType().GetField("ability").GetValue(ability).ToString().Contains(PlayerPrefs.GetString("Slot3")) && PlayerPrefs.GetString("Slot3") != null) //Slot 3
+            else if (ability.GetType().GetField("ability").GetValue(ability).ToString().Contains(PlayerPrefs.GetString("Slot3")) && PlayerPrefs.HasKey("Slot3")) //Slot 3
             {
                 Debug.Log("PLAYER PREFS SLOT 3: " + PlayerPrefs.GetString("Slot3"));
                 Debug.Log("FOUND IN SLOT 3: " + ability.GetType().GetField("ability").GetValue(ability).ToString());
