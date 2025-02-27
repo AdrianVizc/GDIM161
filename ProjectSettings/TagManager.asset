@@ -14,10 +14,11 @@ TagManager:
   - Wall
   - Shield
   - Mine
-  - Tracker
   - Slot1
   - Slot2
   - Slot3
+  - TrackingBot
+  - Tracker
   layers:
   - Default
   - TransparentFX
