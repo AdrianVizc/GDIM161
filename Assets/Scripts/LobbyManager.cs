@@ -38,6 +38,9 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     private float timeBetweenUpdates = 1.5f;
     private float nextUpdateTime;
 
+    private Vector2 frontPos;
+    private Vector2 backPos;
+
     private List<string> namesList = new List<string>();
     public bool playClicked;
 
@@ -49,9 +52,11 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         backButton.SetActive(false);
         editCharacterButton.SetActive(false);
         leaveRoomButton.SetActive(false);
-        triPanelSpacing.SetActive(false);
         lobbyPanel.SetActive(true);
         roomPanel.SetActive(false);
+
+        frontPos = new Vector2(0, -28);
+        backPos = new Vector2(0, 1000);
 
         playClicked = false;
     }
@@ -95,6 +100,8 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         roomPanel.SetActive(true);
         loadingScreen.SetActive(false);
         roomNameText.text = "Room Name: " + PhotonNetwork.CurrentRoom.Name;
+
+        triPanelSpacing.transform.localPosition = backPos;
 
         UpdatePlayerList();
     }
@@ -227,17 +234,19 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         leaveRoomButton.SetActive(true);
         editCharacterButton.SetActive(true);
         backButton.SetActive(false);
-        triPanelSpacing.SetActive(false);
-        playerListing.SetActive(true);
+
+        triPanelSpacing.transform.localPosition = backPos;
+        playerListing.transform.localPosition = frontPos;
     }
 
     public void EditCharacter()
     {
         editCharacterButton.SetActive(false);
         leaveRoomButton.SetActive(false);
-        triPanelSpacing.SetActive(true);
         backButton.SetActive(true);
-        playerListing.SetActive(false);
+
+        triPanelSpacing.transform.localPosition = frontPos;
+        playerListing.transform.localPosition = backPos;
     }
 
     private void UpdatePlayerList()

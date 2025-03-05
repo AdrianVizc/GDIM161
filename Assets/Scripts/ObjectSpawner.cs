@@ -13,7 +13,7 @@ public class Spawner : MonoBehaviour
 
     public void Spawn()
     {
-        //PhotonNetwork.Instantiate(objectToSpawn.name, player.transform.position, Quaternion.identity); //for photon
-        Instantiate(objectToSpawn, player.transform.position, Quaternion.identity);
+        PhotonNetwork.Instantiate(objectToSpawn.name, player.transform.position, Quaternion.identity); //for photon
+        //Instantiate(objectToSpawn, player.transform.position, Quaternion.identity);
     }
 }
