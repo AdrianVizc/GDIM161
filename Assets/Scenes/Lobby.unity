@@ -1685,13 +1685,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2686027357320073111, guid: 4e6c5f85c3fca2449bfb487cd7b95315, type: 3}
+      propertyPath: isButtonActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3064371960943052309, guid: 4e6c5f85c3fca2449bfb487cd7b95315, type: 3}
       propertyPath: abilityName
-      value: Tracking Bot
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 3064371960943052309, guid: 4e6c5f85c3fca2449bfb487cd7b95315, type: 3}
       propertyPath: abilityDescription
-      value: Spawn a bot that chases the closest enemy player
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 6073505096315133997, guid: 4e6c5f85c3fca2449bfb487cd7b95315, type: 3}
       propertyPath: m_Name
@@ -1699,7 +1703,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6073505096315133997, guid: 4e6c5f85c3fca2449bfb487cd7b95315, type: 3}
       propertyPath: m_TagString
-      value: TrackingBot
+      value: Untagged
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2601,6 +2605,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2401514512433856601, guid: 4e6c5f85c3fca2449bfb487cd7b95315, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2686027357320073111, guid: 4e6c5f85c3fca2449bfb487cd7b95315, type: 3}
+      propertyPath: isButtonActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3064371960943052309, guid: 4e6c5f85c3fca2449bfb487cd7b95315, type: 3}
@@ -3796,6 +3804,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: AbilitySelectButton
       objectReference: {fileID: 0}
+    - target: {fileID: 6073505096315133997, guid: 4e6c5f85c3fca2449bfb487cd7b95315, type: 3}
+      propertyPath: m_TagString
+      value: Mine
+      objectReference: {fileID: 0}
+    - target: {fileID: 6475366568122752767, guid: 4e6c5f85c3fca2449bfb487cd7b95315, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6475366568122752767, guid: 4e6c5f85c3fca2449bfb487cd7b95315, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -1059972297, guid: 6d64c356ba17bb64191cfc44eac48499, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7449,11 +7469,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3064371960943052309, guid: 4e6c5f85c3fca2449bfb487cd7b95315, type: 3}
       propertyPath: abilityName
-      value: Claymore
+      value: Tracking Bot
       objectReference: {fileID: 0}
     - target: {fileID: 3064371960943052309, guid: 4e6c5f85c3fca2449bfb487cd7b95315, type: 3}
       propertyPath: abilityDescription
-      value: Place a claymore that explodes when someone walks into it
+      value: Spawn a bot that chases the closest enemy player
       objectReference: {fileID: 0}
     - target: {fileID: 6073505096315133997, guid: 4e6c5f85c3fca2449bfb487cd7b95315, type: 3}
       propertyPath: m_Name
@@ -7461,8 +7481,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6073505096315133997, guid: 4e6c5f85c3fca2449bfb487cd7b95315, type: 3}
       propertyPath: m_TagString
-      value: Mine
+      value: TrackingBot
       objectReference: {fileID: 0}
+    - target: {fileID: 6475366568122752767, guid: 4e6c5f85c3fca2449bfb487cd7b95315, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6475366568122752767, guid: 4e6c5f85c3fca2449bfb487cd7b95315, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -2053905559, guid: 6d64c356ba17bb64191cfc44eac48499, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

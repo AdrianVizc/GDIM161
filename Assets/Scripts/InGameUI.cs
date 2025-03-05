@@ -4,8 +4,9 @@ using TMPro;
 using UnityEngine;
 using Photon.Pun;
 using UnityEngine.SceneManagement;
+using Photon.Realtime;
 
-public class InGameUI : MonoBehaviour
+public class InGameUI : MonoBehaviourPunCallbacks
 {
     [SerializeField] private GameObject pauseMenuGameObject;
     [SerializeField] private GameObject settingsMenuButton;
@@ -69,6 +70,11 @@ public class InGameUI : MonoBehaviour
     public void MainMenuButton()
     {
         PhotonNetwork.Disconnect();
+        
+    }
+
+    public override void OnDisconnected(DisconnectCause cause)
+    {
         SceneManager.LoadScene("MainMenu");
     }
 }

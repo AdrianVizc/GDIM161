@@ -204,7 +204,10 @@ public class Build : MonoBehaviour
     private IEnumerator DestroyObjOnCD(GameObject obj, float cd)
     {
         yield return new WaitForSeconds(cd);
-        PhotonNetwork.Destroy(obj);
+        if (obj != null)
+        {
+            PhotonNetwork.Destroy(obj);
+        }
     }
 
     public void TouchingGround() //for testing purposes only
