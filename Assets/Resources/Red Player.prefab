@@ -490,7 +490,6 @@ MonoBehaviour:
   previewObject: {fileID: 0}
   realObject: {fileID: 2777086798233706799, guid: 1fc9ed8d5ad768249bfd4413893ab2fb, type: 3}
   tempObject: {fileID: 2777086798233706799, guid: e45d91ff72e311b4b9e401852e489433, type: 3}
-  ground: 0
   offset: 0
   placementReach: 10
   materials:
@@ -800,7 +799,6 @@ MonoBehaviour:
   previewObject: {fileID: 0}
   realObject: {fileID: 4128629997329762016, guid: e57a4bf1c1b164b4abae0dc80f0a28c2, type: 3}
   tempObject: {fileID: 4128629997329762016, guid: ff8132b71843f484c95a61909edd0737, type: 3}
-  ground: 0
   offset: 0.25
   placementReach: 5
   materials:
@@ -869,7 +867,6 @@ MonoBehaviour:
   previewObject: {fileID: 0}
   realObject: {fileID: 4030810809374194481, guid: b6cb97a906af4f546a4fc0c63d83c0a4, type: 3}
   tempObject: {fileID: 8790792283479184981, guid: 588fb06b7820c6847b1144d071f40ac9, type: 3}
-  ground: 0
   offset: 1.5
   placementReach: 10
   materials:
