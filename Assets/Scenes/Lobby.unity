@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4288,12 +4288,13 @@ MonoBehaviour:
   playerListing: {fileID: 1969512007}
   maxPlayers: 10
   playButton: {fileID: 2047429115}
-  sceneName: TomsTunnel
+  sceneName: Gnomeman's Land
   roomItemPrefab: {fileID: -7472543136189013338, guid: 2f14ece4a668c9047aa580d7d5b3cef6, type: 3}
   contentObject: {fileID: 1481346559}
   playerItemsList: []
   playerItemPrefab: {fileID: 5057114760861882327, guid: 9af5003e0c6b04d468575f5f2049e8eb, type: 3}
   playerItemParent: {fileID: 1969512008}
+  playClicked: 0
 --- !u!4 &1449043428
 Transform:
   m_ObjectHideFlags: 0
