@@ -14,12 +14,18 @@ public class PlayerItem : MonoBehaviourPunCallbacks
     [SerializeField] private Color highlightColor;
     [SerializeField] private GameObject leftArrowButton;
     [SerializeField] private GameObject rightArrowButton;
+    [SerializeField] private GameObject readyButton;
 
     ExitGames.Client.Photon.Hashtable playerProperties = new ExitGames.Client.Photon.Hashtable();
-    [SerializeField] private Image playerAvatar;
+    [SerializeField] private Image playerAvatar;    
     [SerializeField] private Sprite[] avatars;
 
+    [SerializeField] private Image readyImage;
+    [SerializeField] private Sprite[] readySprites;
+
     Player player;
+
+    public bool isReady;
 
     private void Awake()
     {
@@ -29,6 +35,7 @@ public class PlayerItem : MonoBehaviourPunCallbacks
     private void Start()
     {
         PhotonNetwork.SetPlayerCustomProperties(playerProperties);
+        isReady = false;
     }
 
     public void SetPlayerInfo(Player _player)
@@ -43,6 +50,7 @@ public class PlayerItem : MonoBehaviourPunCallbacks
         backgroundImage.color = highlightColor;
         leftArrowButton.SetActive(true);
         rightArrowButton.SetActive(true);
+        readyButton.SetActive(true);
     }
 
     public void OnClickLeftArrow()
@@ -71,6 +79,21 @@ public class PlayerItem : MonoBehaviourPunCallbacks
         PhotonNetwork.SetPlayerCustomProperties(playerProperties);
     }
 
+    public void OnClickReadyButton()
+    {
+        if (!isReady)
+        {
+            playerProperties["isReady"] = 1;
+            isReady = true;
+        }
+        else if (isReady)
+        {
+            playerProperties["isReady"] = 0;
+            isReady = false;
+        }
+        PhotonNetwork.SetPlayerCustomProperties(playerProperties);
+    }
+
     public override void OnPlayerPropertiesUpdate(Player targetPlayer, ExitGames.Client.Photon.Hashtable changedProps)
     {
         if (player == targetPlayer)
@@ -89,6 +112,16 @@ public class PlayerItem : MonoBehaviourPunCallbacks
         else
         {
             playerProperties["playerAvatar"] = 0;
+        }
+
+        if (player.CustomProperties.ContainsKey("isReady"))
+        {
+            readyImage.sprite = readySprites[(int)player.CustomProperties["isReady"]];
+            playerProperties["isReady"] = (int)player.CustomProperties["isReady"];
+        }
+        else
+        {
+            playerProperties["isReady"] = 0;
         }
     }
 }
