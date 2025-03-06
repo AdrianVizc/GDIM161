@@ -124,7 +124,11 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         roomItemsList.Clear();
 
         foreach (RoomInfo room in list)
-        {           
+        {
+            if (room.RemovedFromList)
+            {
+                return;
+            }
             RoomItem newRoom = Instantiate(roomItemPrefab, contentObject);
             newRoom.SetRoomName(room.Name);
             roomItemsList.Add(newRoom);
@@ -193,40 +197,28 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         editCharacterButton.SetActive(false);
         leaveRoomButton.SetActive(false);
 
-        PhotonNetwork.Disconnect();
+        loadingScreen.SetActive(true);
+
+        
 
         StartCoroutine(WaitForReconnect());
     }
 
     private IEnumerator WaitForReconnect() 
     {
-        loadingScreen.SetActive(true);
-        while (PhotonNetwork.IsConnectedAndReady)
-        {
-            loadingScreen.SetActive(true);
-            yield return null;
-        }
+        PhotonNetwork.Disconnect();
+
+        yield return new WaitUntil(() => !PhotonNetwork.IsConnected);
 
         PhotonNetwork.ConnectUsingSettings();
-
-        while (!PhotonNetwork.IsConnectedAndReady)
-        {
-            loadingScreen.SetActive(true);
-            yield return null;
-        }
-        if (PhotonNetwork.IsConnectedAndReady)
-        {
-            yield return new WaitForSeconds(2f); //fix so you dont need delay (after loading back into lobby you should be able to immediately click create room without it crashing).
-            loadingScreen.SetActive(false);
-            roomPanel.SetActive(false);
-            lobbyPanel.SetActive(true);
-            yield return null;
-        }
     }
 
     public override void OnConnectedToMaster()
     {
         PhotonNetwork.JoinLobby();
+        loadingScreen.SetActive(false);
+        roomPanel.SetActive(false);
+        lobbyPanel.SetActive(true);
     }
 
     public void AbilityScreenBackButton()
