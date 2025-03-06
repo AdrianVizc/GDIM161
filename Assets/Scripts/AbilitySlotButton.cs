@@ -36,11 +36,11 @@ public class AbilitySlotButton : MonoBehaviour
         //PlayerPrefs.DeleteKey(this.tag.ToString());
         //PlayerPrefs.SetString(this.tag, null);
         //Debug.Log("DELETING KEY: " + this.tag.ToString());
-        if (lobbyManager.playClicked == false)
-        {
-            PlayerPrefs.DeleteKey(this.tag.ToString());
+        //if (lobbyManager.playClicked == false)
+        //{
+        //    PlayerPrefs.DeleteKey(this.tag.ToString());
             //PlayerPrefs.SetString(this.tag, null);
-        }
+        //}
     }
 
     private void SetAbilitySlot(string slot, string tag)

@@ -47,14 +47,14 @@ public class AbilityToPlayer : MonoBehaviour
         //Debug.Log(playerRef);
         //Debug.Log("DISABLED ALL");
 
-        abilityHolderList = transform.root.GetComponentsInChildren<AbilityHolder>();
+        abilityHolderList = this.transform.root.GetComponentsInChildren<AbilityHolder>();
 
         foreach (AbilityHolder ability in abilityHolderList)
         {
             //Debug.Log("ABILITY: " + ability.GetType().GetField("ability").GetValue(ability).ToString());
-            //Debug.Log("LOOKING FOR: " + PlayerPrefs.GetString("Slot1"));
-            //Debug.Log("LOOKING FOR: " + PlayerPrefs.GetString("Slot2"));
-            //Debug.Log("LOOKING FOR: " + PlayerPrefs.GetString("Slot3"));
+            Debug.Log("LOOKING FOR: " + PlayerPrefs.GetString("Slot1"));
+            Debug.Log("LOOKING FOR: " + PlayerPrefs.GetString("Slot2"));
+            Debug.Log("LOOKING FOR: " + PlayerPrefs.GetString("Slot3"));
             //Debug.Log("FOREACH: " + (ability.GetType().GetField("ability").GetValue(ability).ToString().Contains(PlayerPrefs.GetString("Slot1"))));
 
             if ((ability.GetType().GetField("ability").GetValue(ability).ToString().Contains("Double Jump"))) //Special Case for Double Jump
@@ -104,16 +104,16 @@ public class AbilityToPlayer : MonoBehaviour
         Debug.Log("ABILITY 1: " + PlayerPrefs.GetString("Slot1"));
         Debug.Log("ABILITY 2: " + PlayerPrefs.GetString("Slot2"));
         Debug.Log("ABILITY 3: " + PlayerPrefs.GetString("Slot3"));
-        Debug.Log("OWNER: " + player.name);
+        //Debug.Log("OWNER: " + player.name);
 
-        if (player.name == playerRef.name)
-        {
-            Debug.Log("Same Player");
-        }
-        else
-        {
-            Debug.Log("Different");
-        }
+        //if (player.name == playerRef.name)
+        //{
+        //    Debug.Log("Same Player");
+        //}
+        //else
+        //{
+        //    Debug.Log("Different");
+        //}
 
         if (PlayerPrefs.HasKey("Slot1"))
         {
