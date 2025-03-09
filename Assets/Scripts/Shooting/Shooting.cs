@@ -26,10 +26,13 @@ public class Shooting : MonoBehaviour
 
     PhotonView view;
 
-
-    private void Start()
+    private void Awake()
     {
         view = GetComponentInParent<PhotonView>();
+    }
+
+    private void Start()
+    {        
         playerCam = Camera.main;
         timer = reloadTimer;
     }
@@ -76,15 +79,27 @@ public class Shooting : MonoBehaviour
             targetPoint = trace.GetPoint(100);
         }
 
+        hit.collider.gameObject.GetComponentInParent<IDamageable>()?.Death();
+       
+        /*IDamageable damageable = hit.collider.gameObject.GetComponentInParent<IDamageable>();
+        if (damageable != null)
+        {
+            damageable.Death();
+        }
+        else
+        {
+            Debug.LogWarning(hit.collider.gameObject.name + " does not have IDamageable!");
+        }*/
+
         //Calculate direction from shootingPoint to targetPoint
-        Debug.Log(targetPoint + " " + shootingPoint);
+        //Debug.Log(targetPoint + " " + shootingPoint);
         Vector3 direction = targetPoint - shootingPoint.position;
 
         //Make bullet
         GameObject bullet = PhotonNetwork.Instantiate(bulletPrefab.name, shootingPoint.position, shootingPoint.rotation);
 
         //Rotating bullet to shoot direction
-        //bullet.transform.forward = direction.normalized;
+        bullet.transform.forward = direction.normalized;
 
         //Give bullet force/movement to "shoot"
         bullet.GetComponent<Rigidbody>().AddForce(direction.normalized * bulletVelocity, ForceMode.Impulse);

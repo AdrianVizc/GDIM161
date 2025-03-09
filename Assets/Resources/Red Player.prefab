@@ -455,11 +455,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 268aea672893b3a46915efc27cdb7e55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerRef: {fileID: 0}
-  wallRef: {fileID: 0}
-  mineRef: {fileID: 0}
-  multishotRef: {fileID: 0}
-  trackerRef: {fileID: 0}
+  playerRef: {fileID: 3068073903033641584}
+  wallRef: {fileID: 7194703309195799407}
+  mineRef: {fileID: 646033025668828207}
+  multishotRef: {fileID: 1177262856051553047}
+  trackerRef: {fileID: 6608750776151191713}
 --- !u!1 &646033025668828207
 GameObject:
   m_ObjectHideFlags: 0
