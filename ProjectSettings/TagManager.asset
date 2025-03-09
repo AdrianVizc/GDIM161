@@ -19,6 +19,7 @@ TagManager:
   - Slot3
   - TrackingBot
   - Tracker
+  - Spawn Point
   layers:
   - Default
   - TransparentFX

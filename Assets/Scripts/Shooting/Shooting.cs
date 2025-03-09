@@ -96,16 +96,16 @@ public class Shooting : MonoBehaviour
         Vector3 direction = targetPoint - shootingPoint.position;
 
         //Make bullet
-        GameObject bullet = PhotonNetwork.Instantiate(bulletPrefab.name, shootingPoint.position, shootingPoint.rotation);
+        //GameObject bullet = PhotonNetwork.Instantiate(bulletPrefab.name, shootingPoint.position, shootingPoint.rotation);
 
         //Rotating bullet to shoot direction
-        bullet.transform.forward = direction.normalized;
+        //bullet.transform.forward = direction.normalized;
 
         //Give bullet force/movement to "shoot"
-        bullet.GetComponent<Rigidbody>().AddForce(direction.normalized * bulletVelocity, ForceMode.Impulse);
+        //bullet.GetComponent<Rigidbody>().AddForce(direction.normalized * bulletVelocity, ForceMode.Impulse);
 
         //Despawn
-        StartCoroutine(DestroyBulletAfterTime(bullet, bulletLifeTime));
+        //StartCoroutine(DestroyBulletAfterTime(bullet, bulletLifeTime));
     }
 
     private IEnumerator DestroyBulletAfterTime(GameObject bullet, float timer)
