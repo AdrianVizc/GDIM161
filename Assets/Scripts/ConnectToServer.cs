@@ -18,6 +18,11 @@ public class ConnectToServer : MonoBehaviourPunCallbacks
     private void Start()
     {
         noEnteredNameText = usernameInputText.text;
+
+        if(PlayerPrefs.HasKey("NickName"))
+        {
+            usernameInputField.text = PlayerPrefs.GetString("NickName");
+        }
     }
     public void OnClickConnect()
     {
@@ -31,6 +36,8 @@ public class ConnectToServer : MonoBehaviourPunCallbacks
         else
         {
             PhotonNetwork.NickName = usernameInputText.text;
+            PlayerPrefs.SetString("NickName", usernameInputText.text);
+            PlayerPrefs.Save();
             loadingScreen.SetActive(true);
             PhotonNetwork.AutomaticallySyncScene = true;
             PhotonNetwork.ConnectUsingSettings();
