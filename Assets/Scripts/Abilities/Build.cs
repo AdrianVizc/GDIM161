@@ -67,6 +67,14 @@ public class Build : MonoBehaviour
                 //break;
             }
 
+            if (ab.GetType().GetField("ability").GetValue(ab).ToString() == "BuildWall (BuildAbility)")
+            {
+                if (ab.isActiveAndEnabled)
+                {
+                    buildKey = ab.key;
+                }
+            }
+
             //Debug.Log("NAME: " + this.name);
             //Debug.Log("ab : " + ab.GetType().GetField("ability").GetValue(ab).ToString());
             //Debug.Log("Contains: " + ab.GetType().GetField("ability").GetValue(ab).ToString().Contains(this.name));
@@ -112,7 +120,7 @@ public class Build : MonoBehaviour
         //PlaceWall();
         //}
 
-        if (Input.GetKeyDown(KeyCode.F) && tempObjectExists == true)
+        if (Input.GetKeyDown(buildKey) && tempObjectExists == true)
         {
             rotate = true;
         }
