@@ -29,19 +29,26 @@ public class TrackingBot : MonoBehaviour
 
         allDistances.Sort();
 
-        for (int i = 0; i < allPlayerObjects.Length; i++)
+        if (allPlayerObjects.Length > 1)
         {
-            if (Vector3.Distance(this.transform.position, allPlayerObjects[i].transform.position) == allDistances[1])
+            for (int i = 0; i < allPlayerObjects.Length; i++)
             {
-                secondNearest = allPlayerObjects[i];
+                if (Vector3.Distance(this.transform.position, allPlayerObjects[i].transform.position) == allDistances[1])
+                {
+                    secondNearest = allPlayerObjects[i];
+                }
             }
+
+            agent.SetDestination(secondNearest.transform.position);
         }
-        agent.SetDestination(secondNearest.transform.position);
     }
 
     // Update is called once per frame
     void Update()
     {
-        agent.SetDestination(secondNearest.transform.position);
+        if (secondNearest != null)
+        {
+            agent.SetDestination(secondNearest.transform.position);
+        }
     }
 }
