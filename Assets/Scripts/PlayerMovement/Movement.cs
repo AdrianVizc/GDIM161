@@ -29,13 +29,13 @@ public class Movement : MonoBehaviour
     public bool canDoubleJump;
     public bool spaceAgain;
 
-    [Header("Slide Settings")]
+    //[Header("Slide Settings")]
     // [SerializeField] private float crouchSpeed = 4.5f;
     // [SerializeField] private float crouchYScale = 0.5f;
     private float startYScale;
 
-    [Header("Stamina Bar")]
-    [SerializeField] private Image staminaBar;
+    //[Header("Stamina Bar")]
+    //[SerializeField] private Image staminaBar;
 
     [Header("Ground Check")]
     [SerializeField] private float playerHeight = 2;
@@ -51,6 +51,9 @@ public class Movement : MonoBehaviour
     [Header("Keybinds")]
     [SerializeField] public KeyCode jumpkey = KeyCode.Space;
     [SerializeField] public KeyCode sprintKey = KeyCode.LeftShift;
+
+    [Header("Animator")]
+    [SerializeField] private Animator animator;
 
     private Camera mainCamera;
 
@@ -115,11 +118,13 @@ public class Movement : MonoBehaviour
         {
             return;
         }
+
         // Check if WASD, Jump, or movement abilities are being pressed
         isInputMoving = (Input.GetKey(jumpkey) || Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D));
+        animator.SetBool("isMoving", isInputMoving);
 
         // Rotate player with camera
-        transform.rotation = Quaternion.Euler(0, mainCamera.transform.localEulerAngles.y, 0);
+        // transform.rotation = Quaternion.Euler(0, mainCamera.transform.localEulerAngles.y, 0);
 
         // Ground check
         grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, groundLayer);

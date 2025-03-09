@@ -11,6 +11,8 @@ public class CameraFollowMouse : MonoBehaviour
     [SerializeField] private float sensitivityX = 3F;
     [SerializeField] private float sensitivityY = 3F;
 
+    [Header("Gnome Model")]
+    [SerializeField] private GameObject gnome;
     // private float minimumX = -360F;
     // private float maximumX = 360F;
 
@@ -27,6 +29,7 @@ public class CameraFollowMouse : MonoBehaviour
 
     private void Update()
     {
+        gnome.transform.rotation = Quaternion.Euler(0, transform.localEulerAngles.y, 0);
         if (axes == RotationAxes.MouseXAndY)
         {
             float rotationX = transform.localEulerAngles.y + Input.GetAxis("Mouse X") * sensitivityX;
