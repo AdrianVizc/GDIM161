@@ -43,6 +43,10 @@ public class Shooting : MonoBehaviour
         {
             return;
         }
+        if (InGameUI.globalInputLock)
+        {
+            return;
+        }
         if (timer > 0)
         {
             timer -= Time.deltaTime;

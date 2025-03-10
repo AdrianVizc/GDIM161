@@ -29,7 +29,17 @@ public class PlayerDamage : MonoBehaviourPunCallbacks, IDamageable
     {
         view.RPC(nameof(RPC_Death), view.Owner);   
     }
+    
+    public void OnChildCollision(Collision collision)
+    {
+        view.RPC(nameof(RPC_FellOff), view.Owner);
+    }
 
+    [PunRPC]
+    void RPC_FellOff()
+    {
+        Die();
+    }
 
     [PunRPC]
     void RPC_Death(PhotonMessageInfo info)
@@ -38,7 +48,7 @@ public class PlayerDamage : MonoBehaviourPunCallbacks, IDamageable
         PlayerDamage.Find(info.Sender).GetKill();
     }
 
-    private void Die()
+    public void Die()
     {
         playerSpawner.Respawn();
         deaths++;

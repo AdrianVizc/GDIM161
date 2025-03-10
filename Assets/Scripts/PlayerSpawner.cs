@@ -23,9 +23,8 @@ public class PlayerSpawner : MonoBehaviour
 
     public void Respawn()
     {
-        Debug.Log("dead");
         int randomNumber = Random.Range(0, spawnPoints.Length);
         Transform spawnPoint = spawnPoints[randomNumber];
-        player.transform.Find("PlayerCapsule").position = spawnPoint.position;
+        this.player.transform.Find("PlayerCapsule").position = spawnPoint.position;
     }
 }

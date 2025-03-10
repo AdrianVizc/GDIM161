@@ -19,7 +19,7 @@ TagManager:
   - Slot3
   - TrackingBot
   - Tracker
-  - Spawn Point
+  - Border
   layers:
   - Default
   - TransparentFX

@@ -41,6 +41,7 @@ MonoBehaviour:
   - RespawnSpaceship
   - RPC_Death
   - RPC_GetKill
+  - RPC_FellOff
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1

@@ -8,6 +8,7 @@ using Photon.Pun;
 public class Movement : MonoBehaviour
 {
     PhotonView view;
+    Collider col;
     [Header("Movement Settings")]
     [SerializeField] private float moveSpeed = 9f;
     public float normAccel = 1f;
@@ -86,6 +87,7 @@ public class Movement : MonoBehaviour
         {
             Destroy(GetComponentInChildren<Camera>().gameObject);
         }
+        col = GetComponent<Collider>();
         mainCamera = Camera.main;
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
@@ -115,6 +117,11 @@ public class Movement : MonoBehaviour
     private void Update()
     {
         if (!view.IsMine)
+        {
+            return;
+        }
+
+        if (InGameUI.globalInputLock)
         {
             return;
         }
@@ -334,5 +341,18 @@ public class Movement : MonoBehaviour
         {
             explosionAudio.Play();
         }
+        
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.name == "BorderBottom")
+        {
+            col.enabled = false;
+            transform.parent.GetComponent<PlayerDamage>()?.OnChildCollision(collision);
+            col.enabled = true;
+        }
+        
+    }
+
 }
