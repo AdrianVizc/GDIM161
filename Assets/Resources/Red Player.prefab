@@ -905,6 +905,7 @@ GameObject:
   - component: {fileID: 7194585851064416755}
   - component: {fileID: 504495273860640273}
   - component: {fileID: 8378926149518484202}
+  - component: {fileID: 6045983935878708663}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1007,6 +1008,27 @@ MonoBehaviour:
   sensitivityX: 3
   sensitivityY: 3
   gnome: {fileID: 5937996239096374067}
+--- !u!95 &6045983935878708663
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7793487947987882757}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7dce0316ba736e448891067f19f5b713, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &8635015624993180219
 GameObject:
   m_ObjectHideFlags: 0
