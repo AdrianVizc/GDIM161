@@ -60,6 +60,7 @@ public class Multishot : MonoBehaviour
     {
         if (Physics.Raycast(ray, out RaycastHit hit))
         {
+            hit.collider.gameObject.GetComponentInParent<IDamageable>()?.Death();
             return hit.point;
         }
         return ray.GetPoint(100);
