@@ -127,6 +127,10 @@ public class AbilityToPlayer : MonoBehaviour
         {
             PlayerPrefs.DeleteKey("Slot3");
         }
+        if (PlayerPrefs.HasKey("Ready"))
+        {
+            PlayerPrefs.DeleteKey("Ready");
+        }
         //Debug.Log("Wall Ref Tag: " + wallRef.tag);
         //Debug.Log(PlayerPrefs.GetString("1"));
 
