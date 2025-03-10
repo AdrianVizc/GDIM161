@@ -36,6 +36,7 @@ public class PlayerItem : MonoBehaviourPunCallbacks
     {
         PhotonNetwork.SetPlayerCustomProperties(playerProperties);
         isReady = false;
+        PlayerPrefs.SetString("Ready", "false");
     }
 
     public void SetPlayerInfo(Player _player)
@@ -85,11 +86,13 @@ public class PlayerItem : MonoBehaviourPunCallbacks
         {
             playerProperties["isReady"] = 1;
             isReady = true;
+            PlayerPrefs.SetString("Ready", "true");
         }
         else if (isReady)
         {
             playerProperties["isReady"] = 0;
             isReady = false;
+            PlayerPrefs.SetString("Ready", "false");
         }
         PhotonNetwork.SetPlayerCustomProperties(playerProperties);
     }
