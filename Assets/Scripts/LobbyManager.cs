@@ -5,6 +5,7 @@ using Photon.Pun;
 using Photon.Realtime;
 using TMPro;
 using UnityEngine.SceneManagement;
+using Hashtable = ExitGames.Client.Photon.Hashtable;
 
 public class LobbyManager : MonoBehaviourPunCallbacks
 {
@@ -94,6 +95,12 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 
     public override void OnJoinedRoom()
     {
+        Hashtable resetProperties = new Hashtable();
+        resetProperties["kills"] = 0; // Reset specific property
+        resetProperties["deaths"] = 0; // Reset specific property
+                                       // OR clear all properties
+        PhotonNetwork.LocalPlayer.SetCustomProperties(resetProperties);
+
         lobbyPanel.SetActive(false);
         leaveRoomButton.SetActive(true);
         editCharacterButton.SetActive(true);

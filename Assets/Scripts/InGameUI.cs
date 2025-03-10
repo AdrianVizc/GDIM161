@@ -14,6 +14,7 @@ public class InGameUI : MonoBehaviourPunCallbacks
     [SerializeField] private GameObject settingsMenuPanel;
 
     private CameraFollowMouse cameraFollowMouse;
+    private WinnerMenu winnerMenu;
 
     private bool isPauseMenuOn;
 
@@ -33,8 +34,9 @@ public class InGameUI : MonoBehaviourPunCallbacks
     }
 
     private void detectEscButton()
-    {      
-        if (Input.GetKeyDown(KeyCode.Escape))
+    {
+        winnerMenu = GameObject.Find("WinnerMenu").GetComponent<WinnerMenu>();
+        if (Input.GetKeyDown(KeyCode.Escape) && !winnerMenu.gameOver)
         {
             cameraFollowMouse = GameObject.Find("Main Camera").GetComponent<CameraFollowMouse>();
             if (!isPauseMenuOn)
@@ -80,8 +82,7 @@ public class InGameUI : MonoBehaviourPunCallbacks
 
     public void MainMenuButton()
     {
-        PhotonNetwork.Disconnect();
-        
+        PhotonNetwork.Disconnect();        
     }
 
     public override void OnDisconnected(DisconnectCause cause)

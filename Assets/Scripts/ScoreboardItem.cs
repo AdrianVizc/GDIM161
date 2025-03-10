@@ -12,7 +12,13 @@ public class ScoreboardItem : MonoBehaviourPunCallbacks
     public TMP_Text killsText;
     public TMP_Text deathsText;
 
+    private WinnerMenu winnerMenu;
     Player player;
+
+    private void Start()
+    {
+        winnerMenu = GameObject.Find("WinnerMenu").GetComponent<WinnerMenu>();
+    }
 
     public void Initialize(Player player)
     {
@@ -25,6 +31,11 @@ public class ScoreboardItem : MonoBehaviourPunCallbacks
         if(player.CustomProperties.TryGetValue("kills", out object kills))
         {
             killsText.text = kills.ToString();
+            if (kills.ToString() == winnerMenu.amountOfKillsToWin.ToString())
+            {
+                winnerMenu.SetWinnerUsername(player.NickName);
+                winnerMenu.gameOver = true;                
+            }
         }
         if (player.CustomProperties.TryGetValue("deaths", out object deaths))
         {
