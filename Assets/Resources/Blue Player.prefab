@@ -203,6 +203,7 @@ MonoBehaviour:
   slideForce: 350
   slideYScale: 0.5
   slideKey: 306
+  animator: {fileID: 1017429434082921895}
 --- !u!114 &3443560365244335146
 MonoBehaviour:
   m_ObjectHideFlags: 0
