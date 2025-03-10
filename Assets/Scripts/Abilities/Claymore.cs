@@ -17,10 +17,10 @@ public class Claymore : MonoBehaviour
         {
             //blow up do dmg
             PhotonNetwork.Destroy(gameObject);
-            if (!view.IsMine)
-            {
-                other.gameObject.GetComponentInParent<IDamageable>()?.Death();
-            }
+            //if (view.IsMine)
+            //{
+            other.gameObject.GetComponentInParent<IDamageable>()?.Death();
+            //}
         }
     }
 }
