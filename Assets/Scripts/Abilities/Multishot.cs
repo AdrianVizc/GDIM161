@@ -16,7 +16,7 @@ public class Multishot : MonoBehaviour
     private void Start()
     {
         shootScript = this.transform.root.GetComponentInChildren<Shooting>();
-        Debug.Log(shootScript);
+        //Debug.Log(shootScript);
         bulletPrefab = shootScript.bulletPrefab;
         playerCam = Camera.main;
         shootingPoint = GameObject.Find("ShootingPoint").transform;

@@ -45,7 +45,7 @@ public class Build : MonoBehaviour
 
     private void Start()
     {
-        Debug.Log("NAME: " + this.name);
+        //Debug.Log("NAME: " + this.name);
         shooting = transform.root.GetComponentInChildren<Shooting>();
         abilityHolderList = transform.root.GetComponentsInChildren<AbilityHolder>();
 
@@ -162,7 +162,7 @@ public class Build : MonoBehaviour
                     Destroy(previewObject); //destroy temp/preview wall
                     tempObjectExists = false;
 
-                    Debug.Log("CD Time is " + ability.cooldownTime);
+                    //Debug.Log("CD Time is " + ability.cooldownTime);
                     StartCoroutine(DestroyObjOnCD(obj, ability.cooldownTime));
 
                     shooting.gameObject.SetActive(true);
@@ -239,10 +239,5 @@ public class Build : MonoBehaviour
     {
         Debug.Log("" + tempObject.name + "(Clone)");
         return "" + tempObject.name + "(Clone)";
-    }
-
-    private void DisableShooting()
-    {
-
     }
 }

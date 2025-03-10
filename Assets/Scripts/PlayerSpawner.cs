@@ -18,7 +18,7 @@ public class PlayerSpawner : MonoBehaviour
         GameObject playerToSpawn = playerPrefabs[(int)PhotonNetwork.LocalPlayer.CustomProperties["playerAvatar"]];
         player = PhotonNetwork.Instantiate(playerToSpawn.name, spawnPoint.position, Quaternion.identity);             
         playerToSpawn.GetComponentInChildren<AbilityToPlayer>().SetAbilities(playerToSpawn);
-        Debug.Log("Player Spawn: " + playerToSpawn.name);
+        //Debug.Log("Player Spawn: " + playerToSpawn.name);
     }
 
     public void Respawn()
