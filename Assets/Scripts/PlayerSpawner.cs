@@ -25,6 +25,6 @@ public class PlayerSpawner : MonoBehaviour
     {
         int randomNumber = Random.Range(0, spawnPoints.Length);
         Transform spawnPoint = spawnPoints[randomNumber];
-        this.player.transform.Find("PlayerCapsule").position = spawnPoint.position;
+        player.transform.Find("PlayerCapsule").position = spawnPoint.position;
     }
 }
