@@ -24,6 +24,9 @@ public class Sliding : MonoBehaviour
     private float verticalInput;
     private bool sliding;
 
+    [Header("Animator")]
+    [SerializeField] private Animator animator;
+
     private void Awake()
     {
         view = transform.root.GetComponent<PhotonView>();
@@ -51,6 +54,7 @@ public class Sliding : MonoBehaviour
         {
             if (Input.GetKeyDown(slideKey) && (horizontalInput != 0 || verticalInput != 0))
             {
+                animator.SetBool("isSliding", true);
                 StartSlide();
             }
 
@@ -104,6 +108,7 @@ public class Sliding : MonoBehaviour
 
     private void StopSlide()
     {
+        animator.SetBool("isSliding", false);
         sliding = false;
 
         transform.localScale = new Vector3(transform.localScale.x, startYScale, transform.localScale.z);
