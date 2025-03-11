@@ -6,6 +6,7 @@ using Photon.Realtime;
 using TMPro;
 using UnityEngine.SceneManagement;
 using Hashtable = ExitGames.Client.Photon.Hashtable;
+using System.Security.Cryptography;
 
 public class LobbyManager : MonoBehaviourPunCallbacks
 {
@@ -43,7 +44,9 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     private Vector2 backPos;
 
     private List<string> namesList = new List<string>();
+
     public bool playClicked;
+    private bool allReady;
 
     private void Start()
     {
@@ -64,7 +67,35 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 
     private void Update()
     {
-        if (PhotonNetwork.IsMasterClient && PhotonNetwork.CurrentRoom.PlayerCount >= 1)
+        if (PhotonNetwork.InRoom)
+        {
+            int totalPlayersInRoom = PhotonNetwork.CurrentRoom.PlayerCount;
+            int amountOfPlayersReady = 0;
+            foreach (KeyValuePair<int, Player> player in PhotonNetwork.CurrentRoom.Players)
+            {
+                Player playerObject = player.Value;
+                if (playerObject.CustomProperties.ContainsKey("isReady"))
+                {
+                    int isReady = (int)playerObject.CustomProperties["isReady"];
+                    if (isReady == 1)
+                    {
+                        amountOfPlayersReady++;
+                        if (totalPlayersInRoom == amountOfPlayersReady)
+                        {
+                            allReady = true;
+                            Debug.Log("allReady is True");
+                        }                        
+                    }
+                    else
+                    {
+                        allReady = false;
+                        Debug.Log("allReady is False");
+                    }
+                }
+            }
+        }
+        
+        if (PhotonNetwork.IsMasterClient && allReady)
         {
             playButton.SetActive(true);
         }

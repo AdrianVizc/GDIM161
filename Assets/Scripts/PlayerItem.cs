@@ -43,7 +43,7 @@ public class PlayerItem : MonoBehaviourPunCallbacks
     {        
         playerName.text = _player.NickName;
         player = _player;
-        UpdatePlayerItem(_player);
+        UpdatePlayerItem(player);
     }
 
     public void ApplyLocalChanges()
@@ -86,13 +86,13 @@ public class PlayerItem : MonoBehaviourPunCallbacks
         {
             playerProperties["isReady"] = 1;
             isReady = true;
-            PlayerPrefs.SetString("Ready", "true");
+            //PlayerPrefs.SetString("Ready", "true");
         }
         else if (isReady)
         {
             playerProperties["isReady"] = 0;
             isReady = false;
-            PlayerPrefs.SetString("Ready", "false");
+            //PlayerPrefs.SetString("Ready", "false");
         }
         PhotonNetwork.SetPlayerCustomProperties(playerProperties);
     }
@@ -107,7 +107,7 @@ public class PlayerItem : MonoBehaviourPunCallbacks
 
     void UpdatePlayerItem(Player player)
     {
-        if (this.player.CustomProperties.ContainsKey("playerAvatar"))
+        if (player.CustomProperties.ContainsKey("playerAvatar"))
         {
             playerAvatar.sprite = avatars[(int)player.CustomProperties["playerAvatar"]];
             playerProperties["playerAvatar"] = (int)player.CustomProperties["playerAvatar"];
@@ -126,5 +126,6 @@ public class PlayerItem : MonoBehaviourPunCallbacks
         {
             playerProperties["isReady"] = 0;
         }
+        //PhotonNetwork.SetPlayerCustomProperties(playerProperties);
     }
 }
