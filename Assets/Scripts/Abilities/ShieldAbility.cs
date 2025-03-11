@@ -8,6 +8,7 @@ public class ShieldAbility : Ability
     public override void Activate(GameObject parent)
     {
         Movement player = parent.GetComponent<Movement>();
+
         player.playerShield.SetActive(true);
 
         Shield barrier = parent.GetComponentInChildren<Shield>();

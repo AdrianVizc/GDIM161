@@ -555,7 +555,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb0d60fb34e006e4395e961018b4e754, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  multishotAngle: 15
+  multishotAngle: 5
   bulletVelocity: 30
 --- !u!1 &3068073903033641584
 GameObject:
@@ -612,6 +612,7 @@ MonoBehaviour:
   ObservedComponents:
   - {fileID: 3936503967323023988}
   - {fileID: 7182021986338753927}
+  - {fileID: 3173710413915812039}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0

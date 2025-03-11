@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Multishot : MonoBehaviour
 {
-    [SerializeField] private float multishotAngle = 15f;
+    [SerializeField] private float multishotAngle = 10f;
     [SerializeField] private float bulletVelocity = 30f;
 
     private GameObject bulletPrefab;
