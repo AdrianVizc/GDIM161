@@ -12,6 +12,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Lobby.unity
     guid: 3f807218b3ff2634182adc6c16e7dc74
   - enabled: 1
-    path: Assets/Scenes/Gnomeman's Land.unity
-    guid: 889100846e2a5194fb898ab35a5aa9e9
+    path: Assets/Scenes/NewGnomeLand.unity
+    guid: 46583d6f21d633a47a6886a8f23a375b
   m_configObjects: {}

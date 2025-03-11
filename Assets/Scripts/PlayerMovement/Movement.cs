@@ -85,7 +85,9 @@ public class Movement : MonoBehaviour
     {
         if (!view.IsMine)
         {
-            Destroy(GetComponentInChildren<Camera>().gameObject);
+            //Destroy(GetComponentInChildren<Camera>());
+            GetComponentInChildren<Camera>().enabled = false;
+            GetComponentInChildren<CameraFollowMouse>().enabled = false;
         }
         col = GetComponent<Collider>();
         mainCamera = Camera.main;
