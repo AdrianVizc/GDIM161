@@ -16,11 +16,11 @@ public class Claymore : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             //blow up do dmg
-            Debug.Log($"Mine triggered by {other.name}, ownership: {view.Owner.NickName}");
-            if (!view.IsMine) // If this player is not the owner, transfer ownership first
+            //Debug.Log($"Mine triggered by {other.name}, ownership: {view.Owner.NickName}");
+            /*if (!view.IsMine) // If this player is not the owner, transfer ownership first
             {
                 view.TransferOwnership(PhotonNetwork.LocalPlayer);
-            }
+            }*/
             PhotonNetwork.Destroy(gameObject);
             /*view.RPC(nameof(RPC_DestroyMine), RpcTarget.MasterClient);
             if (view.Owner == null)
@@ -30,11 +30,11 @@ public class Claymore : MonoBehaviour
             else
             {
                 Debug.LogError("Mine has owner!");
-            }
+            }*/
             if (view.IsMine)
             {
                 other.GetComponentInParent<IDamageable>()?.Death();
-            }*/
+            }
         }
     }
 

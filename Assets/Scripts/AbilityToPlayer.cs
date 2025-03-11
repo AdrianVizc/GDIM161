@@ -36,19 +36,19 @@ public class AbilityToPlayer : MonoBehaviour
             {
                 //Debug.Log("PLAYER PREFS SLOT 1: " + PlayerPrefs.GetString("Slot1"));
                 //Debug.Log("FOUND IN SLOT 1: " + ability.GetType().GetField("ability").GetValue(ability).ToString());
-                ability.key = KeyCode.I;
+                ability.key = KeyCode.Q;
             }
             else if (ability.GetType().GetField("ability").GetValue(ability).ToString().Contains(PlayerPrefs.GetString("Slot2")) && PlayerPrefs.HasKey("Slot2")) //Slot 2
             {
                 //Debug.Log("PLAYER PREFS SLOT 2: " + PlayerPrefs.GetString("Slot2"));
                 //Debug.Log("FOUND IN SLOT 2: " + ability.GetType().GetField("ability").GetValue(ability).ToString());
-                ability.key = KeyCode.O;
+                ability.key = KeyCode.E;
             }
             else if (ability.GetType().GetField("ability").GetValue(ability).ToString().Contains(PlayerPrefs.GetString("Slot3")) && PlayerPrefs.HasKey("Slot3")) //Slot 3
             {
                 //Debug.Log("PLAYER PREFS SLOT 3: " + PlayerPrefs.GetString("Slot3"));
                 //Debug.Log("FOUND IN SLOT 3: " + ability.GetType().GetField("ability").GetValue(ability).ToString());
-                ability.key = KeyCode.P;
+                ability.key = KeyCode.R;
             }
             else //Disable the rest
             {
