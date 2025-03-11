@@ -85,10 +85,20 @@ public class Movement : MonoBehaviour
     {
         if (!view.IsMine)
         {
-            //Destroy(GetComponentInChildren<Camera>());
-            GetComponentInChildren<Camera>().enabled = false;
-            GetComponentInChildren<CameraFollowMouse>().enabled = false;
+            Destroy(GetComponentInChildren<Camera>()); //if not deleted, username gets messed up because it finds the wrong camera
+            //GetComponentInChildren<Camera>().enabled = false;
+            GetComponentInChildren<AudioListener>().enabled = false;
+            //GetComponentInChildren<CameraFollowMouse>().enabled = false;
         }
+
+        if (view.IsMine)
+        {
+            //Destroy(GetComponentInChildren<Camera>()); //if not deleted, username gets messed up because it finds the wrong camera
+            //GetComponentInChildren<Camera>().enabled = true;
+            //GetComponentInChildren<AudioListener>().enabled = true;
+            //GetComponentInChildren<CameraFollowMouse>().enabled = true;
+        }
+
         col = GetComponent<Collider>();
         mainCamera = Camera.main;
         rb = GetComponent<Rigidbody>();
