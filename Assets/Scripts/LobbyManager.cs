@@ -50,6 +50,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 
     private void Start()
     {
+        ResetCustomProperties();
         PhotonNetwork.JoinLobby();
         noRoomNameEntered = enteredRoomName.text;
         loadingScreen.SetActive(false);
@@ -118,12 +119,10 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         if (roomNameInputField.text.Length == 0 || enteredRoomName.text == noRoomNameEntered)
         {
             PhotonNetwork.CreateRoom(CreateRandomRoomName(), new RoomOptions() { MaxPlayers = maxPlayers, BroadcastPropsChangeToAll = true });
-            ResetCustomProperties();
         }
         else
         {
             PhotonNetwork.CreateRoom(enteredRoomName.text, new RoomOptions() { MaxPlayers = maxPlayers, BroadcastPropsChangeToAll = true });
-            ResetCustomProperties();
         }
         loadingScreen.SetActive(true);
     }

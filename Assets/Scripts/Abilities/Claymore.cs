@@ -19,7 +19,7 @@ public class Claymore : MonoBehaviour
             PhotonNetwork.Destroy(gameObject);
             if (!view.IsMine)
             {
-                other.gameObject.GetComponentInParent<IDamageable>()?.Death();
+                other.GetComponentInParent<IDamageable>()?.Death();
             }
         }
     }
