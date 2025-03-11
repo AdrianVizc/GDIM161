@@ -74,9 +74,11 @@ public class Shooting : MonoBehaviour
 
         //Checking if raycast hit something in front
         Vector3 targetPoint;
-        if (Physics.Raycast(trace, out hit))
+        if (Physics.Raycast(trace, out hit, Mathf.Infinity, ~0, QueryTriggerInteraction.Collide))
         {
             targetPoint = hit.point;
+
+
         }
         else
         {

@@ -77,6 +77,8 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     public void OnClickPlayButton()
     {
         playClicked = true;
+        PhotonNetwork.CurrentRoom.IsOpen = false;
+        PhotonNetwork.CurrentRoom.IsVisible = false;
         PhotonNetwork.LoadLevel(sceneName);
     }
 
@@ -96,9 +98,10 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     public override void OnJoinedRoom()
     {
         Hashtable resetProperties = new Hashtable();
-        resetProperties["kills"] = 0; // Reset specific property
-        resetProperties["deaths"] = 0; // Reset specific property
-                                       // OR clear all properties
+        resetProperties["kills"] = 0;
+        resetProperties["deaths"] = 0;
+        resetProperties["isReady"] = 0;
+        resetProperties["playerAvatar"] = 0;
         PhotonNetwork.LocalPlayer.SetCustomProperties(resetProperties);
 
         lobbyPanel.SetActive(false);
@@ -200,6 +203,10 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 
     public override void OnLeftRoom()
     {
+        Hashtable resetProperties = new Hashtable();
+        resetProperties["isReady"] = 0;
+        resetProperties["playerAvatar"] = 0;
+        PhotonNetwork.LocalPlayer.SetCustomProperties(resetProperties);
         loadingScreen.SetActive(true);
         editCharacterButton.SetActive(false);
         leaveRoomButton.SetActive(false);

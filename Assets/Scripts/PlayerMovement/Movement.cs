@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Photon.Pun;
+using UnityEngine.Rendering.Universal;
 
 public class Movement : MonoBehaviour
 {
@@ -85,9 +86,12 @@ public class Movement : MonoBehaviour
     {
         if (!view.IsMine)
         {
+            Destroy(GetComponentInChildren<UniversalAdditionalCameraData>());
             Destroy(GetComponentInChildren<Camera>()); //if not deleted, username gets messed up because it finds the wrong camera
+       
             //GetComponentInChildren<Camera>().enabled = false;
             GetComponentInChildren<AudioListener>().enabled = false;
+            //GetComponentInChildren<UniversalAdditionalCameraData>().enabled = false;
             //GetComponentInChildren<CameraFollowMouse>().enabled = false;
         }
 
