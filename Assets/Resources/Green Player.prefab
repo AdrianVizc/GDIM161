@@ -457,11 +457,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 268aea672893b3a46915efc27cdb7e55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerRef: {fileID: 3068073903033641584}
-  wallRef: {fileID: 7194703309195799407}
-  mineRef: {fileID: 646033025668828207}
-  multishotRef: {fileID: 1177262856051553047}
-  trackerRef: {fileID: 6608750776151191713}
 --- !u!1 &646033025668828207
 GameObject:
   m_ObjectHideFlags: 0
@@ -1183,6 +1178,7 @@ GameObject:
   - component: {fileID: 504495273860640273}
   - component: {fileID: 8378926149518484202}
   - component: {fileID: 7061620066668867809}
+  - component: {fileID: 6513965016309895222}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1306,6 +1302,30 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &6513965016309895222
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7793487947987882757}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b8c4a61274f60b4ea5fb4299cfdbf14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowLayerWeightsInspector: 1
+  ShowParameterInspector: 1
+  m_SynchronizeParameters:
+  - Type: 4
+    SynchronizeType: 0
+    Name: isMoving
+  - Type: 4
+    SynchronizeType: 0
+    Name: isSliding
+  m_SynchronizeLayers:
+  - SynchronizeType: 0
+    LayerIndex: 0
 --- !u!1001 &7767777373391910625
 PrefabInstance:
   m_ObjectHideFlags: 0
