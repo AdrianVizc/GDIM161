@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -283,7 +283,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Loading . . .
+  m_text: Loading...
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ff0d5cdf277096c46bf9dd16967fc683, type: 2}
   m_sharedMaterial: {fileID: 6439314467025773047, guid: ff0d5cdf277096c46bf9dd16967fc683, type: 2}
@@ -863,8 +863,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -471.09998, y: 10.299988}
-  m_SizeDelta: {x: -1564.6101, y: -1019.8508}
+  m_AnchoredPosition: {x: -471.09998, y: 13.233704}
+  m_SizeDelta: {x: -1564.6101, y: -1013.9834}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &539281395
 MonoBehaviour:
@@ -1104,8 +1104,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -471.1, y: -88.9}
-  m_SizeDelta: {x: -1564.6101, y: -1019.8508}
+  m_AnchoredPosition: {x: -471.09998, y: -83.03259}
+  m_SizeDelta: {x: -1564.6101, y: -1008.116}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &782722749
 MonoBehaviour:
@@ -2244,8 +2244,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -471.1, y: 106.599976}
-  m_SizeDelta: {x: -1564.6101, y: -1019.8508}
+  m_AnchoredPosition: {x: -471.09998, y: 112.46741}
+  m_SizeDelta: {x: -1564.6101, y: -1008.116}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1809665423
 MonoBehaviour:
