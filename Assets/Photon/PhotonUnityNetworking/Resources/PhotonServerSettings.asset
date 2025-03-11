@@ -42,6 +42,8 @@ MonoBehaviour:
   - RPC_Death
   - RPC_GetKill
   - RPC_FellOff
+  - DestroyMine
+  - RPC_DestroyMine
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1

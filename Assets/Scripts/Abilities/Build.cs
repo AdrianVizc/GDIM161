@@ -153,9 +153,9 @@ public class Build : MonoBehaviour
                     tempObjectExists = true;
                 }
 
-                if (Input.GetMouseButtonDown(0)) //if left mouse button clicked, place the actual wall
+                if (Input.GetMouseButtonDown(0) && !InGameUI.globalInputLock) //if left mouse button clicked, place the actual wall
                 {
-                    GameObject obj = PhotonNetwork.Instantiate(objectToPlace.name, place, previewObject.transform.rotation);
+                    GameObject obj = PhotonNetwork.Instantiate(objectToPlace.name, place, previewObject.transform.rotation, 0);
                     placeNow = false;
                     placeObj = false;
 

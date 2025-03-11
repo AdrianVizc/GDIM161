@@ -45,6 +45,7 @@ public class PlayerDamage : MonoBehaviourPunCallbacks, IDamageable
     void RPC_Death(PhotonMessageInfo info)
     {
         Die();
+        if(view.Owner != info.Sender)
         PlayerDamage.Find(info.Sender).GetKill();
     }
 
