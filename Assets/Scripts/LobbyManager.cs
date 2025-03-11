@@ -118,15 +118,17 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         if (roomNameInputField.text.Length == 0 || enteredRoomName.text == noRoomNameEntered)
         {
             PhotonNetwork.CreateRoom(CreateRandomRoomName(), new RoomOptions() { MaxPlayers = maxPlayers, BroadcastPropsChangeToAll = true });
+            ResetCustomProperties();
         }
         else
         {
             PhotonNetwork.CreateRoom(enteredRoomName.text, new RoomOptions() { MaxPlayers = maxPlayers, BroadcastPropsChangeToAll = true });
+            ResetCustomProperties();
         }
         loadingScreen.SetActive(true);
     }
 
-    public override void OnJoinedRoom()
+    private void ResetCustomProperties()
     {
         Hashtable resetProperties = new Hashtable();
         resetProperties["kills"] = 0;
@@ -134,6 +136,11 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         resetProperties["isReady"] = 0;
         resetProperties["playerAvatar"] = 0;
         PhotonNetwork.LocalPlayer.SetCustomProperties(resetProperties);
+    }
+
+    public override void OnJoinedRoom()
+    {
+        ResetCustomProperties();
 
         lobbyPanel.SetActive(false);
         leaveRoomButton.SetActive(true);
@@ -234,10 +241,8 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 
     public override void OnLeftRoom()
     {
-        Hashtable resetProperties = new Hashtable();
-        resetProperties["isReady"] = 0;
-        resetProperties["playerAvatar"] = 0;
-        PhotonNetwork.LocalPlayer.SetCustomProperties(resetProperties);
+        ResetCustomProperties();
+
         loadingScreen.SetActive(true);
         editCharacterButton.SetActive(false);
         leaveRoomButton.SetActive(false);
