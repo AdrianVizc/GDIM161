@@ -86,13 +86,13 @@ public class PlayerItem : MonoBehaviourPunCallbacks
         {
             playerProperties["isReady"] = 1;
             isReady = true;
-            //PlayerPrefs.SetString("Ready", "true");
+            PlayerPrefs.SetString("Ready", "true");
         }
         else if (isReady)
         {
             playerProperties["isReady"] = 0;
             isReady = false;
-            //PlayerPrefs.SetString("Ready", "false");
+            PlayerPrefs.SetString("Ready", "false");
         }
         PhotonNetwork.SetPlayerCustomProperties(playerProperties);
     }

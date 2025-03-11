@@ -123,10 +123,10 @@ public class Scoreboard : MonoBehaviourPunCallbacks
 
     private void RemoveScoreboardItem(Player player)
     {
-        //Destroy(scoreboardItems[player].gameObject);
-        //scoreboardItems.Remove(player);
+        Destroy(scoreboardItems[player].gameObject);
+        scoreboardItems.Remove(player);
 
-        GetAllChildReference(container);
+        /*GetAllChildReference(container);
         foreach(GameObject item in scoreboardItemList)
         {
             //Debug.Log("Item name: " + item.transform.GetChild(2).GetComponent<TMP_Text>().text.ToString());
@@ -136,11 +136,11 @@ public class Scoreboard : MonoBehaviourPunCallbacks
                 Destroy(item);
                 //Debug.Log("Destroyed scoreboardItem");
             }
-            /*else
+            else
             {
-                Debug.Log("Didn't Find");
-            }*/
+                //Debug.Log("Didn't Find");
+            }
         }
-        scoreboardItemList.Clear();
+        scoreboardItemList.Clear();*/
     }
 }
