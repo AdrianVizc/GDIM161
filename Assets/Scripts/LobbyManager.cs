@@ -96,7 +96,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
             }
         }
         
-        if (PhotonNetwork.IsMasterClient && allReady)
+        if (PhotonNetwork.IsMasterClient && allReady && PhotonNetwork.CurrentRoom.PlayerCount >= 2)
         {
             playButton.SetActive(true);
         }

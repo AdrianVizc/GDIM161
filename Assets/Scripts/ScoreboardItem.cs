@@ -13,14 +13,14 @@ public class ScoreboardItem : MonoBehaviourPunCallbacks
     public TMP_Text deathsText;
 
     Scoreboard scoreboard;
-    PhotonView view;
+    //PhotonView view;
 
     private WinnerMenu winnerMenu;
     Player player;
 
     private void Start()
     {
-        view = GameObject.Find("Main Camera").transform.root.GetComponentInChildren<PhotonView>();
+        //view = GameObject.Find("Main Camera").transform.root.GetComponentInChildren<PhotonView>();
         scoreboard = GetComponentInParent<Scoreboard>();
         winnerMenu = GameObject.Find("WinnerMenu").GetComponent<WinnerMenu>();
     }
@@ -55,10 +55,11 @@ public class ScoreboardItem : MonoBehaviourPunCallbacks
             if (changedProps.ContainsKey("kills") || changedProps.ContainsKey("deaths"))
             {
                 UpdateStats();
-                if (view.IsMine) 
+                /*if (view.IsMine) 
                 {
                     scoreboard.UpdateScoreBoard();
-                }
+                }*/
+                scoreboard.UpdateScoreBoard();
             }
         }
     }

@@ -15,19 +15,15 @@ public class PlayerSpawner : MonoBehaviour
 
     private void Start()
     {
-        MakeNumbers();
-        Transform spawnPoint = spawnPoints[0];
-        for (int i = 0; i < spawnPoints.Length; i++)
-        {
-            Debug.Log(ChooseSpawn());
-        }
+        int randomNumber = Random.Range(0, spawnPoints.Length);
+        Transform spawnPoint = spawnPoints[randomNumber];
         GameObject playerToSpawn = playerPrefabs[(int)PhotonNetwork.LocalPlayer.CustomProperties["playerAvatar"]];
         player = PhotonNetwork.Instantiate(playerToSpawn.name, spawnPoint.position, Quaternion.identity);             
         playerToSpawn.GetComponentInChildren<AbilityToPlayer>().SetAbilities(playerToSpawn);
         //Debug.Log("Player Spawn: " + playerToSpawn.name);
     }
 
-    private void MakeNumbers()
+    /*private void MakeNumbers()
     {
         for (int i = 0; i < spawnPoints.Length; i++)
         {
@@ -43,7 +39,7 @@ public class PlayerSpawner : MonoBehaviour
         numbers.RemoveAt(index);
 
         return spawnIndex;
-    }
+    }*/
 
     public void Respawn()
     {

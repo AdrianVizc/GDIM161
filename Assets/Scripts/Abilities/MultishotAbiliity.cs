@@ -13,6 +13,18 @@ public class MultishotAbility : Ability
     {
         Multishot ms = parent.GetComponentInChildren<Multishot>();
         ms.DoMultishot();
+
+        if (PlayerPrefs.HasKey("Multishot"))
+        {
+            int Multishot = PlayerPrefs.GetInt("Multishot");
+            Multishot++;
+            PlayerPrefs.SetInt("Multishot", Multishot);
+        }
+        else
+        {
+            PlayerPrefs.SetInt("Multishot", 1);
+        }
+        PlayerPrefs.Save();
     }
 
     public override void BeginCooldown(GameObject parent)

@@ -14,7 +14,20 @@ public class DoubleJump : Ability
         {
             movement.canDoubleJump = false;
             rb.AddForce(rb.transform.up * 16f, ForceMode.Impulse);
+            if (PlayerPrefs.HasKey("DoubleJump"))
+            {
+                int DoubleJump = PlayerPrefs.GetInt("DoubleJump");
+                DoubleJump++;
+                PlayerPrefs.SetInt("DoubleJump", DoubleJump);
+            }
+            else
+            {
+                PlayerPrefs.SetInt("DoubleJump", 1);
+            }
+            PlayerPrefs.Save();
         }
+
+        
     }
     public override void BeginCooldown(GameObject parent)
     {

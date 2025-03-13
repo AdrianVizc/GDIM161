@@ -7,6 +7,7 @@ using System.Runtime.CompilerServices;
 using Photon.Realtime;
 using UnityEngine;
 using Hashtable = ExitGames.Client.Photon.Hashtable;
+using Unity.VisualScripting;
 
 public class PlayerDamage : MonoBehaviourPunCallbacks, IDamageable
 {
@@ -57,11 +58,23 @@ public class PlayerDamage : MonoBehaviourPunCallbacks, IDamageable
         Hashtable hash = new Hashtable();
         hash.Add("deaths", deaths);
         PhotonNetwork.LocalPlayer.SetCustomProperties(hash);
+
+        if (PlayerPrefs.HasKey("Deaths"))
+        {
+            int Deaths = PlayerPrefs.GetInt("Deaths");
+            Deaths++;
+            PlayerPrefs.SetInt("Deaths", Deaths);
+        }
+        else
+        {
+            PlayerPrefs.SetInt("Deaths", 1);
+        }
+        PlayerPrefs.Save();
     }
 
     private void GetKill()
     {
-        view.RPC(nameof(RPC_GetKill), view.Owner);
+        view.RPC(nameof(RPC_GetKill), view.Owner);               
     }
 
     [PunRPC]
@@ -72,6 +85,18 @@ public class PlayerDamage : MonoBehaviourPunCallbacks, IDamageable
         Hashtable hash = new Hashtable();
         hash.Add("kills", kills);
         PhotonNetwork.LocalPlayer.SetCustomProperties(hash);
+
+        if (PlayerPrefs.HasKey("Kills"))
+        {
+            int Kills = PlayerPrefs.GetInt("Kills");
+            Kills++;
+            PlayerPrefs.SetInt("Kills", Kills);
+        }
+        else
+        {
+            PlayerPrefs.SetInt("Kills", 1);
+        }
+        PlayerPrefs.Save();
     }
 
     public static PlayerDamage Find(Player player)

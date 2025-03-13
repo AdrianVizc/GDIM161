@@ -11,6 +11,18 @@ public class DashAbility : Ability
     {
         Movement movement = parent.GetComponent<Movement>();
         movement.accelSpeed = dashVelocity;
+
+        if (PlayerPrefs.HasKey("Dash"))
+        {
+            int Dash = PlayerPrefs.GetInt("Dash");
+            Dash++;
+            PlayerPrefs.SetInt("Dash", Dash);
+        }
+        else
+        {
+            PlayerPrefs.SetInt("Dash", 1);
+        }
+        PlayerPrefs.Save();
     }
 
     public override void BeginCooldown(GameObject parent)
