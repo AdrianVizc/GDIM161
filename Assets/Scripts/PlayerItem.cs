@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using Photon.Pun;
 using Photon.Realtime;
 using TMPro;
+using Hashtable = ExitGames.Client.Photon.Hashtable;
 
 public class PlayerItem : MonoBehaviourPunCallbacks
 {
@@ -16,7 +17,7 @@ public class PlayerItem : MonoBehaviourPunCallbacks
     [SerializeField] private GameObject rightArrowButton;
     [SerializeField] private GameObject readyButton;
 
-    ExitGames.Client.Photon.Hashtable playerProperties = new ExitGames.Client.Photon.Hashtable();
+    Hashtable playerProperties = new Hashtable();
     [SerializeField] private Image playerAvatar;    
     [SerializeField] private Sprite[] avatars;
 
@@ -52,6 +53,11 @@ public class PlayerItem : MonoBehaviourPunCallbacks
         leftArrowButton.SetActive(true);
         rightArrowButton.SetActive(true);
         readyButton.SetActive(true);
+    }
+
+    public int GetPlayerActorNumber()
+    {
+        return player.ActorNumber;
     }
 
     public void OnClickLeftArrow()
@@ -97,7 +103,7 @@ public class PlayerItem : MonoBehaviourPunCallbacks
         PhotonNetwork.SetPlayerCustomProperties(playerProperties);
     }
 
-    public override void OnPlayerPropertiesUpdate(Player targetPlayer, ExitGames.Client.Photon.Hashtable changedProps)
+    public override void OnPlayerPropertiesUpdate(Player targetPlayer, Hashtable changedProps)
     {
         if (targetPlayer == player)
         {
@@ -126,6 +132,5 @@ public class PlayerItem : MonoBehaviourPunCallbacks
         {
             playerProperties["isReady"] = 0;
         }
-        //PhotonNetwork.SetPlayerCustomProperties(playerProperties);
     }
 }

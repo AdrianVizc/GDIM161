@@ -7,6 +7,8 @@ using TMPro;
 using UnityEngine.SceneManagement;
 using Hashtable = ExitGames.Client.Photon.Hashtable;
 using System.Security.Cryptography;
+using System.Linq;
+using System.Runtime.CompilerServices;
 
 public class LobbyManager : MonoBehaviourPunCallbacks
 {
@@ -23,6 +25,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     [SerializeField] private GameObject playerListing;
     [SerializeField] private int maxPlayers;
     [SerializeField] private GameObject playButton;
+    [SerializeField] private GameObject roomNameErrorText;
     [SerializeField] private string sceneName;
 
 
@@ -36,9 +39,6 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     [SerializeField] private Transform playerItemParent;
 
     private string noRoomNameEntered;
-
-    private float timeBetweenUpdates = 1.5f;
-    private float nextUpdateTime;
 
     private Vector2 frontPos;
     private Vector2 backPos;
@@ -67,7 +67,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     }
 
     private void Update()
-    {
+    {        
         if (PhotonNetwork.InRoom)
         {
             int totalPlayersInRoom = PhotonNetwork.CurrentRoom.PlayerCount;
@@ -84,13 +84,13 @@ public class LobbyManager : MonoBehaviourPunCallbacks
                         if (totalPlayersInRoom == amountOfPlayersReady)
                         {
                             allReady = true;
-                            Debug.Log("allReady is True");
+                            //Debug.Log("allReady is True");
                         }                        
                     }
                     else
                     {
                         allReady = false;
-                        Debug.Log("allReady is False");
+                        //Debug.Log("allReady is False");
                     }
                 }
             }
@@ -118,13 +118,34 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     {
         if (roomNameInputField.text.Length == 0 || enteredRoomName.text == noRoomNameEntered)
         {
+            RoomOptions roomOptions = new RoomOptions();
+            roomOptions.CleanupCacheOnLeave = true;
             PhotonNetwork.CreateRoom(CreateRandomRoomName(), new RoomOptions() { MaxPlayers = maxPlayers, BroadcastPropsChangeToAll = true });
         }
         else
         {
+            RoomOptions roomOptions = new RoomOptions();
+            roomOptions.CleanupCacheOnLeave = true;
             PhotonNetwork.CreateRoom(enteredRoomName.text, new RoomOptions() { MaxPlayers = maxPlayers, BroadcastPropsChangeToAll = true });
         }
+    }
+    public override void OnCreatedRoom()
+    {
         loadingScreen.SetActive(true);
+    }
+
+    public override void OnCreateRoomFailed(short returnCode, string message)
+    {
+        if (roomNameErrorText.activeSelf)
+        {
+            roomNameErrorText.SetActive(false);
+            roomNameErrorText.SetActive(true);
+        }
+        else
+        {
+            roomNameErrorText.SetActive(true);
+        }
+        
     }
 
     private void ResetCustomProperties()
@@ -146,7 +167,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         editCharacterButton.SetActive(true);
         roomPanel.SetActive(true);
         loadingScreen.SetActive(false);
-        roomNameText.text = "Room Name: " + PhotonNetwork.CurrentRoom.Name;
+        roomNameText.text = PhotonNetwork.CurrentRoom.Name;
 
         triPanelSpacing.transform.localPosition = backPos;
 
@@ -155,31 +176,40 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 
     public override void OnRoomListUpdate(List<RoomInfo> roomList)
     {
-        if (Time.time >= nextUpdateTime)
+        foreach(RoomInfo roomInfo in roomList)
         {
-            UpdateRoomList(roomList);
-            nextUpdateTime = Time.time + timeBetweenUpdates;
-        }        
-    }
-
-    private void UpdateRoomList(List<RoomInfo> list) //Need to fix. Not updating correctly
-    {
-        foreach (RoomItem item in roomItemsList)
-        {
-            Destroy(item.gameObject);
-        }
-        roomItemsList.Clear();
-
-        foreach (RoomInfo room in list)
-        {
-            if (room.RemovedFromList)
+            if (!roomInfo.RemovedFromList)
             {
-                return;
+                bool roomExists = false;
+
+                foreach (Transform transform in contentObject)
+                {
+                    TMP_Text text = transform.GetComponentInChildren<TMP_Text>();
+                    if (roomInfo.Name == text.text)
+                    {
+                        roomExists = true;
+                        break;
+                    }
+                }
+                if (roomExists) continue;
+                {
+                    RoomItem newRoom = Instantiate(roomItemPrefab, contentObject);
+                    newRoom.SetRoomName(roomInfo.Name);
+                }
+                
             }
-            RoomItem newRoom = Instantiate(roomItemPrefab, contentObject);
-            newRoom.SetRoomName(room.Name);
-            roomItemsList.Add(newRoom);
-        }
+            if (roomInfo.RemovedFromList)
+            {
+                foreach (Transform transform in contentObject)
+                {
+                    TMP_Text text = transform.GetComponentInChildren<TMP_Text>();
+                    if (roomInfo.Name == text.text)
+                    {
+                        Destroy(transform.gameObject);
+                    }
+                }
+            }
+        }             
     }
 
     private string CreateRandomRoomName()
@@ -318,11 +348,19 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 
     public override void OnPlayerEnteredRoom(Player newPlayer)
     {
+        if (PhotonNetwork.CurrentRoom.PlayerCount >= PhotonNetwork.CurrentRoom.MaxPlayers)
+        {
+            PhotonNetwork.CurrentRoom.IsVisible = false;
+        }
         UpdatePlayerList();
     }
 
     public override void OnPlayerLeftRoom(Player otherPlayer)
     {
+        if (PhotonNetwork.CurrentRoom.PlayerCount < PhotonNetwork.CurrentRoom.MaxPlayers)
+        {
+            PhotonNetwork.CurrentRoom.IsVisible = true;
+        }
         UpdatePlayerList();
     }
 }
