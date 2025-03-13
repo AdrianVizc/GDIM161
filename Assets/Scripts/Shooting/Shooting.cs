@@ -85,7 +85,10 @@ public class Shooting : MonoBehaviour
             targetPoint = trace.GetPoint(100);
         }
 
-        hit.collider.gameObject.GetComponentInParent<IDamageable>()?.Death();
+        if (hit.collider.CompareTag("Player"))
+        {
+            hit.collider.GetComponentInParent<IDamageable>()?.Death();
+        }
        
         /*IDamageable damageable = hit.collider.gameObject.GetComponentInParent<IDamageable>();
         if (damageable != null)

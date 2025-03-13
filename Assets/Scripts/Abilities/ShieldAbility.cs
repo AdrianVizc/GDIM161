@@ -7,21 +7,23 @@ public class ShieldAbility : Ability
 {
     public override void Activate(GameObject parent)
     {
-        Movement player = parent.GetComponent<Movement>();
+        //Movement player = parent.GetComponent<Movement>();
 
-        player.playerShield.SetActive(true);
+        //player.playerShield.SetActive(true);
 
-        Shield barrier = parent.GetComponentInChildren<Shield>();
+        //Shield barrier = parent.GetComponentInChildren<Shield>();
         //barrier.playerShield.SetActive(true);
         //barrier.Show();
-        barrier.SetDurability(3);
-        Debug.Log("Health: " + 3);
+        //barrier.SetDurability(3);
+        //Debug.Log("Health: " + 3);
+        ObjectSpawner spawnShield = GameObject.Find("Shield").GetComponent<ObjectSpawner>();
+        spawnShield.Spawn();
     }
 
     public override void BeginCooldown(GameObject parent)
     {
-        Movement player = parent.GetComponent<Movement>();
-        player.playerShield.SetActive(false);
+        //Movement player = parent.GetComponent<Movement>();
+        //player.playerShield.SetActive(false);
 
         //Shield barrier = parent.GetComponentInChildren<Shield>();
         //barrier.playerShield.SetActive(false);

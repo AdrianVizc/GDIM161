@@ -17,6 +17,9 @@ public class TrackingBot : MonoBehaviour
     [SerializeField]
     private GameObject secondNearest; //player is always the closest
 
+    [SerializeField]
+    private Ability ability;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -41,6 +44,8 @@ public class TrackingBot : MonoBehaviour
 
             agent.SetDestination(secondNearest.transform.position);
         }
+
+        StartCoroutine(DestroyAfterCD(ability.activeTime));
     }
 
     // Update is called once per frame
@@ -50,5 +55,12 @@ public class TrackingBot : MonoBehaviour
         {
             agent.SetDestination(secondNearest.transform.position);
         }
+    }
+
+    private IEnumerator DestroyAfterCD(float time)
+    {
+        yield return new WaitForSeconds(time);
+
+        Destroy(gameObject);
     }
 }
