@@ -3944,7 +3944,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2401514512433856601, guid: 4e6c5f85c3fca2449bfb487cd7b95315, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 341.5
+      value: 206.5
       objectReference: {fileID: 0}
     - target: {fileID: 2401514512433856601, guid: 4e6c5f85c3fca2449bfb487cd7b95315, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -4219,6 +4219,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2401514512433856601, guid: 4e6c5f85c3fca2449bfb487cd7b95315, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2686027357320073111, guid: 4e6c5f85c3fca2449bfb487cd7b95315, type: 3}
+      propertyPath: isButtonActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3064371960943052309, guid: 4e6c5f85c3fca2449bfb487cd7b95315, type: 3}
@@ -5948,6 +5952,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2686027357320073111, guid: 4e6c5f85c3fca2449bfb487cd7b95315, type: 3}
+      propertyPath: isButtonActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3064371960943052309, guid: 4e6c5f85c3fca2449bfb487cd7b95315, type: 3}
       propertyPath: abilityName
       value: Shield
@@ -7193,7 +7201,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2401514512433856601, guid: 4e6c5f85c3fca2449bfb487cd7b95315, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 341.5
+      value: 206.5
       objectReference: {fileID: 0}
     - target: {fileID: 2401514512433856601, guid: 4e6c5f85c3fca2449bfb487cd7b95315, type: 3}
       propertyPath: m_AnchoredPosition.y
