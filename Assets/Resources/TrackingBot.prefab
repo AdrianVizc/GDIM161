@@ -148,6 +148,7 @@ MonoBehaviour:
   allDistances: []
   allPlayerObjects: []
   secondNearest: {fileID: 0}
+  ability: {fileID: 11400000, guid: e461b5ace45b93e4aab26ad8cd1d2f1d, type: 2}
 --- !u!114 &5680743859909593785
 MonoBehaviour:
   m_ObjectHideFlags: 0

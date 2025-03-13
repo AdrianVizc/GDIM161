@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: PlaceMine
   m_EditorClassIdentifier: 
   name: Place Mine
-  cooldownTime: 20
-  activeTime: 7
+  cooldownTime: 10
+  activeTime: 15

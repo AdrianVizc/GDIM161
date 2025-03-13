@@ -7,7 +7,7 @@ public class TrackingBotAbility : Ability
 {
     public override void Activate(GameObject parent)
     {
-        Spawner spawnBot = GameObject.Find("Tracker").GetComponent<Spawner>();
+        ObjectSpawner spawnBot = GameObject.Find("Tracker").GetComponent<ObjectSpawner>();
         spawnBot.Spawn();
 
         if (PlayerPrefs.HasKey("TrackingBot"))

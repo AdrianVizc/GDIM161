@@ -163,7 +163,7 @@ public class Build : MonoBehaviour
                     tempObjectExists = false;
 
                     //Debug.Log("CD Time is " + ability.cooldownTime);
-                    StartCoroutine(DestroyObjOnCD(obj, ability.cooldownTime));
+                    StartCoroutine(DestroyObjOnCD(obj, ability.activeTime));
 
                     shooting.gameObject.SetActive(true);
                 }
