@@ -30,6 +30,7 @@ public class Statistics : MonoBehaviour
 
     public void StatisticsButton()
     {
+        Debug.Log("Stats");
         riveObject.SetActive(false);
         InputFieldObject.SetActive(false);
         StatisticsButtonObject.SetActive(false);
