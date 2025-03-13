@@ -503,7 +503,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -380, y: -60}
+  m_AnchoredPosition: {x: -549, y: -54}
   m_SizeDelta: {x: -1856.4604, y: -1065.0304}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &199020503
@@ -937,7 +937,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -371, y: -250.37}
+  m_AnchoredPosition: {x: -540.00006, y: -244.37}
   m_SizeDelta: {x: -1856.4604, y: -1065.0304}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &348344735
@@ -1456,7 +1456,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -380, y: -149.7485}
+  m_AnchoredPosition: {x: -549.00006, y: -143.74847}
   m_SizeDelta: {x: -1564.6101, y: -999.9189}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &539281395
@@ -1865,7 +1865,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_rivePanel: {fileID: 1111735564}
-  m_asset: {fileID: -4516626237390682484, guid: 6bf36a817d8b0414facdf2011a3985ad, type: 3}
+  m_asset: {fileID: -4516626237390682484, guid: e4b86a145621b9949b90eeedbf561af0, type: 3}
   m_artboardName: Main Screen
   m_stateMachineName: State Machine 1
   m_fit: 1
@@ -1913,7 +1913,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -380, y: -347}
+  m_AnchoredPosition: {x: -549.00006, y: -341}
   m_SizeDelta: {x: -1564.6101, y: -999.6774}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &782722749
