@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3577,11 +3577,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3064371960943052309, guid: 4e6c5f85c3fca2449bfb487cd7b95315, type: 3}
       propertyPath: abilityName
-      value: Wall
+      value: De-FENCE-ive Wall
       objectReference: {fileID: 0}
     - target: {fileID: 3064371960943052309, guid: 4e6c5f85c3fca2449bfb487cd7b95315, type: 3}
       propertyPath: abilityDescription
-      value: Construct a wall to create cover
+      value: Constructs a wall that obstructs line of sight and blocks attacks.                 
+        7 Second Cooldown.
       objectReference: {fileID: 0}
     - target: {fileID: 6073505096315133997, guid: 4e6c5f85c3fca2449bfb487cd7b95315, type: 3}
       propertyPath: m_Name
@@ -3964,11 +3965,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3064371960943052309, guid: 4e6c5f85c3fca2449bfb487cd7b95315, type: 3}
       propertyPath: abilityName
-      value: Claymore
+      value: Sprinkler Mine
       objectReference: {fileID: 0}
     - target: {fileID: 3064371960943052309, guid: 4e6c5f85c3fca2449bfb487cd7b95315, type: 3}
       propertyPath: abilityDescription
-      value: Place a bomb that explodes when someone steps on it
+      value: Place a sprinkler trap that explodes enemies who step on it.
       objectReference: {fileID: 0}
     - target: {fileID: 6073505096315133997, guid: 4e6c5f85c3fca2449bfb487cd7b95315, type: 3}
       propertyPath: m_Name
@@ -4227,11 +4228,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3064371960943052309, guid: 4e6c5f85c3fca2449bfb487cd7b95315, type: 3}
       propertyPath: abilityName
-      value: WHACK
+      value: WHACK!
       objectReference: {fileID: 0}
     - target: {fileID: 3064371960943052309, guid: 4e6c5f85c3fca2449bfb487cd7b95315, type: 3}
       propertyPath: abilityDescription
-      value: Use a hammer to whack your opponent out the garden!
+      value: The Gnome can knock enemies back with a giant hammer.
       objectReference: {fileID: 0}
     - target: {fileID: 6073505096315133997, guid: 4e6c5f85c3fca2449bfb487cd7b95315, type: 3}
       propertyPath: m_Name
@@ -4344,11 +4345,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3064371960943052309, guid: 4e6c5f85c3fca2449bfb487cd7b95315, type: 3}
       propertyPath: abilityName
-      value: MultiShot
+      value: Multi-Shot
       objectReference: {fileID: 0}
     - target: {fileID: 3064371960943052309, guid: 4e6c5f85c3fca2449bfb487cd7b95315, type: 3}
       propertyPath: abilityDescription
-      value: Shoot 3 shots at once in a cone shaped area
+      value: The Gnome shoots 2 extra projectiles alongside the main projectile.                             
+        5 Second Cooldown
       objectReference: {fileID: 0}
     - target: {fileID: 6073505096315133997, guid: 4e6c5f85c3fca2449bfb487cd7b95315, type: 3}
       propertyPath: m_Name
@@ -5962,7 +5964,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3064371960943052309, guid: 4e6c5f85c3fca2449bfb487cd7b95315, type: 3}
       propertyPath: abilityDescription
-      value: Generate a shield around yourself allowing you to survive 1 shot
+      value: Generate a personal barrier that shields the Gnome from incoming attacks.                          
+        7 Second Cooldown
       objectReference: {fileID: 0}
     - target: {fileID: 6073505096315133997, guid: 4e6c5f85c3fca2449bfb487cd7b95315, type: 3}
       propertyPath: m_Name
@@ -6207,11 +6210,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3064371960943052309, guid: 4e6c5f85c3fca2449bfb487cd7b95315, type: 3}
       propertyPath: abilityName
-      value: Dash
+      value: Gnomish Dash
       objectReference: {fileID: 0}
     - target: {fileID: 3064371960943052309, guid: 4e6c5f85c3fca2449bfb487cd7b95315, type: 3}
       propertyPath: abilityDescription
-      value: A quick charge in the direction you are looking at
+      value: A horizontal dash that moves the Gnome in the direction it's moving.    
+        3 Second Cooldown
       objectReference: {fileID: 0}
     - target: {fileID: 6073505096315133997, guid: 4e6c5f85c3fca2449bfb487cd7b95315, type: 3}
       propertyPath: m_Name
@@ -6494,11 +6498,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3064371960943052309, guid: 4e6c5f85c3fca2449bfb487cd7b95315, type: 3}
       propertyPath: abilityName
-      value: Double Jump
+      value: Gnomish Leap
       objectReference: {fileID: 0}
     - target: {fileID: 3064371960943052309, guid: 4e6c5f85c3fca2449bfb487cd7b95315, type: 3}
       propertyPath: abilityDescription
-      value: Allows you to jump a second time while mid-air
+      value: Allows the Gnome to jump once more while airborne. Uses the same keybind
+        as jump.
       objectReference: {fileID: 0}
     - target: {fileID: 6073505096315133997, guid: 4e6c5f85c3fca2449bfb487cd7b95315, type: 3}
       propertyPath: m_Name
@@ -7221,11 +7226,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3064371960943052309, guid: 4e6c5f85c3fca2449bfb487cd7b95315, type: 3}
       propertyPath: abilityName
-      value: Tracking Bot
+      value: Lawn Locator
       objectReference: {fileID: 0}
     - target: {fileID: 3064371960943052309, guid: 4e6c5f85c3fca2449bfb487cd7b95315, type: 3}
       propertyPath: abilityDescription
-      value: Spawn a bot that chases the closest enemy player
+      value: Deploy a mower that travels toward the nearest enemy.                  
+        15 Second Cooldown
       objectReference: {fileID: 0}
     - target: {fileID: 6073505096315133997, guid: 4e6c5f85c3fca2449bfb487cd7b95315, type: 3}
       propertyPath: m_Name
