@@ -9,7 +9,8 @@ public class Statistics : MonoBehaviour
     [SerializeField] private GameObject InputFieldObject;
     [SerializeField] private GameObject StatisticsButtonObject;
     [SerializeField] private GameObject CloseButtonObject;
-    [SerializeField] private GameObject StatsPanelObject;
+    [SerializeField] private GameObject StatsList;
+    [SerializeField] private GameObject StatsPanel;
 
     [SerializeField] private TMP_Text killsNumber;
     [SerializeField] private TMP_Text deathsNumber;
@@ -25,7 +26,8 @@ public class Statistics : MonoBehaviour
     private void Start()
     {        
         CloseButtonObject.SetActive(false);
-        StatsPanelObject.SetActive(false);
+        StatsList.SetActive(false);
+        StatsPanel.SetActive(false);
     }
 
     public void StatisticsButton()
@@ -36,7 +38,8 @@ public class Statistics : MonoBehaviour
         StatisticsButtonObject.SetActive(false);
 
         CloseButtonObject.SetActive(true);
-        StatsPanelObject.SetActive(true);
+        StatsList.SetActive(true);
+        StatsPanel.SetActive(true);
 
         UpdateStats();
     }
@@ -48,7 +51,8 @@ public class Statistics : MonoBehaviour
         StatisticsButtonObject.SetActive(true);
 
         CloseButtonObject.SetActive(false);
-        StatsPanelObject.SetActive(false);
+        StatsList.SetActive(false);
+        StatsPanel.SetActive(false);
     }
 
     private void UpdateStats()
