@@ -148,8 +148,11 @@ public class Build : MonoBehaviour
                     //previewObject = GameObject.Find("Temp Claymore(Clone)");
                     previewObject = GameObject.Find(GetPreviewName(tempObject));
 
-                    render = previewObject.GetComponent<Renderer>();
-                    render.sharedMaterial = materials[0];
+                    render = previewObject.GetComponentInChildren<Renderer>();
+                    for (int i = 0; i < render.materials.Length; i++)
+                    {
+                        render.materials[i].color = materials[0].color;
+                    }
                     tempObjectExists = true;
                 }
 
@@ -170,7 +173,11 @@ public class Build : MonoBehaviour
 
                 if (previewObject != null)
                 {
-                    render.sharedMaterial = materials[0]; //change temp wall to blue = can place
+                    //change temp wall to blue = can place
+                    for (int i = 0; i < render.materials.Length; i++)
+                    {
+                        render.materials[i].color = materials[0].color;
+                    }
                     previewObject.transform.position = place; //move preview with mouse
 
                 }
@@ -192,8 +199,20 @@ public class Build : MonoBehaviour
 
             if (previewObject != null)
             {
-                render.sharedMaterial = materials[1]; //change temp wall to red = cannot place
+                //change temp wall to red = cannot place
+                for (int i = 0; i < render.materials.Length; i++)
+                {
+                    render.materials[i].color = materials[1].color;
+                }
                 previewObject.transform.position = place; //move preview with mouse
+            }
+            else if (tempObjectExists == false)
+            {
+                Instantiate(tempObject, place, Quaternion.identity);
+                previewObject = GameObject.Find(GetPreviewName(tempObject));
+                render = previewObject.GetComponentInChildren<Renderer>(); //already red to begin with
+
+                tempObjectExists = true;
             }
         }
     }

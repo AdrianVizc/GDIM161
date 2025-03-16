@@ -1283,7 +1283,7 @@ MonoBehaviour:
   objectToPlace: {fileID: 0}
   previewObject: {fileID: 0}
   realObject: {fileID: 4030810809374194481, guid: b6cb97a906af4f546a4fc0c63d83c0a4, type: 3}
-  tempObject: {fileID: 8790792283479184981, guid: 588fb06b7820c6847b1144d071f40ac9, type: 3}
+  tempObject: {fileID: 4030810809374194481, guid: 5cdd305947482994a8ccf2ef38fcef07, type: 3}
   offset: 1.5
   placementReach: 10
   materials:
