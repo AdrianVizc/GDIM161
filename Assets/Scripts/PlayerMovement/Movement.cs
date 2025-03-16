@@ -87,7 +87,11 @@ public class Movement : MonoBehaviour
         if (!view.IsMine)
         {
             Destroy(GetComponentInChildren<UniversalAdditionalCameraData>());
-            Destroy(GetComponentInChildren<Camera>()); //if not deleted, username gets messed up because it finds the wrong camera
+            foreach( Camera camera in GetComponentsInChildren<Camera>())
+            {
+                Destroy(camera);
+            }
+            //Destroy(GetComponentsInChildren<Camera>()); //if not deleted, username gets messed up because it finds the wrong camera
        
             //GetComponentInChildren<Camera>().enabled = false;
             GetComponentInChildren<AudioListener>().enabled = false;
