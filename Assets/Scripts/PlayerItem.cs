@@ -36,8 +36,9 @@ public class PlayerItem : MonoBehaviourPunCallbacks
     private void Start()
     {
         PhotonNetwork.SetPlayerCustomProperties(playerProperties);
+        playerProperties["isReady"] = 0;
+        playerProperties["playerAvatar"] = 0;
         isReady = false;
-        PlayerPrefs.SetString("Ready", "false");
     }
 
     public void SetPlayerInfo(Player _player)
@@ -88,17 +89,13 @@ public class PlayerItem : MonoBehaviourPunCallbacks
 
     public void OnClickReadyButton()
     {
-        if (!isReady)
+        if ((int)playerProperties["isReady"] == 0)
         {
             playerProperties["isReady"] = 1;
-            isReady = true;
-            PlayerPrefs.SetString("Ready", "true");
         }
-        else if (isReady)
+        else if ((int)playerProperties["isReady"] == 1)
         {
             playerProperties["isReady"] = 0;
-            isReady = false;
-            PlayerPrefs.SetString("Ready", "false");
         }
         PhotonNetwork.SetPlayerCustomProperties(playerProperties);
     }
@@ -116,21 +113,11 @@ public class PlayerItem : MonoBehaviourPunCallbacks
         if (player.CustomProperties.ContainsKey("playerAvatar"))
         {
             playerAvatar.sprite = avatars[(int)player.CustomProperties["playerAvatar"]];
-            playerProperties["playerAvatar"] = (int)player.CustomProperties["playerAvatar"];
-        }
-        else
-        {
-            playerProperties["playerAvatar"] = 0;
         }
 
         if (player.CustomProperties.ContainsKey("isReady"))
         {
             readyImage.sprite = readySprites[(int)player.CustomProperties["isReady"]];
-            playerProperties["isReady"] = (int)player.CustomProperties["isReady"];
-        }
-        else
-        {
-            playerProperties["isReady"] = 0;
         }
     }
 }
