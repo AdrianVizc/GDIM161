@@ -26,8 +26,6 @@ public class PlayerItem : MonoBehaviourPunCallbacks
 
     Player player;
 
-    public bool isReady;
-
     private void Awake()
     {
         backgroundImage = GetComponent<Image>();
@@ -35,10 +33,27 @@ public class PlayerItem : MonoBehaviourPunCallbacks
 
     private void Start()
     {
-        PhotonNetwork.SetPlayerCustomProperties(playerProperties);
-        playerProperties["isReady"] = 0;
-        playerProperties["playerAvatar"] = 0;
-        isReady = false;
+        StartCoroutine(InitializeAfterSync());
+    }
+
+    private IEnumerator InitializeAfterSync()
+    {
+        while (!player.CustomProperties.ContainsKey("isReady") ||
+               !player.CustomProperties.ContainsKey("playerAvatar"))
+        {
+            yield return null;
+        }
+
+        playerProperties["isReady"] = player.CustomProperties["isReady"];
+        playerProperties["playerAvatar"] = player.CustomProperties["playerAvatar"];
+
+        UpdatePlayerItem(player);
+    }
+
+    private void Update()
+    {
+        Debug.Log("Avatar: " + playerProperties["playerAvatar"]);
+        Debug.Log("Ready: " + playerProperties["isReady"]);
     }
 
     public void SetPlayerInfo(Player _player)
@@ -71,7 +86,7 @@ public class PlayerItem : MonoBehaviourPunCallbacks
         {
             playerProperties["playerAvatar"] = (int)playerProperties["playerAvatar"] - 1;
         }
-        PhotonNetwork.SetPlayerCustomProperties(playerProperties);
+        PhotonNetwork.LocalPlayer.SetCustomProperties(playerProperties);
     }
 
     public void OnClickRightArrow()
@@ -84,7 +99,7 @@ public class PlayerItem : MonoBehaviourPunCallbacks
         {
             playerProperties["playerAvatar"] = (int)playerProperties["playerAvatar"] + 1;
         }
-        PhotonNetwork.SetPlayerCustomProperties(playerProperties);
+        PhotonNetwork.LocalPlayer.SetCustomProperties(playerProperties);
     }
 
     public void OnClickReadyButton()
@@ -97,7 +112,7 @@ public class PlayerItem : MonoBehaviourPunCallbacks
         {
             playerProperties["isReady"] = 0;
         }
-        PhotonNetwork.SetPlayerCustomProperties(playerProperties);
+        PhotonNetwork.LocalPlayer.SetCustomProperties(playerProperties);
     }
 
     public override void OnPlayerPropertiesUpdate(Player targetPlayer, Hashtable changedProps)
