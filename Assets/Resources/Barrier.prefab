@@ -13,8 +13,9 @@ GameObject:
   - component: {fileID: 4384559288260102952}
   - component: {fileID: 8675251817978638556}
   - component: {fileID: 5647450100368905330}
-  - component: {fileID: 7288450083154488180}
-  - component: {fileID: -7162244125429774885}
+  - component: {fileID: 8886279818070485972}
+  - component: {fileID: -7682364030524214187}
+  - component: {fileID: 1055422660143315027}
   m_Layer: 0
   m_Name: Barrier
   m_TagString: Untagged
@@ -123,7 +124,7 @@ MonoBehaviour:
   playerShield: {fileID: 4710067885689833721}
   durability: 3
   ability: {fileID: 11400000, guid: c70d655398de45e4186d8efa3a7413d0, type: 2}
---- !u!114 &7288450083154488180
+--- !u!114 &8886279818070485972
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -140,13 +141,13 @@ MonoBehaviour:
   prefixField: -1
   Synchronization: 3
   OwnershipTransfer: 0
-  observableSearch: 0
+  observableSearch: 2
   ObservedComponents:
-  - {fileID: 0}
+  - {fileID: -7682364030524214187}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
---- !u!114 &-7162244125429774885
+--- !u!114 &-7682364030524214187
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -161,4 +162,16 @@ MonoBehaviour:
   m_SynchronizePosition: 1
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 0
-  m_UseLocal: 1
+  m_UseLocal: 0
+--- !u!114 &1055422660143315027
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4710067885689833721}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8458fb318da4cc94b8f806603da5e79d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

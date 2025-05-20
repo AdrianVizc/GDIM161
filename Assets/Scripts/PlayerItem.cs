@@ -50,12 +50,6 @@ public class PlayerItem : MonoBehaviourPunCallbacks
         UpdatePlayerItem(player);
     }
 
-    private void Update()
-    {
-        Debug.Log("Avatar: " + playerProperties["playerAvatar"]);
-        Debug.Log("Ready: " + playerProperties["isReady"]);
-    }
-
     public void SetPlayerInfo(Player _player)
     {        
         playerName.text = _player.NickName;

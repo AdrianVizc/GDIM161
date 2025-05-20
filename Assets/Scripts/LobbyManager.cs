@@ -27,6 +27,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     [SerializeField] private GameObject playButton;
     [SerializeField] private GameObject roomNameErrorText;
     [SerializeField] private string sceneName;
+    [SerializeField] private int amountOfPlayersReadyNeeded = 2;
 
 
     [SerializeField] private RoomItem roomItemPrefab;
@@ -96,7 +97,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
             }
         }
         
-        if (PhotonNetwork.IsMasterClient && allReady && PhotonNetwork.CurrentRoom.PlayerCount >= 2)
+        if (PhotonNetwork.IsMasterClient && allReady && PhotonNetwork.CurrentRoom.PlayerCount >= amountOfPlayersReadyNeeded)
         {
             playButton.SetActive(true);
         }

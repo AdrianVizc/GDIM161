@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2351,8 +2351,8 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 504620164}
-  - {fileID: 1619014682}
   - {fileID: 1809001856}
+  - {fileID: 1619014682}
   - {fileID: 422970619}
   m_Father: {fileID: 1479480164}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4455,6 +4455,7 @@ MonoBehaviour:
   playButton: {fileID: 2047429115}
   roomNameErrorText: {fileID: 420509657}
   sceneName: NewGnomeLand
+  amountOfPlayersReadyNeeded: 1
   roomItemPrefab: {fileID: -7472543136189013338, guid: 2f14ece4a668c9047aa580d7d5b3cef6, type: 3}
   contentObject: {fileID: 1481346559}
   playerItemsList: []
@@ -5772,7 +5773,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2401514512433856601, guid: 4e6c5f85c3fca2449bfb487cd7b95315, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 206.5
+      value: 341.5
       objectReference: {fileID: 0}
     - target: {fileID: 2401514512433856601, guid: 4e6c5f85c3fca2449bfb487cd7b95315, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -5792,7 +5793,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2686027357320073111, guid: 4e6c5f85c3fca2449bfb487cd7b95315, type: 3}
       propertyPath: isButtonActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3064371960943052309, guid: 4e6c5f85c3fca2449bfb487cd7b95315, type: 3}
       propertyPath: abilityName
