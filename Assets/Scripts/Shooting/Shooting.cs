@@ -123,4 +123,14 @@ public class Shooting : MonoBehaviour
         Destroy(bullet);
     }
 
+    public void ReduceShootRate(float rate)
+    {
+        reloadTimer /= rate;
+    }
+
+    public void ResetBulletSpeed(float rate)
+    {
+        reloadTimer *= rate;
+    }
+
 }
