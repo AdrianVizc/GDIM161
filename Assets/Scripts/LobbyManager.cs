@@ -21,6 +21,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     [SerializeField] private GameObject triPanelSpacing;
     [SerializeField] private GameObject backButton;
     [SerializeField] private GameObject editCharacterButton;
+    [SerializeField] private GameObject editCharacterUI;
     [SerializeField] private GameObject leaveRoomButton;
     [SerializeField] private GameObject playerListing;
     [SerializeField] private int maxPlayers;
@@ -57,6 +58,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         loadingScreen.SetActive(false);
         backButton.SetActive(false);
         editCharacterButton.SetActive(false);
+        editCharacterUI.SetActive(false);
         leaveRoomButton.SetActive(false);
         lobbyPanel.SetActive(true);
         roomPanel.SetActive(false);
@@ -166,6 +168,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         lobbyPanel.SetActive(false);
         leaveRoomButton.SetActive(true);
         editCharacterButton.SetActive(true);
+        editCharacterUI.SetActive(true);
         roomPanel.SetActive(true);
         loadingScreen.SetActive(false);
         roomNameText.text = PhotonNetwork.CurrentRoom.Name;
@@ -275,6 +278,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 
         loadingScreen.SetActive(true);
         editCharacterButton.SetActive(false);
+        editCharacterUI.SetActive(false);
         leaveRoomButton.SetActive(false);
 
         loadingScreen.SetActive(true);
@@ -305,6 +309,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     {
         leaveRoomButton.SetActive(true);
         editCharacterButton.SetActive(true);
+        editCharacterUI.SetActive(true);
         backButton.SetActive(false);
 
         triPanelSpacing.transform.localPosition = backPos;
@@ -314,6 +319,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     public void EditCharacter()
     {
         editCharacterButton.SetActive(false);
+        editCharacterUI.SetActive(false);
         leaveRoomButton.SetActive(false);
         backButton.SetActive(true);
 
