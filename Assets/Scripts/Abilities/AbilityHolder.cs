@@ -61,7 +61,7 @@ public class AbilityHolder : MonoBehaviour
                     
                 }
                 break;
-                case AbilityState.active:
+             case AbilityState.active:
                 if (activeTime > 0)
                 {
                     activeTime -= Time.deltaTime;
