@@ -375,4 +375,10 @@ public class Movement : MonoBehaviour
         
     }
 
+    public void Teleport(float tpDist)
+    {
+        Vector3 targetPos = rb.position + mainCamera.transform.forward * tpDist;
+        rb.MovePosition(targetPos);
+    }
+
 }
