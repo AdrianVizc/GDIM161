@@ -20,6 +20,9 @@ TagManager:
   - TrackingBot
   - Tracker
   - Border
+  - Teleport
+  - Overload
+  - Invis
   layers:
   - Default
   - TransparentFX
