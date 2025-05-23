@@ -1998,15 +1998,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2686027357320073111, guid: 4e6c5f85c3fca2449bfb487cd7b95315, type: 3}
       propertyPath: isButtonActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3064371960943052309, guid: 4e6c5f85c3fca2449bfb487cd7b95315, type: 3}
       propertyPath: abilityName
-      value: 
+      value: Invisibility
       objectReference: {fileID: 0}
     - target: {fileID: 3064371960943052309, guid: 4e6c5f85c3fca2449bfb487cd7b95315, type: 3}
       propertyPath: abilityDescription
-      value: 
+      value: Turn invisible for a couple seconds
       objectReference: {fileID: 0}
     - target: {fileID: 6073505096315133997, guid: 4e6c5f85c3fca2449bfb487cd7b95315, type: 3}
       propertyPath: m_Name
@@ -2014,7 +2014,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6073505096315133997, guid: 4e6c5f85c3fca2449bfb487cd7b95315, type: 3}
       propertyPath: m_TagString
-      value: Untagged
+      value: Invis
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5857,11 +5857,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2686027357320073111, guid: 4e6c5f85c3fca2449bfb487cd7b95315, type: 3}
       propertyPath: isButtonActive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3064371960943052309, guid: 4e6c5f85c3fca2449bfb487cd7b95315, type: 3}
+      propertyPath: abilityName
+      value: Teleport
+      objectReference: {fileID: 0}
+    - target: {fileID: 3064371960943052309, guid: 4e6c5f85c3fca2449bfb487cd7b95315, type: 3}
+      propertyPath: abilityDescription
+      value: Instantly teleport in the direction you are looking
       objectReference: {fileID: 0}
     - target: {fileID: 6073505096315133997, guid: 4e6c5f85c3fca2449bfb487cd7b95315, type: 3}
       propertyPath: m_Name
       value: AbilitySelectButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 6073505096315133997, guid: 4e6c5f85c3fca2449bfb487cd7b95315, type: 3}
+      propertyPath: m_TagString
+      value: Teleport
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6210,7 +6222,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2686027357320073111, guid: 4e6c5f85c3fca2449bfb487cd7b95315, type: 3}
       propertyPath: isButtonActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3064371960943052309, guid: 4e6c5f85c3fca2449bfb487cd7b95315, type: 3}
       propertyPath: abilityName
@@ -6223,6 +6235,10 @@ PrefabInstance:
     - target: {fileID: 6073505096315133997, guid: 4e6c5f85c3fca2449bfb487cd7b95315, type: 3}
       propertyPath: m_Name
       value: AbilitySelectButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 6073505096315133997, guid: 4e6c5f85c3fca2449bfb487cd7b95315, type: 3}
+      propertyPath: m_TagString
+      value: Overload
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
