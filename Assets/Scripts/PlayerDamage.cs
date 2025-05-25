@@ -28,7 +28,8 @@ public class PlayerDamage : MonoBehaviourPunCallbacks, IDamageable
 
     public void Death()
     {
-        view.RPC(nameof(RPC_Death), view.Owner);   
+        view.RPC(nameof(RPC_Death), view.Owner);
+        Debug.Log("before rpcdeath");
     }
     
     public void OnChildCollision(Collision collision)
@@ -47,7 +48,13 @@ public class PlayerDamage : MonoBehaviourPunCallbacks, IDamageable
     {
         Die();
         if(view.Owner != info.Sender)
-        PlayerDamage.Find(info.Sender).GetKill();
+        {
+            PlayerDamage.Find(info.Sender).GetKill();
+            Debug.Log(info.Sender);
+        }
+        
+
+        Debug.Log("rpcdeath");
     }
 
     public void Die()

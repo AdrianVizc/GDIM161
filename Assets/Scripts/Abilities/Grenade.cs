@@ -1,3 +1,4 @@
+using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -43,13 +44,13 @@ public class Grenade : MonoBehaviour
         foreach (Collider collider in explosionRange)
         {
             if (collider.CompareTag("Player"))
-            {
-                //kill person logic
-                Debug.Log("Death");
+            {          
+                collider.gameObject.GetComponentInParent<IDamageable>()?.Death();
+                Debug.Log("Hit by: " + collider.name);
             }
         }
 
-        Destroy(gameObject);
+        PhotonNetwork.Destroy(gameObject);
     }
 
     private void OnDrawGizmos()

@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Grenade
   m_EditorClassIdentifier: 
   name: Grenade
-  cooldownTime: 15
+  cooldownTime: 10
   activeTime: 5

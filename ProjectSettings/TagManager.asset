@@ -23,6 +23,7 @@ TagManager:
   - Teleport
   - Overload
   - Invis
+  - Grenade
   layers:
   - Default
   - TransparentFX
