@@ -64,8 +64,7 @@ public class AbilityButtonManager : MonoBehaviour
 
     public void SetAbilitySelectPosition(Vector3 position)
     {
-        targetPosition = position;
-        Debug.Log(targetPosition);        
+        targetPosition = position;       
     }
 
     public void ClickedAbilitySlot(bool x)

@@ -1,3 +1,4 @@
+using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,15 +6,19 @@ using UnityEngine;
 [CreateAssetMenu]
 public class InvisAbility : Ability
 {
+    private Invis invisScript;
+
     public override void Activate(GameObject parent)
     {
-        Invis doInvis = parent.GetComponentInChildren<Invis>();
-        doInvis.Invisible();
+        InvisForPhotonView invisForPhotonView = parent.GetComponentInParent<InvisForPhotonView>();
+        PhotonView photonView = invisForPhotonView.GetComponent<PhotonView>();
+        photonView.RPC("RPCInvisible", RpcTarget.AllBuffered);
     }
 
     public override void BeginCooldown(GameObject parent)
     {
-        Invis doInvis = parent.GetComponentInChildren<Invis>();
-        doInvis.StopInvisible();
+        InvisForPhotonView invisForPhotonView = parent.GetComponentInParent<InvisForPhotonView>();
+        PhotonView photonView = invisForPhotonView.GetComponent<PhotonView>();
+        photonView.RPC("RPCStopInvisible", RpcTarget.AllBuffered);
     }
 }
