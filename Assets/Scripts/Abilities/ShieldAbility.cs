@@ -1,3 +1,4 @@
+using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,8 +17,11 @@ public class ShieldAbility : Ability
         //barrier.Show();
         //barrier.SetDurability(3);
         //Debug.Log("Health: " + 3);
+
         ObjectSpawner spawnShield = GameObject.Find("Shield").GetComponent<ObjectSpawner>();
         spawnShield.Spawn();
+
+        
     }
 
     public override void BeginCooldown(GameObject parent)

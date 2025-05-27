@@ -19,10 +19,13 @@ public class Invis : MonoBehaviour
 
     void Update()
     {
-        if (inputCheckEnabled && invisEnabled && 
-            (Input.GetKeyDown(KeyCode.Mouse0) || Input.GetKeyDown(KeyCode.Q) || Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.R)))
+        if (photonView.IsMine)
         {
-            photonView.RPC("RPCStopInvisible", RpcTarget.AllBuffered);
+            if (inputCheckEnabled && invisEnabled &&
+            (Input.GetKeyDown(KeyCode.Mouse0) || Input.GetKeyDown(KeyCode.Q) || Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.R)))
+            {
+                photonView.RPC("RPCStopInvisible", RpcTarget.All, photonView.ViewID);
+            }
         }
     }
 

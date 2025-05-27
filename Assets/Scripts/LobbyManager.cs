@@ -48,7 +48,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 
     private List<string> namesList = new List<string>();
 
-    public bool playClicked;
+    private bool playClicked;
     private bool allReady;
 
     private void Start()

@@ -67,7 +67,7 @@ public class AbilityToPlayer : MonoBehaviour
         //Debug.Log("ABILITY 3: " + PlayerPrefs.GetString("Slot3"));
         //Debug.Log("OWNER: " + player.name);
 
-        if (PlayerPrefs.HasKey("Slot1"))
+        /*if (PlayerPrefs.HasKey("Slot1")) //Moved to "ConnectToServer" Script
         {
             PlayerPrefs.DeleteKey("Slot1");
         }
@@ -82,6 +82,6 @@ public class AbilityToPlayer : MonoBehaviour
         if (PlayerPrefs.HasKey("Ready"))
         {
             PlayerPrefs.DeleteKey("Ready");
-        }
+        }*/
     }
 }

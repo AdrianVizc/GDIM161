@@ -1,3 +1,4 @@
+using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,6 +13,8 @@ public class AbilityHolder : MonoBehaviour
     private bool pressedFirst = false;
     private float lastPressedTime;
 
+    PhotonView photonView;
+
     enum AbilityState
     {
         ready,
@@ -22,7 +25,16 @@ public class AbilityHolder : MonoBehaviour
 
     public KeyCode key;
 
-    // Update is called once per frame
+    private void Start()
+    {
+        photonView = GetComponentInParent<PhotonView>();
+
+        if (!photonView.IsMine)
+        {
+            this.enabled = false;
+        }
+    }
+
     void Update()
     {
         if (InGameUI.globalInputLock)

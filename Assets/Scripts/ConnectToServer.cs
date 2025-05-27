@@ -17,6 +17,23 @@ public class ConnectToServer : MonoBehaviourPunCallbacks
 
     private void Start()
     {
+        if (PlayerPrefs.HasKey("Slot1"))
+        {
+            PlayerPrefs.DeleteKey("Slot1");
+        }
+        if (PlayerPrefs.HasKey("Slot2"))
+        {
+            PlayerPrefs.DeleteKey("Slot2");
+        }
+        if (PlayerPrefs.HasKey("Slot3"))
+        {
+            PlayerPrefs.DeleteKey("Slot3");
+        }
+        if (PlayerPrefs.HasKey("Ready"))
+        {
+            PlayerPrefs.DeleteKey("Ready");
+        }
+
         noEnteredNameText = usernameInputText.text;
 
         if(PlayerPrefs.HasKey("NickName"))

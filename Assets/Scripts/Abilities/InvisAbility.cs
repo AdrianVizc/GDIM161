@@ -6,19 +6,18 @@ using UnityEngine;
 [CreateAssetMenu]
 public class InvisAbility : Ability
 {
-    private Invis invisScript;
 
     public override void Activate(GameObject parent)
     {
         InvisForPhotonView invisForPhotonView = parent.GetComponentInParent<InvisForPhotonView>();
         PhotonView photonView = invisForPhotonView.GetComponent<PhotonView>();
-        photonView.RPC("RPCInvisible", RpcTarget.AllBuffered);
+        photonView.RPC("RPCInvisible", RpcTarget.All, photonView.ViewID);
     }
 
     public override void BeginCooldown(GameObject parent)
     {
         InvisForPhotonView invisForPhotonView = parent.GetComponentInParent<InvisForPhotonView>();
         PhotonView photonView = invisForPhotonView.GetComponent<PhotonView>();
-        photonView.RPC("RPCStopInvisible", RpcTarget.AllBuffered);
+        photonView.RPC("RPCStopInvisible", RpcTarget.All, photonView.ViewID);
     }
 }

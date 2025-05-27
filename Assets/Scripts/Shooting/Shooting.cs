@@ -13,14 +13,14 @@ public class Shooting : MonoBehaviour
     public GameObject bulletPrefab;
 
     [SerializeField]
-    private float reloadTimer;
+    public float reloadTimer;
 
     [SerializeField]
     private float bulletVelocity = 30f;
 
     private float bulletLifeTime = 5f;
 
-    private float timer;
+    public float timer;
 
     private Camera playerCam;
 
