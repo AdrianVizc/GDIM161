@@ -25,6 +25,11 @@ public class PlayerItem : MonoBehaviourPunCallbacks
     [SerializeField] private Sprite[] readySprites;
 
     Player player;
+    private GameObject selectAbilityButton;
+    private GameObject selectAbilityButtonUI;
+    LobbyManager lobbyManager;
+
+    private bool firstTimeReady;
 
     private void Awake()
     {
@@ -34,6 +39,36 @@ public class PlayerItem : MonoBehaviourPunCallbacks
     private void Start()
     {
         StartCoroutine(InitializeAfterSync());
+
+        firstTimeReady = false;
+        playerProperties["isReady"] = 0;
+        selectAbilityButton = GameObject.Find("EditCharacterUI");
+        selectAbilityButtonUI = GameObject.Find("EditCharacterButton");
+        lobbyManager = GameObject.Find("LobbyManager").GetComponent<LobbyManager>();
+        PhotonNetwork.LocalPlayer.SetCustomProperties(playerProperties);
+    }
+
+    private void Update()
+    {
+        if (firstTimeReady) 
+        {
+            if ((int)playerProperties["isReady"] == 1)
+            {
+                leftArrowButton.SetActive(false);
+                rightArrowButton.SetActive(false);
+                selectAbilityButton.SetActive(false);
+                selectAbilityButtonUI.SetActive(false);
+                lobbyManager.isReady = true;
+            }
+            else if ((int)playerProperties["isReady"] == 0)
+            {
+                leftArrowButton.SetActive(true);
+                rightArrowButton.SetActive(true);
+                selectAbilityButton.SetActive(true);
+                selectAbilityButtonUI.SetActive(true);
+                lobbyManager.isReady = false;
+            }
+        }        
     }
 
     private IEnumerator InitializeAfterSync()
@@ -62,6 +97,7 @@ public class PlayerItem : MonoBehaviourPunCallbacks
         backgroundImage.color = highlightColor;
         leftArrowButton.SetActive(true);
         rightArrowButton.SetActive(true);
+
         readyButton.SetActive(true);
     }
 
@@ -98,6 +134,7 @@ public class PlayerItem : MonoBehaviourPunCallbacks
 
     public void OnClickReadyButton()
     {
+        firstTimeReady = true;
         if ((int)playerProperties["isReady"] == 0)
         {
             playerProperties["isReady"] = 1;

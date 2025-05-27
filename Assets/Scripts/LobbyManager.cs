@@ -50,6 +50,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 
     private bool playClicked;
     private bool allReady;
+    public bool isReady;
 
     private void Start()
     {
@@ -68,10 +69,12 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         backPos = new Vector2(0, 1000);
 
         playClicked = false;
+        isReady = false;
     }
 
     private void Update()
-    {        
+    {
+        Debug.Log(isReady);
         if (PhotonNetwork.InRoom)
         {
             int totalPlayersInRoom = PhotonNetwork.CurrentRoom.PlayerCount;
@@ -179,6 +182,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         triPanelSpacing.transform.localPosition = backPos;
 
         UpdatePlayerList();
+        isReady = false;
     }
 
     public override void OnRoomListUpdate(List<RoomInfo> roomList)
@@ -332,6 +336,9 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 
     private void UpdatePlayerList()
     {
+        editCharacterButton.SetActive(true);
+        editCharacterUI.SetActive(true);
+
         foreach (PlayerItem item in playerItemsList)
         {
             Destroy(item.gameObject);
@@ -363,6 +370,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
             PhotonNetwork.CurrentRoom.IsVisible = false;
         }
         UpdatePlayerList();
+        isReady = false;
     }
 
     public override void OnPlayerLeftRoom(Player otherPlayer)
@@ -372,5 +380,6 @@ public class LobbyManager : MonoBehaviourPunCallbacks
             PhotonNetwork.CurrentRoom.IsVisible = true;
         }
         UpdatePlayerList();
+        isReady = false;
     }
 }
