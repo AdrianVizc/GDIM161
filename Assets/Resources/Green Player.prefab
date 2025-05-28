@@ -810,6 +810,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerPV: {fileID: 6123903604381401751}
   text: {fileID: 5331500033190256271}
+  textFacecam: {fileID: 0}
 --- !u!1 &2076418443613091168
 GameObject:
   m_ObjectHideFlags: 0
