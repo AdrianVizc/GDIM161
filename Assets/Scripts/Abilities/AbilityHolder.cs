@@ -44,33 +44,11 @@ public class AbilityHolder : MonoBehaviour
         switch (state)
         {
             case AbilityState.ready:
-                if (Input.GetKeyDown(key) && ability.name != "Double Jump")
+                if (Input.GetKeyDown(key))
                 {
                     ability.Activate(gameObject);
                     state = AbilityState.active;
                     activeTime = ability.activeTime;
-                }
-                if (Input.GetKeyDown(key) && ability.name == "Double Jump")
-                {
-                    if (pressedFirst)
-                    {
-                        bool pressedTwice = Time.time - lastPressedTime <= delay;
-
-                        if (pressedTwice)
-                        {
-                            ability.Activate(gameObject);
-                            state = AbilityState.active;
-                            activeTime = ability.activeTime;
-                            pressedFirst = false;
-                        }
-                    }
-                    else
-                    {
-                        pressedFirst = true;
-                    }
-
-                    lastPressedTime = Time.time;
-                    
                 }
                 break;
              case AbilityState.active:

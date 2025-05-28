@@ -13,6 +13,10 @@ public class DoubleJump : Ability
         if (movement.canDoubleJump && !movement.grounded)
         {
             movement.canDoubleJump = false;
+
+            //Reset y-velocity once again, for consistent jump force
+            rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
+
             rb.AddForce(rb.transform.up * 16f, ForceMode.Impulse);
             if (PlayerPrefs.HasKey("DoubleJump"))
             {
