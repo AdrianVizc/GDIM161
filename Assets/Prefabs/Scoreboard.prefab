@@ -233,7 +233,7 @@ MonoBehaviour:
   m_layoutScalingMode: 1
   m_fallbackDPI: 96
   m_referenceDPI: 150
-  m_hitTestBehavior: 0
+  m_hitTestBehavior: 3
   m_eventPoolingMode: 0
 --- !u!1 &2173102739121507364
 GameObject:
