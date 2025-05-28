@@ -8,8 +8,8 @@ public class CameraFollowMouse : MonoBehaviour
     private RotationAxes axes = RotationAxes.MouseXAndY;
 
     [Header("Player Sensitivity")]
-    [SerializeField] private float sensitivityX = 3F;
-    [SerializeField] private float sensitivityY = 3F;
+    [SerializeField] public float sensitivityX = 3F;
+    [SerializeField] public float sensitivityY = 3F;
 
     [Header("Gnome Model")]
     [SerializeField] private GameObject gnome;
