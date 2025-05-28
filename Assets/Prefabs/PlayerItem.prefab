@@ -921,6 +921,10 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 5fb50f3b85acb6e489798cd5bc7c8929, type: 3}
   - {fileID: 21300000, guid: db9d490391e95e74eade22b368cf8d56, type: 3}
   - {fileID: 21300000, guid: 692b2eb414be2db4985f708b5e02f30b, type: 3}
+  gnomeMaterials:
+  - {fileID: 2100000, guid: b6d5fddf48c570b419f089c478716cce, type: 2}
+  - {fileID: 2100000, guid: a1428ebc91725eb4bb568748cdc4cefa, type: 2}
+  - {fileID: 2100000, guid: ad7ce727a68a61f4897679b81da7b344, type: 2}
   readyImage: {fileID: 1395383582413016804}
   readySprites:
   - {fileID: -419721031, guid: 821cce4ed5ce8fa4094d65d3bfc9134b, type: 3}

@@ -20,6 +20,7 @@ public class PlayerItem : MonoBehaviourPunCallbacks
     Hashtable playerProperties = new Hashtable();
     [SerializeField] private Image playerAvatar;    
     [SerializeField] private Sprite[] avatars;
+    [SerializeField] private Material[] gnomeMaterials;
 
     [SerializeField] private Image readyImage;
     [SerializeField] private Sprite[] readySprites;
@@ -31,6 +32,11 @@ public class PlayerItem : MonoBehaviourPunCallbacks
 
     private bool firstTimeReady;
 
+    private GameObject gnomeModel;
+    private GameObject gnomeModelMaterial;
+    private Material[] currMaterials;
+    private int gnomeIndex = 0;
+
     private void Awake()
     {
         backgroundImage = GetComponent<Image>();
@@ -40,6 +46,25 @@ public class PlayerItem : MonoBehaviourPunCallbacks
     {
         StartCoroutine(InitializeAfterSync());
 
+        gnomeModel = GameObject.FindGameObjectWithTag("ui_gnome_model");
+        foreach(Transform child in gnomeModel.transform)
+        {
+            if(child.name == "GnomeIdle")
+            {
+                foreach(Transform subchild in child)
+                {
+                    if(subchild.name == "Icosphere.001")
+                    {
+                        currMaterials = subchild.gameObject.GetComponent<SkinnedMeshRenderer>().materials;
+                        gnomeModelMaterial = subchild.gameObject;
+                        // currMaterials[3] = gnomeMaterials[0];
+                        // subchild.gameObject.GetComponent<SkinnedMeshRenderer>().materials = gnomeMaterials;
+                        break;
+                    }
+                }
+                break;
+            }
+        }
         firstTimeReady = false;
         playerProperties["isReady"] = 0;
         selectAbilityButton = GameObject.Find("EditCharacterUI");
@@ -114,10 +139,15 @@ public class PlayerItem : MonoBehaviourPunCallbacks
         if ((int)playerProperties["playerAvatar"] == 0)
         {
             playerProperties["playerAvatar"] = avatars.Length - 1;
+            gnomeIndex = gnomeMaterials.Length - 1;
+            currMaterials[3] = gnomeMaterials[gnomeIndex];
+            gnomeModelMaterial.gameObject.GetComponent<SkinnedMeshRenderer>().materials = currMaterials;
         }
         else
         {
             playerProperties["playerAvatar"] = (int)playerProperties["playerAvatar"] - 1;
+            currMaterials[3] = gnomeMaterials[--gnomeIndex];
+            gnomeModelMaterial.gameObject.GetComponent<SkinnedMeshRenderer>().materials = currMaterials;
         }
         PhotonNetwork.LocalPlayer.SetCustomProperties(playerProperties);
     }
@@ -127,10 +157,15 @@ public class PlayerItem : MonoBehaviourPunCallbacks
         if ((int)playerProperties["playerAvatar"] == avatars.Length - 1)
         {
             playerProperties["playerAvatar"] = 0;
+            gnomeIndex = 0;
+            currMaterials[3] = gnomeMaterials[gnomeIndex];
+            gnomeModelMaterial.gameObject.GetComponent<SkinnedMeshRenderer>().materials = currMaterials;
         }
         else
         {
             playerProperties["playerAvatar"] = (int)playerProperties["playerAvatar"] + 1;
+            currMaterials[3] = gnomeMaterials[++gnomeIndex];
+            gnomeModelMaterial.gameObject.GetComponent<SkinnedMeshRenderer>().materials = currMaterials;
         }
         PhotonNetwork.LocalPlayer.SetCustomProperties(playerProperties);
     }
