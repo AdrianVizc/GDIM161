@@ -24,6 +24,8 @@ TagManager:
   - Overload
   - Invis
   - Grenade
+  - ui_key
+  - ui_spacebar
   layers:
   - Default
   - TransparentFX
