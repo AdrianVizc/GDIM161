@@ -12,6 +12,8 @@ public class UsernameDisplay : MonoBehaviour
 
     private void Start()
     {
+        playerPV = GetComponentInParent<PhotonView>();
+
         text.text = playerPV.Owner.NickName;
         textFacecam.text = playerPV.Owner.NickName;
     }
