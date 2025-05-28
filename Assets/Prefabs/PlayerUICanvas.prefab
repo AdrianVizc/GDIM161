@@ -623,7 +623,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30b5bc34e03734ee49f044caba90a384, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_rivePanel: {fileID: 0}
+  m_rivePanel: {fileID: 7810922600152200089}
   m_asset: {fileID: -4516626237390682484, guid: 6c899c1a79b4f25408d4eb855eabb565, type: 3}
   m_artboardName: Artboard
   m_stateMachineName: State Machine 1
@@ -635,7 +635,7 @@ MonoBehaviour:
   m_layoutScalingMode: 1
   m_fallbackDPI: 96
   m_referenceDPI: 150
-  m_hitTestBehavior: 0
+  m_hitTestBehavior: 3
   m_eventPoolingMode: 0
 --- !u!1 &4833965444323644018
 GameObject:
@@ -806,7 +806,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30b5bc34e03734ee49f044caba90a384, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_rivePanel: {fileID: 0}
+  m_rivePanel: {fileID: 6562951170559035912}
   m_asset: {fileID: -4516626237390682484, guid: 3747507bec475cb4db834ea8b7270c58, type: 3}
   m_artboardName: Artboard
   m_stateMachineName: State Machine 1
@@ -818,7 +818,7 @@ MonoBehaviour:
   m_layoutScalingMode: 1
   m_fallbackDPI: 96
   m_referenceDPI: 150
-  m_hitTestBehavior: 0
+  m_hitTestBehavior: 3
   m_eventPoolingMode: 0
 --- !u!1 &6419157149960880289
 GameObject:
@@ -944,7 +944,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30b5bc34e03734ee49f044caba90a384, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_rivePanel: {fileID: 0}
+  m_rivePanel: {fileID: 8927770496385270394}
   m_asset: {fileID: -4516626237390682484, guid: 4ebc86772cf787145bb6ccd4f4304d9d, type: 3}
   m_artboardName: Artboard
   m_stateMachineName: State Machine 1
@@ -956,7 +956,7 @@ MonoBehaviour:
   m_layoutScalingMode: 1
   m_fallbackDPI: 96
   m_referenceDPI: 150
-  m_hitTestBehavior: 0
+  m_hitTestBehavior: 3
   m_eventPoolingMode: 0
 --- !u!1 &7126095367515262063
 GameObject:
