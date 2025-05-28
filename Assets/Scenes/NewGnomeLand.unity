@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -876,6 +876,7 @@ GameObject:
   - component: {fileID: 191869580}
   - component: {fileID: 191869579}
   - component: {fileID: 191869578}
+  - component: {fileID: 191869581}
   m_Layer: 5
   m_Name: SettingsMenuPanel
   m_TagString: Untagged
@@ -945,6 +946,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 1029.692, y: 686.609}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!225 &191869581
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 191869577}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &193555795
 GameObject:
   m_ObjectHideFlags: 0
@@ -5642,6 +5655,7 @@ GameObject:
   - component: {fileID: 1775211541}
   - component: {fileID: 1775211543}
   - component: {fileID: 1775211542}
+  - component: {fileID: 1775211544}
   m_Layer: 5
   m_Name: PauseMenu
   m_TagString: Untagged
@@ -5709,6 +5723,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1775211540}
   m_CullTransparentMesh: 1
+--- !u!225 &1775211544
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1775211540}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1789216117
 GameObject:
   m_ObjectHideFlags: 0
@@ -6189,10 +6215,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb21e172fd3d81742ac96a7c8584a0f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pauseMenuGameObject: {fileID: 1775211540}
   settingsMenuButton: {fileID: 872275453}
   mainMenuButton: {fileID: 1861827952}
-  settingsMenuPanel: {fileID: 191869577}
 --- !u!114 &1925056158
 MonoBehaviour:
   m_ObjectHideFlags: 0
