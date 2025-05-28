@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 public class Multishot : MonoBehaviour
 {
@@ -45,7 +46,7 @@ public class Multishot : MonoBehaviour
             hit.collider.gameObject.GetComponentInParent<IDamageable>()?.Death();
 
             // Impact effect
-            Instantiate(shootScript.ImpactParticleSystem, hit.point, Quaternion.LookRotation(hit.normal));
+            PhotonNetwork.Instantiate(shootScript.ImpactParticleSystem.name, hit.point, Quaternion.LookRotation(hit.normal));
             hitPoint = hit.point;
         }
         else
@@ -54,7 +55,8 @@ public class Multishot : MonoBehaviour
         }
 
         // Bullet trail
-        TrailRenderer trail = Instantiate(shootScript.BulletTrail, shootingPoint.position, Quaternion.identity);
+        GameObject trailObject = PhotonNetwork.Instantiate(shootScript.BulletTrail.name, shootingPoint.position, Quaternion.identity);
+        TrailRenderer trail = trailObject.GetComponent<TrailRenderer>();
         shootScript.StartCoroutine(SpawnTrail(trail, hitPoint));
     }
 

@@ -74,17 +74,19 @@ public class Shooting : MonoBehaviour
             }
 
             // Impact particles
-            Instantiate(ImpactParticleSystem, hit.point, Quaternion.LookRotation(hit.normal));
+            PhotonNetwork.Instantiate(ImpactParticleSystem.name, hit.point, Quaternion.LookRotation(hit.normal));
 
             // Trail to hit
-            TrailRenderer trail = Instantiate(BulletTrail, shootingPoint.position, Quaternion.identity);
+            GameObject trailObject = PhotonNetwork.Instantiate(BulletTrail.name, shootingPoint.position, Quaternion.identity);
+            TrailRenderer trail = trailObject.GetComponent<TrailRenderer>();
             StartCoroutine(SpawnTrail(trail, hit.point));
         }
         else
         {
             // Missed — shoot trail into the distance
             targetPoint = trace.GetPoint(100f);
-            TrailRenderer trail = Instantiate(BulletTrail, shootingPoint.position, Quaternion.identity);
+            GameObject trailObject = PhotonNetwork.Instantiate(BulletTrail.name, shootingPoint.position, Quaternion.identity);
+            TrailRenderer trail = trailObject.GetComponent<TrailRenderer>();
             StartCoroutine(SpawnTrail(trail, targetPoint));
         }
     }

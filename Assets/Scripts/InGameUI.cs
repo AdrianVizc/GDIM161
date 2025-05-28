@@ -8,13 +8,13 @@ using Photon.Realtime;
 
 public class InGameUI : MonoBehaviourPunCallbacks
 {
-    [SerializeField] private GameObject pauseMenuGameObject;
     [SerializeField] private GameObject settingsMenuButton;
     [SerializeField] private GameObject mainMenuButton;
-    [SerializeField] private GameObject settingsMenuPanel;
 
     private CameraFollowMouse cameraFollowMouse;
     private WinnerMenu winnerMenu;
+    private CanvasGroup pauseMenuCanvasGroup;
+    private CanvasGroup settingsMenuPanelCanvasGroup;
 
     private bool isPauseMenuOn;
 
@@ -22,8 +22,14 @@ public class InGameUI : MonoBehaviourPunCallbacks
 
     private void Start()
     {
-        pauseMenuGameObject.SetActive(false);        
-        settingsMenuPanel.SetActive(false);
+        pauseMenuCanvasGroup = GameObject.Find("PauseMenu").GetComponent<CanvasGroup>();
+        settingsMenuPanelCanvasGroup = GameObject.Find("SettingsMenuPanel").GetComponent<CanvasGroup>();
+        pauseMenuCanvasGroup.alpha = 0;
+        pauseMenuCanvasGroup.interactable = false;
+        pauseMenuCanvasGroup.blocksRaycasts = false;
+        settingsMenuPanelCanvasGroup.alpha = 0;
+        settingsMenuPanelCanvasGroup.interactable = false;
+        settingsMenuPanelCanvasGroup.blocksRaycasts = false; 
         globalInputLock = false;
         isPauseMenuOn = false;
     }
@@ -41,7 +47,9 @@ public class InGameUI : MonoBehaviourPunCallbacks
             cameraFollowMouse = GameObject.Find("Main Camera").GetComponent<CameraFollowMouse>();
             if (!isPauseMenuOn)
             {
-                pauseMenuGameObject.SetActive(true);
+                pauseMenuCanvasGroup.alpha = 1;
+                pauseMenuCanvasGroup.interactable = true;
+                pauseMenuCanvasGroup.blocksRaycasts = true;
                 isPauseMenuOn = true;
 
                 globalInputLock = true;
@@ -52,7 +60,9 @@ public class InGameUI : MonoBehaviourPunCallbacks
             }
             else
             {
-                pauseMenuGameObject.SetActive(false);
+                pauseMenuCanvasGroup.alpha = 0;
+                pauseMenuCanvasGroup.interactable = false;
+                pauseMenuCanvasGroup.blocksRaycasts = false;
                 isPauseMenuOn = false;
 
                 globalInputLock = false;
@@ -69,7 +79,9 @@ public class InGameUI : MonoBehaviourPunCallbacks
         settingsMenuButton.SetActive(false);
         mainMenuButton.SetActive(false);
 
-        settingsMenuPanel.SetActive(true);
+        settingsMenuPanelCanvasGroup.alpha = 1;
+        settingsMenuPanelCanvasGroup.interactable = true;
+        settingsMenuPanelCanvasGroup.blocksRaycasts = true;
     }
 
     public void CloseSettingsPanelButton()
@@ -77,7 +89,9 @@ public class InGameUI : MonoBehaviourPunCallbacks
         settingsMenuButton.SetActive(true);
         mainMenuButton.SetActive(true);
 
-        settingsMenuPanel.SetActive(false);
+        settingsMenuPanelCanvasGroup.alpha = 0;
+        settingsMenuPanelCanvasGroup.interactable = false;
+        settingsMenuPanelCanvasGroup.blocksRaycasts = false;
     }
 
     public void MainMenuButton()
