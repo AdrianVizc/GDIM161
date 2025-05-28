@@ -34,6 +34,7 @@ public class Invis : MonoBehaviour
         objRender.enabled = false;
         invisEnabled = true;
         StartCoroutine(EnableInputCheckNextFrame());
+        Debug.Log("INVIS");
     }
 
     IEnumerator EnableInputCheckNextFrame()
@@ -46,5 +47,7 @@ public class Invis : MonoBehaviour
     {
         objRender.enabled = true;
         invisEnabled = false;
+        inputCheckEnabled = false;
+        Debug.Log("NOT INVIS");
     }
 }
