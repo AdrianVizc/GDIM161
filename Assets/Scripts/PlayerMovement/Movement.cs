@@ -173,7 +173,7 @@ public class Movement : MonoBehaviour
         {
             if (!isInputMoving)
             {
-                rb.drag = 25f;
+                rb.drag = 45f;
             }
             else
             {
