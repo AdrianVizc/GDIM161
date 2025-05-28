@@ -168,7 +168,6 @@ MonoBehaviour:
   jumpForce: 16
   canDoubleJump: 0
   spaceAgain: 0
-  staminaBar: {fileID: 0}
   playerHeight: 2
   groundLayer:
     serializedVersion: 2
@@ -178,6 +177,7 @@ MonoBehaviour:
   maxSlopeAngle: 40
   jumpkey: 32
   sprintKey: 304
+  animator: {fileID: 0}
   playerShield: {fileID: 4111518030631831006}
   explosionAudio: {fileID: 8366188525886961915}
   state: 0
@@ -197,6 +197,7 @@ MonoBehaviour:
   slideForce: 350
   slideYScale: 0.5
   slideKey: 306
+  animator: {fileID: 0}
 --- !u!114 &3443560365244335146
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -213,6 +214,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 318310983445593299, guid: 6ce7f990e4451894b9d54888c1b108f5, type: 3}
   reloadTimer: 1
   bulletVelocity: 50
+  timer: 0
 --- !u!114 &1982902666728735694
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -456,7 +458,6 @@ MonoBehaviour:
   previewObject: {fileID: 0}
   realObject: {fileID: 2777086798233706799, guid: 48e6363711860ce4eabef2e7a67137dd, type: 3}
   tempObject: {fileID: 2777086798233706799, guid: e45d91ff72e311b4b9e401852e489433, type: 3}
-  ground: 0
   offset: 0
   placementReach: 10
   materials:
@@ -660,6 +661,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerShield: {fileID: 4111518030631831006}
   durability: 3
+  ability: {fileID: 0}
 --- !u!1 &5260260867499821343
 GameObject:
   m_ObjectHideFlags: 0
@@ -741,7 +743,6 @@ MonoBehaviour:
   previewObject: {fileID: 0}
   realObject: {fileID: 4128629997329762016, guid: e57a4bf1c1b164b4abae0dc80f0a28c2, type: 3}
   tempObject: {fileID: 4128629997329762016, guid: ff8132b71843f484c95a61909edd0737, type: 3}
-  ground: 0
   offset: 0.25
   placementReach: 5
   materials:
@@ -810,7 +811,6 @@ MonoBehaviour:
   previewObject: {fileID: 0}
   realObject: {fileID: 4030810809374194481, guid: 24a559ccf93425147b83d3f3145ea09d, type: 3}
   tempObject: {fileID: 8790792283479184981, guid: 588fb06b7820c6847b1144d071f40ac9, type: 3}
-  ground: 0
   offset: 1.5
   placementReach: 10
   materials:
@@ -828,6 +828,7 @@ GameObject:
   - component: {fileID: 7194585851064416755}
   - component: {fileID: 504495273860640273}
   - component: {fileID: 8378926149518484202}
+  - component: {fileID: 7716067501306101313}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -929,3 +930,48 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sensitivityX: 3
   sensitivityY: 3
+  gnome: {fileID: 0}
+--- !u!114 &7716067501306101313
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7793487947987882757}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_RenderShadows: 1
+  m_RequiresDepthTextureOption: 2
+  m_RequiresOpaqueTextureOption: 2
+  m_CameraType: 0
+  m_Cameras: []
+  m_RendererIndex: -1
+  m_VolumeLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  m_VolumeTrigger: {fileID: 0}
+  m_VolumeFrameworkUpdateModeOption: 2
+  m_RenderPostProcessing: 0
+  m_Antialiasing: 0
+  m_AntialiasingQuality: 2
+  m_StopNaN: 0
+  m_Dithering: 0
+  m_ClearDepth: 1
+  m_AllowXRRendering: 1
+  m_AllowHDROutput: 1
+  m_UseScreenCoordOverride: 0
+  m_ScreenSizeOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_ScreenCoordScaleBias: {x: 0, y: 0, z: 0, w: 0}
+  m_RequiresDepthTexture: 0
+  m_RequiresColorTexture: 0
+  m_Version: 2
+  m_TaaSettings:
+    quality: 3
+    frameInfluence: 0.1
+    jitterScale: 1
+    mipBias: 0
+    varianceClampScale: 0.9
+    contrastAdaptiveSharpening: 0
