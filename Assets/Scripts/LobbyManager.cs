@@ -51,6 +51,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     private bool playClicked;
     private bool allReady;
     public bool isReady;
+    public bool triPanelSpacingIsShown;
 
     private void Start()
     {
@@ -70,6 +71,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 
         playClicked = false;
         isReady = false;
+        triPanelSpacingIsShown = false;
     }
 
     private void Update()
@@ -320,6 +322,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         backButton.SetActive(false);
 
         triPanelSpacing.transform.localPosition = backPos;
+        triPanelSpacingIsShown = false;
         playerListing.transform.localPosition = frontPos;
     }
 
@@ -331,6 +334,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         backButton.SetActive(true);
 
         triPanelSpacing.transform.localPosition = frontPos;
+        triPanelSpacingIsShown = true;
         playerListing.transform.localPosition = backPos;
     }
 

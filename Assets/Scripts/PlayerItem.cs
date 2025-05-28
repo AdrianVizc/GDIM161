@@ -64,8 +64,11 @@ public class PlayerItem : MonoBehaviourPunCallbacks
             {
                 leftArrowButton.SetActive(true);
                 rightArrowButton.SetActive(true);
-                selectAbilityButton.SetActive(true);
-                selectAbilityButtonUI.SetActive(true);
+                if (!lobbyManager.triPanelSpacingIsShown)
+                {
+                    selectAbilityButton.SetActive(true);
+                    selectAbilityButtonUI.SetActive(true);
+                }                
                 lobbyManager.isReady = false;
             }
         }        
