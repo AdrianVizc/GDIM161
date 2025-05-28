@@ -26,6 +26,7 @@ TagManager:
   - Grenade
   - ui_key
   - ui_spacebar
+  - ui_gnome_model
   layers:
   - Default
   - TransparentFX
