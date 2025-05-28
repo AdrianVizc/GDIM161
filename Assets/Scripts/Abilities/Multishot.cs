@@ -5,75 +5,72 @@ using UnityEngine;
 public class Multishot : MonoBehaviour
 {
     [SerializeField] private float multishotAngle = 10f;
-    [SerializeField] private float bulletVelocity = 30f;
 
-    private GameObject bulletPrefab;
     private Shooting shootScript;
-    private float bulletLifeTime = 5f;
     private Camera playerCam;
     private Transform shootingPoint;
 
     private void Start()
     {
         shootScript = this.transform.root.GetComponentInChildren<Shooting>();
-        //Debug.Log(shootScript);
-        bulletPrefab = shootScript.bulletPrefab;
         playerCam = Camera.main;
-        shootingPoint = GameObject.Find("ShootingPoint").transform;
+        shootingPoint = GameObject.Find("ShootingPoint")?.transform;
+
+        if (shootingPoint == null)
+            Debug.LogError("Multishot: ShootingPoint not found.");
     }
 
     public void DoMultishot()
     {
-        Ray trace = playerCam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
-        Ray leftTrace = playerCam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
-        Ray rightTrace = playerCam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
+        // Play muzzle flash once
+        shootScript.ShootingSystem?.Play();
 
-        leftTrace.direction = Quaternion.AngleAxis(multishotAngle, playerCam.transform.up) * playerCam.transform.forward;
-        rightTrace.direction = Quaternion.AngleAxis(-multishotAngle, playerCam.transform.up) * playerCam.transform.forward;
+        // Prepare ray directions for multishot
+        Ray centerRay = playerCam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
+        Ray leftRay = new Ray(centerRay.origin, Quaternion.AngleAxis(-multishotAngle, playerCam.transform.up) * playerCam.transform.forward);
+        Ray rightRay = new Ray(centerRay.origin, Quaternion.AngleAxis(multishotAngle, playerCam.transform.up) * playerCam.transform.forward);
 
-        Vector3 targetPoint;
-        Vector3 leftTargetPoint;
-        Vector3 rightTargetPoint;
-
-        targetPoint = FindHitPoint(trace);
-        leftTargetPoint = FindHitPoint(leftTrace);
-        rightTargetPoint = FindHitPoint(rightTrace);
-
-        Vector3 middleDirection = targetPoint - shootingPoint.position;
-        Vector3 leftDirection = leftTargetPoint - shootingPoint.position;
-        Vector3 rightDirection = rightTargetPoint - shootingPoint.position;
-
-        GameObject middleBullet = CreateBullet();
-        GameObject leftBullet = CreateBullet();
-        GameObject rightBullet = CreateBullet();
-
-        middleBullet.GetComponent<Rigidbody>().AddForce(middleDirection.normalized * bulletVelocity, ForceMode.Impulse);
-        leftBullet.GetComponent<Rigidbody>().AddForce(leftDirection.normalized * bulletVelocity, ForceMode.Impulse);
-        rightBullet.GetComponent<Rigidbody>().AddForce(rightDirection.normalized * bulletVelocity, ForceMode.Impulse);
-
-        StartCoroutine(DestroyBulletAfterTime(middleBullet, bulletLifeTime));
-        StartCoroutine(DestroyBulletAfterTime(leftBullet, bulletLifeTime));
-        StartCoroutine(DestroyBulletAfterTime(rightBullet, bulletLifeTime));
+        FireRay(centerRay);
+        FireRay(leftRay);
+        FireRay(rightRay);
     }
 
-    private Vector3 FindHitPoint(Ray ray)
+    private void FireRay(Ray ray)
     {
-        if (Physics.Raycast(ray, out RaycastHit hit))
+        Vector3 hitPoint;
+
+        if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, ~0, QueryTriggerInteraction.Collide))
         {
+            // Damage
             hit.collider.gameObject.GetComponentInParent<IDamageable>()?.Death();
-            return hit.point;
+
+            // Impact effect
+            Instantiate(shootScript.ImpactParticleSystem, hit.point, Quaternion.LookRotation(hit.normal));
+            hitPoint = hit.point;
         }
-        return ray.GetPoint(100);
+        else
+        {
+            hitPoint = ray.GetPoint(100f); // arbitrary long distance if no hit
+        }
+
+        // Bullet trail
+        TrailRenderer trail = Instantiate(shootScript.BulletTrail, shootingPoint.position, Quaternion.identity);
+        shootScript.StartCoroutine(SpawnTrail(trail, hitPoint));
     }
 
-    private GameObject CreateBullet()
+    private IEnumerator SpawnTrail(TrailRenderer trail, Vector3 hitPoint)
     {
-        return Instantiate(bulletPrefab, shootingPoint.position, shootingPoint.rotation);
-    }
+        float time = 0f;
+        Vector3 startPosition = trail.transform.position;
 
-    private IEnumerator DestroyBulletAfterTime(GameObject bullet, float timer)
-    {
-        yield return new WaitForSeconds(timer);
-        Destroy(bullet);
+        while (time < 1f)
+        {
+            trail.transform.position = Vector3.Lerp(startPosition, hitPoint, time);
+            time += Time.deltaTime / trail.time;
+            yield return null;
+        }
+
+        trail.transform.position = hitPoint;
+        Destroy(trail.gameObject, trail.time);
     }
 }

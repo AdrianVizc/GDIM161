@@ -1,30 +1,30 @@
 using Photon.Pun;
-using Photon.Pun.Demo.Asteroids;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Shooting : MonoBehaviour
 {
+    [Header("Shooting Setup")]
     [SerializeField]
     private Transform shootingPoint;
 
     [SerializeField]
-    public GameObject bulletPrefab;
-
-    [SerializeField]
-    public float reloadTimer;
-
-    [SerializeField]
-    private float bulletVelocity = 30f;
-
-    private float bulletLifeTime = 5f;
+    public float reloadTimer = 0.5f;
 
     public float timer;
 
     private Camera playerCam;
+    private PhotonView view;
 
-    PhotonView view;
+    [Header("Effects")]
+    [SerializeField]
+    public ParticleSystem ShootingSystem;
+
+    [SerializeField]
+    public ParticleSystem ImpactParticleSystem;
+
+    [SerializeField]
+    public TrailRenderer BulletTrail;
 
     private void Awake()
     {
@@ -32,95 +32,77 @@ public class Shooting : MonoBehaviour
     }
 
     private void Start()
-    {        
+    {
         playerCam = Camera.main;
         timer = reloadTimer;
     }
-    // Update is called once per frame
-    void Update()
+
+    private void Update()
     {
-        if (!view.IsMine)
-        {
+        if (!view.IsMine || InGameUI.globalInputLock)
             return;
-        }
-        if (InGameUI.globalInputLock)
-        {
-            return;
-        }
+
         if (timer > 0)
         {
             timer -= Time.deltaTime;
         }
-        else
+        else if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-            if (Input.GetKeyDown(KeyCode.Mouse0))
-            {
-                Shoot();
-
-                // if (GetComponent<Multishot>() != null && GetComponent<Multishot>().isActiveAndEnabled)
-                // {
-                //     Multishot();
-                // }
-                timer = reloadTimer;
-            }
+            Shoot();
+            timer = reloadTimer;
         }
     }
 
     public void Shoot()
     {
-        //Raytracing
-        Ray trace = playerCam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0)); //Through center of screen
-        RaycastHit hit;
+        // Play muzzle flash
+        ShootingSystem?.Play();
 
-        //Checking if raycast hit something in front
+        // Raycast from center of screen
+        Ray trace = playerCam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
+        RaycastHit hit;
         Vector3 targetPoint;
+
         if (Physics.Raycast(trace, out hit, Mathf.Infinity, ~0, QueryTriggerInteraction.Collide))
         {
             targetPoint = hit.point;
 
+            // Damage logic
+            if (hit.collider.CompareTag("Player"))
+            {
+                hit.collider.GetComponentInParent<IDamageable>()?.Death();
+            }
 
+            // Impact particles
+            Instantiate(ImpactParticleSystem, hit.point, Quaternion.LookRotation(hit.normal));
+
+            // Trail to hit
+            TrailRenderer trail = Instantiate(BulletTrail, shootingPoint.position, Quaternion.identity);
+            StartCoroutine(SpawnTrail(trail, hit.point));
         }
         else
         {
-            targetPoint = trace.GetPoint(100);
+            // Missed — shoot trail into the distance
+            targetPoint = trace.GetPoint(100f);
+            TrailRenderer trail = Instantiate(BulletTrail, shootingPoint.position, Quaternion.identity);
+            StartCoroutine(SpawnTrail(trail, targetPoint));
         }
-
-        if (hit.collider.CompareTag("Player"))
-        {
-            hit.collider.GetComponentInParent<IDamageable>()?.Death();
-        }
-       
-        /*IDamageable damageable = hit.collider.gameObject.GetComponentInParent<IDamageable>();
-        if (damageable != null)
-        {
-            damageable.Death();
-        }
-        else
-        {
-            Debug.LogWarning(hit.collider.gameObject.name + " does not have IDamageable!");
-        }*/
-
-        //Calculate direction from shootingPoint to targetPoint
-        //Debug.Log(targetPoint + " " + shootingPoint);
-        Vector3 direction = targetPoint - shootingPoint.position;
-
-        //Make bullet
-        GameObject bullet = PhotonNetwork.Instantiate(bulletPrefab.name, shootingPoint.position, shootingPoint.rotation);
-
-        //Rotating bullet to shoot direction
-        bullet.transform.forward = direction.normalized;
-
-        //Give bullet force/movement to "shoot"
-        bullet.GetComponent<Rigidbody>().AddForce(direction.normalized * bulletVelocity, ForceMode.Impulse);
-
-        //Despawn
-        StartCoroutine(DestroyBulletAfterTime(bullet, bulletLifeTime));
     }
 
-    private IEnumerator DestroyBulletAfterTime(GameObject bullet, float timer)
+    private IEnumerator SpawnTrail(TrailRenderer trail, Vector3 hitPoint)
     {
-        yield return new WaitForSeconds(timer);
-        Destroy(bullet);
+        float time = 0;
+        Vector3 startPos = trail.transform.position;
+
+        while (time < 1)
+        {
+            trail.transform.position = Vector3.Lerp(startPos, hitPoint, time);
+            time += Time.deltaTime / trail.time;
+            yield return null;
+        }
+
+        trail.transform.position = hitPoint;
+        Destroy(trail.gameObject, trail.time);
     }
 
     public void ReduceShootRate(float rate)
@@ -132,5 +114,4 @@ public class Shooting : MonoBehaviour
     {
         reloadTimer *= rate;
     }
-
 }

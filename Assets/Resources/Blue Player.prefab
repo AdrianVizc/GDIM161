@@ -220,10 +220,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shootingPoint: {fileID: 8161004569278225916}
-  bulletPrefab: {fileID: 318310983445593299, guid: 6ac93b6329cd05d40abc2e6892878094, type: 3}
   reloadTimer: 1
-  bulletVelocity: 50
   timer: 0
+  ShootingSystem: {fileID: 198175801688348628, guid: 5b572ffb4b641f045810da8fd7deaae1, type: 3}
+  ImpactParticleSystem: {fileID: 198175801688348628, guid: 5b572ffb4b641f045810da8fd7deaae1, type: 3}
+  BulletTrail: {fileID: 6590085146855573201, guid: d6bba35a916a37e4c8d127949823693a, type: 3}
 --- !u!114 &1982902666728735694
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -601,7 +602,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   multishotAngle: 15
-  bulletVelocity: 30
 --- !u!1 &1197264972273807414
 GameObject:
   m_ObjectHideFlags: 0
@@ -1920,6 +1920,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 5064880245253675553, guid: f95986d1cb172624490d203c24e65ec5, type: 3}
+      propertyPath: m_Materials.Array.data[3]
+      value: 
+      objectReference: {fileID: 2100000, guid: b6d5fddf48c570b419f089c478716cce, type: 2}
     - target: {fileID: 5392398322951045289, guid: f95986d1cb172624490d203c24e65ec5, type: 3}
       propertyPath: m_Layer
       value: 9
