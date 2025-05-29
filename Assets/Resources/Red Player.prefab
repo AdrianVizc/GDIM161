@@ -796,6 +796,7 @@ GameObject:
   - component: {fileID: 2608081497269587888}
   - component: {fileID: 5024750113411420398}
   - component: {fileID: 7160808120881325218}
+  - component: {fileID: 9191285223884912798}
   m_Layer: 8
   m_Name: Red Player
   m_TagString: PlayerParent
@@ -855,6 +856,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 54678b14daa9498419f43d769a04c8e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &9191285223884912798
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3068073903033641584}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4ec2215aa83f674fa85d1d247d59c25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &4770429142538522283
