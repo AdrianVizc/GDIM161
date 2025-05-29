@@ -16,8 +16,8 @@ public class ObjectSpawner : MonoBehaviour
 
     private void Start()
     {
-        BarrierForPhotonView barrierForPhotonView = GetComponentInParent<BarrierForPhotonView>();
-        photonView = barrierForPhotonView.GetComponent<PhotonView>();
+        /*BarrierForPhotonView barrierForPhotonView = GetComponentInParent<BarrierForPhotonView>();
+        photonView = barrierForPhotonView.GetComponent<PhotonView>();*/
     }
 
     public void Spawn()

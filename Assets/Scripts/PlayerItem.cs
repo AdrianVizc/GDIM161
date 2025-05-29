@@ -66,14 +66,14 @@ public class PlayerItem : MonoBehaviourPunCallbacks
             }
         }
         firstTimeReady = false;
-        playerProperties["isReady"] = 0;
+        //playerProperties["isReady"] = 0;
         selectAbilityButton = GameObject.Find("EditCharacterUI");
         selectAbilityButtonUI = GameObject.Find("EditCharacterButton");
         lobbyManager = GameObject.Find("LobbyManager").GetComponent<LobbyManager>();
-        PhotonNetwork.LocalPlayer.SetCustomProperties(playerProperties);
+        //PhotonNetwork.LocalPlayer.SetCustomProperties(playerProperties);
     }
 
-    private void Update()
+    /*private void Update()
     {
         if (firstTimeReady) 
         {
@@ -97,7 +97,7 @@ public class PlayerItem : MonoBehaviourPunCallbacks
                 lobbyManager.isReady = false;
             }
         }        
-    }
+    }*/
 
     private IEnumerator InitializeAfterSync()
     {

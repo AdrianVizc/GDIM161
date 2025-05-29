@@ -45,10 +45,10 @@ public class AbilitySlotButton : MonoBehaviour
             //PlayerPrefs.SetString(this.tag, null);
         }*/
 
-        if (lobbyManager.isReady == false)
+        /*if (lobbyManager.isReady == false)
         {
             PlayerPrefs.DeleteKey(this.tag.ToString());
-        }
+        }*/
     }
 
     private void SetAbilitySlot(string slot, string tag)

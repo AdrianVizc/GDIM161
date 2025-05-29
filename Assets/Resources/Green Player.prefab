@@ -168,6 +168,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 533c217ee455ace46930c0bda78c9277, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fellOff: 0
   moveSpeed: 14
   normAccel: 1
   accelSpeed: 0
@@ -601,7 +602,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f35dce334641a4442816bde9685e4db4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  player: {fileID: 271616554234656563}
   objectToSpawn: {fileID: 4710067885689833721, guid: 965b4fb452b26e842971f8e5aed570e7, type: 3}
 --- !u!1 &1177262856051553047
 GameObject:
@@ -647,7 +648,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb0d60fb34e006e4395e961018b4e754, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  multishotAngle: 5
+  multishotAngle: 15
 --- !u!1 &1325064944001403245
 GameObject:
   m_ObjectHideFlags: 0

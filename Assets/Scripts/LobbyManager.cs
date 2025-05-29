@@ -340,8 +340,8 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 
     private void UpdatePlayerList()
     {
-        editCharacterButton.SetActive(true);
-        editCharacterUI.SetActive(true);
+        //editCharacterButton.SetActive(true);
+        //editCharacterUI.SetActive(true);
 
         foreach (PlayerItem item in playerItemsList)
         {
