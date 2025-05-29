@@ -1583,7 +1583,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30b5bc34e03734ee49f044caba90a384, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_rivePanel: {fileID: 0}
+  m_rivePanel: {fileID: 1133257701761366929}
   m_asset: {fileID: -4516626237390682484, guid: 5c22819282ade95419d5922850f366a5, type: 3}
   m_artboardName: Artboard
   m_stateMachineName: State Machine 1
@@ -1886,6 +1886,7 @@ MonoBehaviour:
   resumeButton: {fileID: 1299265374186717539}
   pauseMenuUI: {fileID: 8597338802643637157}
   settingsMenuUI: {fileID: 2488409710442774491}
+  loadingScreenUI: {fileID: 5184538131349233000}
 --- !u!222 &1586994708766363117
 CanvasRenderer:
   m_ObjectHideFlags: 0
