@@ -731,7 +731,7 @@ MonoBehaviour:
   m_layoutScalingMode: 1
   m_fallbackDPI: 96
   m_referenceDPI: 150
-  m_hitTestBehavior: 0
+  m_hitTestBehavior: 2
   m_eventPoolingMode: 0
 --- !u!1 &3523387132274027856
 GameObject:
@@ -1968,7 +1968,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 0.21960786, g: 0.21960786, b: 0.21960786, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
