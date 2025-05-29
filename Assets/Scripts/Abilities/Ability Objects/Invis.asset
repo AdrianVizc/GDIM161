@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Invis
   m_EditorClassIdentifier: 
   name: Invis
-  cooldownTime: 20
+  cooldownTime: 12
   activeTime: 8

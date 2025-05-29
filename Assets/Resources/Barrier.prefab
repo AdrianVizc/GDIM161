@@ -122,7 +122,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerShield: {fileID: 4710067885689833721}
-  durability: 3
+  durability: 1
   ability: {fileID: 11400000, guid: c70d655398de45e4186d8efa3a7413d0, type: 2}
 --- !u!114 &8886279818070485972
 MonoBehaviour:

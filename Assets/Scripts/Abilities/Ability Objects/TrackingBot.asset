@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: TrackingBot
   m_EditorClassIdentifier: 
   name: Tracking Bot
-  cooldownTime: 15
+  cooldownTime: 12
   activeTime: 15
