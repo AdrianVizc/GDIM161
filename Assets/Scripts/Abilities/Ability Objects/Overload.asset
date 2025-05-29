@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Overload
   cooldownTime: 10
-  activeTime: 3
+  activeTime: 4
   buffMultiplier: 2

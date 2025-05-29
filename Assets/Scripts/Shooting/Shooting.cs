@@ -106,7 +106,7 @@ public class Shooting : MonoBehaviour
         }
 
         trail.transform.position = hitPoint;
-        Destroy(trail.gameObject, trail.time);
+        PhotonNetwork.Destroy(trail.gameObject);
     }
 
     public void ReduceShootRate(float rate)

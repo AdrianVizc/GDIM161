@@ -669,6 +669,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7461b22ab05a86c4f9685253ce09f478, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  abilityHolderRef: {fileID: 0}
   abilityIcon1: {fileID: 1816642374876755268}
   abilityIcon2: {fileID: 4114539268559425891}
   abilityIcon3: {fileID: 6419157149960880289}
@@ -681,23 +682,13 @@ MonoBehaviour:
   dash: {fileID: 1370865950, guid: 5d24133ed9964e045804ce6b5457bb2c, type: 3}
   doubleJump: {fileID: -520803436, guid: f0a3012a3d4306b4cb15dbafd26c306e, type: 3}
   teleport: {fileID: -654486953, guid: 2e80803594ff4d641a6472bf6b208026, type: 3}
-  dashAbility: {fileID: 11400000, guid: c4848338981c7a245ac90fd072193454, type: 2}
-  doubleJumpAbility: {fileID: 11400000, guid: 4ce2c83c33eefe446bf53248b4009195, type: 2}
-  teleportAbility: {fileID: 11400000, guid: 4deee2baaa63cf34aa02b6a74c1fbb62, type: 2}
   multishot: {fileID: 1032733413, guid: 65200e68a7d46e344bbb4681a0cfb916, type: 3}
   mine: {fileID: 1427655093, guid: 2e80803594ff4d641a6472bf6b208026, type: 3}
   overload: {fileID: 1245920586, guid: 31f2955ea915c1444b7fa6f5c288ae95, type: 3}
-  multishotAbility: {fileID: 11400000, guid: 86201f5be2902ed49890511726054f00, type: 2}
-  mineAbility: {fileID: 11400000, guid: 87496b7f2e10a104f839d46d561363f7, type: 2}
-  overloadAbility: {fileID: 11400000, guid: 48001cea17f077f498caa48821373668, type: 2}
   wall: {fileID: -1396760651, guid: a525f97ccc71e0c46aa0721dc15577c3, type: 3}
   trackingBot: {fileID: -2053905559, guid: 6d64c356ba17bb64191cfc44eac48499, type: 3}
   shield: {fileID: -1617310479, guid: 342c2b90aecf5594e8e9033143a4b0dc, type: 3}
   invisibility: {fileID: -290978518, guid: 2e80803594ff4d641a6472bf6b208026, type: 3}
-  wallAbility: {fileID: 11400000, guid: 64a28ed62399dc24ea3cd6b362c658bc, type: 2}
-  trackingBotAbility: {fileID: 11400000, guid: e461b5ace45b93e4aab26ad8cd1d2f1d, type: 2}
-  shieldAbility: {fileID: 11400000, guid: c70d655398de45e4186d8efa3a7413d0, type: 2}
-  invisibilityAbility: {fileID: 11400000, guid: 0bd2e96ebb124104a88951aefc976dfd, type: 2}
 --- !u!114 &1849691132971949093
 MonoBehaviour:
   m_ObjectHideFlags: 0

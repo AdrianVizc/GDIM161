@@ -1,3 +1,4 @@
+using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -31,13 +32,13 @@ public class Shield : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Bullet"))
         {
-            Destroy(other.gameObject);
+            PhotonNetwork.Destroy(other.gameObject);
             durability--;
             Debug.Log("Health: " + durability);
             if (durability <= 0)
             {
                 //playerShield.SetActive(false);
-                Destroy(gameObject);
+                PhotonNetwork.Destroy(gameObject);
             }
         }
     }
@@ -58,7 +59,7 @@ public class Shield : MonoBehaviour
 
         if (this.gameObject != null)
         {
-            Destroy(gameObject);
+            PhotonNetwork.Destroy(gameObject);
         }
     }
 }

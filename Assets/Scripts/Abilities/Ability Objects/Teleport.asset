@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Teleport
   m_EditorClassIdentifier: 
   name: Teleport
-  cooldownTime: 8
+  cooldownTime: 7
   activeTime: 0.1
   teleportDistance: 20
