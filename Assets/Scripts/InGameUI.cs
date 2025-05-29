@@ -10,6 +10,10 @@ public class InGameUI : MonoBehaviourPunCallbacks
 {
     [SerializeField] private GameObject settingsMenuButton;
     [SerializeField] private GameObject mainMenuButton;
+    [SerializeField] private GameObject resumeButton;
+
+    [SerializeField] private GameObject pauseMenuUI;
+    [SerializeField] private GameObject settingsMenuUI;
 
     private CameraFollowMouse cameraFollowMouse;
     private WinnerMenu winnerMenu;
@@ -74,10 +78,27 @@ public class InGameUI : MonoBehaviourPunCallbacks
         }
     }
 
+    public void ResumeButton()
+    {
+        pauseMenuCanvasGroup.alpha = 0;
+        pauseMenuCanvasGroup.interactable = false;
+        pauseMenuCanvasGroup.blocksRaycasts = false;
+        isPauseMenuOn = false;
+
+        globalInputLock = false;
+        cameraFollowMouse.enabled = true;
+
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+    }
+
     public void OpenSettingsButton()
     {
         settingsMenuButton.SetActive(false);
         mainMenuButton.SetActive(false);
+        resumeButton.SetActive(false);
+        pauseMenuUI.SetActive(false);
+        settingsMenuUI.SetActive(true);
 
         settingsMenuPanelCanvasGroup.alpha = 1;
         settingsMenuPanelCanvasGroup.interactable = true;
@@ -88,6 +109,9 @@ public class InGameUI : MonoBehaviourPunCallbacks
     {
         settingsMenuButton.SetActive(true);
         mainMenuButton.SetActive(true);
+        resumeButton.SetActive(true);
+        pauseMenuUI.SetActive(true);
+        settingsMenuUI.SetActive(false);
 
         settingsMenuPanelCanvasGroup.alpha = 0;
         settingsMenuPanelCanvasGroup.interactable = false;
