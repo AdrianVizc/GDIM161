@@ -6628,9 +6628,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shootingPoint: {fileID: 0}
-  bulletPrefab: {fileID: 318310983445593299, guid: 6ac93b6329cd05d40abc2e6892878094, type: 3}
   reloadTimer: 1
-  bulletVelocity: 50
+  timer: 0
+  ShootingSystem: {fileID: 0}
+  ImpactParticleSystem: {fileID: 0}
+  BulletTrail: {fileID: 0}
 --- !u!33 &3472929905029632292
 MeshFilter:
   m_ObjectHideFlags: 0
