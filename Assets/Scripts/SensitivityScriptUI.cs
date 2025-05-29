@@ -8,6 +8,7 @@ public class SensitivityScriptUI : MonoBehaviour
 {
     Slider slider;
     CameraFollowMouse cameraFollowMouse;
+    GameObject[] playerList;
 
     private void Start()
     {
@@ -21,34 +22,29 @@ public class SensitivityScriptUI : MonoBehaviour
             slider.value = PlayerPrefs.GetFloat("Sens");
         }      
 
-<<<<<<< HEAD
         Invoke("FindPlayerObjects", 0.2f);
     }
 
     private void FindPlayerObjects()
     {
         playerList = GameObject.FindGameObjectsWithTag("PlayerParent");
+
         foreach (GameObject player in playerList)
         {
             if (player.GetComponent<PhotonView>().IsMine)
-=======
-        GameObject[] playerList = GameObject.FindGameObjectsWithTag("Player");
-        foreach (GameObject player in playerList)
-        {
-            Debug.Log("in foreach");
-            if (player.GetComponentInParent<PhotonView>().IsMine)
->>>>>>> parent of bf86970 (Nick push)
             {
-                cameraFollowMouse = player.GetComponentInChildren<CameraFollowMouse>();                
+                cameraFollowMouse = player.GetComponentInChildren<CameraFollowMouse>();
             }
         }
     }
 
     private void Update()
     {
-        Debug.Log(slider.value);
-        cameraFollowMouse.sensitivityX = slider.value;
-        cameraFollowMouse.sensitivityY = slider.value;
-        PlayerPrefs.SetFloat("Sens", slider.value);
+        if (cameraFollowMouse != null)
+        {
+            cameraFollowMouse.sensitivityX = slider.value;
+            cameraFollowMouse.sensitivityY = slider.value;
+            PlayerPrefs.SetFloat("Sens", slider.value);
+        }
     }
 }
