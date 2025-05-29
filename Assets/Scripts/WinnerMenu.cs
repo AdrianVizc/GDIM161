@@ -9,7 +9,7 @@ public class WinnerMenu : MonoBehaviourPunCallbacks
     [SerializeField] private TMP_Text username;
     [SerializeField] private GameObject image;
     [SerializeField] private GameObject usernameText;
-    [SerializeField] private GameObject winsText;
+    [SerializeField] private GameObject winScreenUI;
     [SerializeField] private GameObject mainMenuButton;
 
     public int amountOfKillsToWin;
@@ -25,7 +25,7 @@ public class WinnerMenu : MonoBehaviourPunCallbacks
     {
         image.SetActive(false);
         usernameText.SetActive(false);
-        winsText.SetActive(false);
+        winScreenUI.SetActive(false);
         mainMenuButton.SetActive(false);       
 
         gameOver = false;
@@ -51,7 +51,7 @@ public class WinnerMenu : MonoBehaviourPunCallbacks
             username.text = winnerUsername;
             image.SetActive(true);
             usernameText.SetActive(true);
-            winsText.SetActive(true);
+            winScreenUI.SetActive(true);
             mainMenuButton.SetActive(true);
 
             Cursor.visible = true;

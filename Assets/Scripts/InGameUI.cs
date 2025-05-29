@@ -36,6 +36,7 @@ public class InGameUI : MonoBehaviourPunCallbacks
         settingsMenuPanelCanvasGroup.blocksRaycasts = false; 
         globalInputLock = false;
         isPauseMenuOn = false;
+        settingsMenuUI.SetActive(false);
     }
 
     private void Update()
