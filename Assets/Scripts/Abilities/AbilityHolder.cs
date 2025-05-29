@@ -71,4 +71,9 @@ public class AbilityHolder : MonoBehaviour
                 break;
         }
     }
+
+    public float GetCurrentCD()
+    {
+        return cdTime;
+    }
 }
