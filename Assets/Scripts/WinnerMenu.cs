@@ -46,13 +46,13 @@ public class WinnerMenu : MonoBehaviourPunCallbacks
                 cameraFollowMouse.enabled = false;
                 foundCamera = true;
             }
-
+            
             InGameUI.globalInputLock = true;
             username.text = winnerUsername;
             image.SetActive(true);
-            usernameText.SetActive(true);
-            winScreenUI.SetActive(true);
             mainMenuButton.SetActive(true);
+            winScreenUI.SetActive(true);
+            usernameText.SetActive(true);
 
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
