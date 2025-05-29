@@ -73,8 +73,10 @@ public class Shooting : MonoBehaviour
                 hit.collider.GetComponentInParent<IDamageable>()?.Death();
             }
 
-            // Impact particles
-            PhotonNetwork.Instantiate(ImpactParticleSystem.name, hit.point, Quaternion.LookRotation(hit.normal));
+            // Offset impact particle slightly away from the wall
+            Vector3 spawnPosition = hit.point + hit.normal * 0.1f;
+            Quaternion rotation = Quaternion.LookRotation(hit.normal);
+            PhotonNetwork.Instantiate(ImpactParticleSystem.name, spawnPosition, rotation);
 
             // Trail to hit
             GameObject trailObject = PhotonNetwork.Instantiate(BulletTrail.name, shootingPoint.position, Quaternion.identity);
