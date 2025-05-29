@@ -27,6 +27,7 @@ TagManager:
   - ui_key
   - ui_spacebar
   - ui_gnome_model
+  - PlayerParent
   layers:
   - Default
   - TransparentFX

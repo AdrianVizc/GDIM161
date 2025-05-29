@@ -8,6 +8,7 @@ public class SensitivityScriptUI : MonoBehaviour
 {
     Slider slider;
     CameraFollowMouse cameraFollowMouse;
+    GameObject[] playerList;
 
     private void Start()
     {
@@ -15,11 +16,11 @@ public class SensitivityScriptUI : MonoBehaviour
         slider.value = PlayerPrefs.GetFloat("Sens");
         Debug.Log(slider.value);
 
-        GameObject[] playerList = GameObject.FindGameObjectsWithTag("Player");
+        playerList = GameObject.FindGameObjectsWithTag("PlayerParent");
         foreach (GameObject player in playerList)
         {
-            Debug.Log("in foreach");
-            if (player.GetComponentInParent<PhotonView>().IsMine)
+            Debug.Log(player.name);
+            if (player.GetComponent<PhotonView>().IsMine)
             {
                 Debug.Log("got the photonview");
                 cameraFollowMouse = player.GetComponentInChildren<CameraFollowMouse>();
