@@ -5016,7 +5016,7 @@ MonoBehaviour:
   playButtonUI: {fileID: 1211352943}
   roomNameErrorText: {fileID: 420509657}
   sceneName: GNOME Map 1.0
-  amountOfPlayersReadyNeeded: 1
+  amountOfPlayersReadyNeeded: 2
   roomItemPrefab: {fileID: -7472543136189013338, guid: 2f14ece4a668c9047aa580d7d5b3cef6, type: 3}
   contentObject: {fileID: 1481346559}
   playerItemsList: []

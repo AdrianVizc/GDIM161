@@ -670,15 +670,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   abilityHolderRef: {fileID: 0}
+  player: {fileID: 0}
   abilityIcon1: {fileID: 1816642374876755268}
   abilityIcon2: {fileID: 4114539268559425891}
   abilityIcon3: {fileID: 6419157149960880289}
   cooldownGray1: {fileID: 8276840526616485848}
   cooldownGray2: {fileID: 3704512039708879178}
   cooldownGray3: {fileID: 7530383652820863372}
-  timerNumber1: {fileID: 5132486988576623766}
-  timerNumber2: {fileID: 384262292304055653}
-  timerNumber3: {fileID: 3441237838190270650}
+  timerNumber1: {fileID: 3045932395903532194}
+  timerNumber2: {fileID: 6582403200218577670}
+  timerNumber3: {fileID: 1579756039492541096}
   dash: {fileID: 1370865950, guid: 5d24133ed9964e045804ce6b5457bb2c, type: 3}
   doubleJump: {fileID: -520803436, guid: f0a3012a3d4306b4cb15dbafd26c306e, type: 3}
   teleport: {fileID: -654486953, guid: 2e80803594ff4d641a6472bf6b208026, type: 3}

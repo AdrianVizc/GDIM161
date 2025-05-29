@@ -10,6 +10,7 @@ public class Movement : MonoBehaviour
 {
     PhotonView view;
     Collider col;
+    public bool fellOff;
     [Header("Movement Settings")]
     [SerializeField] private float moveSpeed = 9f;
     public float normAccel = 1f;
@@ -84,12 +85,13 @@ public class Movement : MonoBehaviour
     }
     private void Start()
     {
+        fellOff = false;
         if (!view.IsMine)
         {
             Destroy(GetComponentInChildren<UniversalAdditionalCameraData>());
             foreach( Camera camera in GetComponentsInChildren<Camera>())
             {
-                Destroy(camera);
+                camera.enabled = false;
             }
             //Destroy(GetComponentsInChildren<Camera>()); //if not deleted, username gets messed up because it finds the wrong camera
        
@@ -368,9 +370,12 @@ public class Movement : MonoBehaviour
     {
         if (collision.gameObject.name == "BorderBottom")
         {
-            col.enabled = false;
-            transform.parent.GetComponent<PlayerDamage>()?.OnChildCollision(collision);
-            col.enabled = true;
+            if (!fellOff)
+            {
+                fellOff = true;
+                transform.parent.GetComponent<PlayerDamage>()?.OnChildCollision(collision);
+            }
+            
         }
         
     }

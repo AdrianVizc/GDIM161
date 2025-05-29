@@ -13,6 +13,7 @@ public class PlayerDamage : MonoBehaviourPunCallbacks, IDamageable
 
     GameObject playerSpawnerObject;
     PlayerSpawner playerSpawner;
+    Movement movement;
 
     private int kills;
     private int deaths;
@@ -22,6 +23,11 @@ public class PlayerDamage : MonoBehaviourPunCallbacks, IDamageable
         view = GetComponent<PhotonView>();
         playerSpawnerObject = GameObject.Find("PlayerSpawner");
         playerSpawner = playerSpawnerObject.GetComponent<PlayerSpawner>();
+    }
+
+    private void Start()
+    {
+        movement = GetComponentInChildren<Movement>();
     }
 
     public void Death()
@@ -75,6 +81,8 @@ public class PlayerDamage : MonoBehaviourPunCallbacks, IDamageable
             PlayerPrefs.SetInt("Deaths", 1);
         }
         PlayerPrefs.Save();
+
+        movement.fellOff = false;
     }
 
     private void GetKill()

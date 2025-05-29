@@ -19,9 +19,9 @@ public class InGameAbilityCooldownUI : MonoBehaviour
     [SerializeField] private GameObject cooldownGray1;
     [SerializeField] private GameObject cooldownGray2;
     [SerializeField] private GameObject cooldownGray3;
-    [SerializeField] private TMP_Text timerNumber1;
-    [SerializeField] private TMP_Text timerNumber2;
-    [SerializeField] private TMP_Text timerNumber3;
+    [SerializeField] private GameObject timerNumber1;
+    [SerializeField] private GameObject timerNumber2;
+    [SerializeField] private GameObject timerNumber3;
 
     [Space]
 
@@ -73,6 +73,7 @@ public class InGameAbilityCooldownUI : MonoBehaviour
         {
             if (abilityHolder.enabled)
             {
+                Debug.Log(abilityHolder.ability.name);
                 if (abilityHolder1 == null)
                 {
                     abilityHolder1 = abilityHolder;
@@ -91,9 +92,18 @@ public class InGameAbilityCooldownUI : MonoBehaviour
 
     private void Update()
     {
-        CooldownHandler(PlayerPrefs.GetString("Slot1"), cooldownGray1, timerNumber1);
-        CooldownHandler(PlayerPrefs.GetString("Slot2"), cooldownGray2, timerNumber2);
-        CooldownHandler(PlayerPrefs.GetString("Slot3"), cooldownGray3, timerNumber3);
+        if (timerNumber1 != null)
+        {
+            CooldownHandler(PlayerPrefs.GetString("Slot1"), cooldownGray1, timerNumber1);
+        }
+        if (cooldownGray2 != null && timerNumber2 != null)
+        {
+            CooldownHandler(PlayerPrefs.GetString("Slot2"), cooldownGray2, timerNumber2);
+        }
+        if (cooldownGray3 != null && timerNumber3 != null)
+        {
+            CooldownHandler(PlayerPrefs.GetString("Slot3"), cooldownGray3, timerNumber3);
+        }                      
     }
 
     private void SetAbilityIcon(string playerPref, GameObject abilityIconGameObject)
@@ -134,19 +144,20 @@ public class InGameAbilityCooldownUI : MonoBehaviour
                 abilityIconGameObject.GetComponent<Image>().sprite = invisibility;
                 break;
             default:
-                Destroy(abilityIconGameObject); 
+                abilityIconGameObject.SetActive(false);
                 break;
         }
     }
 
-    private void CheckAbilityHolder(string playerPref, GameObject cooldownObject, TMP_Text timer)
+    private void CheckAbilityHolder(string playerPref, GameObject cooldownObject, GameObject timerText)
     {
         if (playerPref == abilityHolder1.ability.name)
         {
             if (abilityHolder1.GetCurrentCD() > 0)
             {
                 cooldownObject.SetActive(true);
-                timer.text = ((int)abilityHolder1.GetCurrentCD()).ToString();
+                TMP_Text tmpText = timerText.GetComponent<TMP_Text>();
+                tmpText.text = ((int)abilityHolder1.GetCurrentCD()).ToString();
             }
             else
             {
@@ -158,7 +169,8 @@ public class InGameAbilityCooldownUI : MonoBehaviour
             if (abilityHolder2.GetCurrentCD() > 0)
             {
                 cooldownObject.SetActive(true);
-                timer.text = ((int)abilityHolder2.GetCurrentCD()).ToString();
+                TMP_Text tmpText = timerText.GetComponent<TMP_Text>();
+                tmpText.text = ((int)abilityHolder2.GetCurrentCD()).ToString();
             }
             else
             {
@@ -170,7 +182,8 @@ public class InGameAbilityCooldownUI : MonoBehaviour
             if (abilityHolder3.GetCurrentCD() > 0)
             {
                 cooldownObject.SetActive(true);
-                timer.text = ((int)abilityHolder3.GetCurrentCD()).ToString();
+                TMP_Text tmpText = timerText.GetComponent<TMP_Text>();
+                tmpText.text = ((int)abilityHolder3.GetCurrentCD()).ToString();
             }
             else
             {
@@ -179,66 +192,67 @@ public class InGameAbilityCooldownUI : MonoBehaviour
         }
     }
 
-    private void CooldownHandler(string playerPref, GameObject cooldownObject, TMP_Text timer)
+    private void CooldownHandler(string playerPref, GameObject cooldownObject, GameObject timerText)
     {
         switch (playerPref)
         {
             case "Dash":
 
-                CheckAbilityHolder(playerPref, cooldownObject, timer);
+                CheckAbilityHolder(playerPref, cooldownObject, timerText);
                 break;
 
             case "Double Jump":
 
-                CheckAbilityHolder(playerPref, cooldownObject, timer);
+                CheckAbilityHolder(playerPref, cooldownObject, timerText);
                 break;
 
             case "Teleport":
 
-                CheckAbilityHolder(playerPref, cooldownObject, timer);
+                CheckAbilityHolder(playerPref, cooldownObject, timerText);
                 break;
 
             case "Multishot":
 
-                CheckAbilityHolder(playerPref, cooldownObject, timer);
+                CheckAbilityHolder(playerPref, cooldownObject, timerText);
                 break;
 
-            case "Mine":
+            case "PlaceMine":
 
-                CheckAbilityHolder(playerPref, cooldownObject, timer);
+                CheckAbilityHolder(playerPref, cooldownObject, timerText);
                 break;
 
             case "Overload":
 
-                CheckAbilityHolder(playerPref, cooldownObject, timer);
+                CheckAbilityHolder(playerPref, cooldownObject, timerText);
                 break;
 
             /*case "Grenade":
 
                 break;*/
-            case "Wall":
+            case "Build Wall":
 
-                CheckAbilityHolder(playerPref, cooldownObject, timer);
+                CheckAbilityHolder(playerPref, cooldownObject, timerText);
                 break;
 
-            case "TrackingBot":
+            case "Tracking Bot":
 
-                CheckAbilityHolder(playerPref, cooldownObject, timer);
+                CheckAbilityHolder(playerPref, cooldownObject, timerText);
                 break;
 
             case "Shield":
 
-                CheckAbilityHolder(playerPref, cooldownObject, timer);
+                CheckAbilityHolder(playerPref, cooldownObject, timerText);
                 break;
 
             case "Invis":
 
-                CheckAbilityHolder(playerPref, cooldownObject, timer);
+                CheckAbilityHolder(playerPref, cooldownObject, timerText);
                 break;
 
             default:
 
-                CheckAbilityHolder(playerPref, cooldownObject, timer);
+                Destroy(cooldownObject);
+                Destroy(timerText);
                 break;
 
         }
