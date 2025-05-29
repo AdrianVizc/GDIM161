@@ -9,10 +9,6 @@ public class AbilityHolder : MonoBehaviour
     private float cdTime;
     private float activeTime;
 
-    private float delay = 2f;
-    private bool pressedFirst = false;
-    private float lastPressedTime;
-
     PhotonView photonView;
 
     enum AbilityState
