@@ -15,6 +15,7 @@ public class InGameUI : MonoBehaviourPunCallbacks
     [SerializeField] private GameObject pauseMenuUI;
     [SerializeField] private GameObject settingsMenuUI;
     [SerializeField] private GameObject loadingScreenUI;
+    [SerializeField] private GameObject winScreenUI;
 
     private CameraFollowMouse cameraFollowMouse;
     private WinnerMenu winnerMenu;
@@ -125,6 +126,7 @@ public class InGameUI : MonoBehaviourPunCallbacks
     {
         pauseMenuUI.SetActive(false);
         settingsMenuUI.SetActive(false);
+        winScreenUI.SetActive(false);
         loadingScreenUI.SetActive(true);
         PhotonNetwork.Disconnect();        
     }
