@@ -13,32 +13,33 @@ public class SensitivityScriptUI : MonoBehaviour
     private void Start()
     {
         slider = GetComponent<Slider>();
-        slider.value = PlayerPrefs.GetFloat("Sens");
-        Debug.Log(slider.value);
+        if (PlayerPrefs.GetFloat("Sens") == 0)
+        {
+            slider.value = 3;
+        }
+        else
+        {
+            slider.value = PlayerPrefs.GetFloat("Sens");
+        }      
 
+        Invoke("FindPlayerObjects", 0.2f);
+    }
+
+    private void FindPlayerObjects()
+    {
         playerList = GameObject.FindGameObjectsWithTag("PlayerParent");
         foreach (GameObject player in playerList)
         {
-            Debug.Log(player.name);
             if (player.GetComponent<PhotonView>().IsMine)
             {
-                Debug.Log("got the photonview");
-                cameraFollowMouse = player.GetComponentInChildren<CameraFollowMouse>();
-                if (cameraFollowMouse != null)
-                {
-                    Debug.Log("get fucked");
-                }
-                else
-                {
-                    Debug.Log("should be in");
-                }
-                
+                cameraFollowMouse = player.GetComponentInChildren<CameraFollowMouse>();                
             }
         }
     }
 
     private void Update()
     {
+        Debug.Log(slider.value);
         cameraFollowMouse.sensitivityX = slider.value;
         cameraFollowMouse.sensitivityY = slider.value;
         PlayerPrefs.SetFloat("Sens", slider.value);
