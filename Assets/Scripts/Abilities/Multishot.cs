@@ -45,8 +45,11 @@ public class Multishot : MonoBehaviour
             // Damage
             hit.collider.gameObject.GetComponentInParent<IDamageable>()?.Death();
 
-            // Impact effect
-            PhotonNetwork.Instantiate(shootScript.ImpactParticleSystem.name, hit.point, Quaternion.LookRotation(hit.normal));
+            // Offset impact particle slightly away from surface
+            Vector3 spawnPosition = hit.point + hit.normal * 0.1f;
+            Quaternion rotation = Quaternion.LookRotation(hit.normal);
+            PhotonNetwork.Instantiate(shootScript.ImpactParticleSystem.name, spawnPosition, rotation);
+
             hitPoint = hit.point;
         }
         else
