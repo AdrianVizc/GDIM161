@@ -633,7 +633,7 @@ MonoBehaviour:
   m_layoutScalingMode: 1
   m_fallbackDPI: 96
   m_referenceDPI: 150
-  m_hitTestBehavior: 0
+  m_hitTestBehavior: 2
   m_eventPoolingMode: 0
 --- !u!1 &2544913045012072038
 GameObject:
@@ -1595,7 +1595,7 @@ MonoBehaviour:
   m_layoutScalingMode: 1
   m_fallbackDPI: 96
   m_referenceDPI: 150
-  m_hitTestBehavior: 0
+  m_hitTestBehavior: 2
   m_eventPoolingMode: 0
 --- !u!1 &5239365186986608957
 GameObject:
@@ -2380,7 +2380,7 @@ MonoBehaviour:
   m_layoutScalingMode: 1
   m_fallbackDPI: 96
   m_referenceDPI: 150
-  m_hitTestBehavior: 0
+  m_hitTestBehavior: 2
   m_eventPoolingMode: 0
 --- !u!1 &8801970033213808287
 GameObject:
