@@ -6769,8 +6769,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3064371960943052309, guid: 4e6c5f85c3fca2449bfb487cd7b95315, type: 3}
       propertyPath: abilityDescription
-      value: Generate a personal barrier that shields the Gnome from incoming attacks.                          
-        7 Second Cooldown
+      value: Generate a shield around yourself, blocking all damage for a short time.
       objectReference: {fileID: 0}
     - target: {fileID: 6073505096315133997, guid: 4e6c5f85c3fca2449bfb487cd7b95315, type: 3}
       propertyPath: m_Name
