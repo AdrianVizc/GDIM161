@@ -359,26 +359,32 @@ public class Movement : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (!view.IsMine)
+        {
+            return;
+        }
         if (other.CompareTag("Bomb"))
         {
             explosionAudio.Play();
         }
-        
+
+        if (fellOff)
+        {
+            return;
+        }
+        if (other.gameObject.CompareTag("Border"))
+        {
+            fellOff = true;
+            Debug.Log("hit");
+            transform.parent.GetComponent<PlayerDamage>()?.OnChildCollision();
+        }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    /*private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.name == "BorderBottom")
-        {
-            if (!fellOff)
-            {
-                fellOff = true;
-                transform.parent.GetComponent<PlayerDamage>()?.OnChildCollision(collision);
-            }
-            
-        }
         
-    }
+        
+    }*/
 
     public void Teleport(float tpDist)
     {

@@ -17,9 +17,13 @@ public class Grenade : MonoBehaviour
     private bool hasExploded;
     private float countdown;
 
+    PhotonView photonView;
+
     // Start is called before the first frame update
     void Start()
     {
+        photonView = GetComponent<PhotonView>();
+
         countdown = explosionDelay;
     }
 
@@ -40,15 +44,18 @@ public class Grenade : MonoBehaviour
         //Insert Explosion Effect logic...
 
         Collider[] explosionRange = Physics.OverlapSphere(transform.position, explosionRadius);
-
-        foreach (Collider collider in explosionRange)
+        
+        if (photonView.IsMine)
         {
-            if (collider.CompareTag("Player"))
-            {          
-                collider.gameObject.GetComponentInParent<IDamageable>()?.Death();
-                Debug.Log("Hit by: " + collider.name);
+            foreach (Collider collider in explosionRange)
+            {
+                if (collider.CompareTag("Player"))
+                {
+                    collider.gameObject.GetComponentInParent<IDamageable>()?.Death();
+                    Debug.Log("Hit by: " + collider.name);
+                }
             }
-        }
+        }                
 
         PhotonNetwork.Destroy(gameObject);
     }

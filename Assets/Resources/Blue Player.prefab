@@ -1827,6 +1827,10 @@ PrefabInstance:
       propertyPath: abilityHolderRef
       value: 
       objectReference: {fileID: 1982902666728735694}
+    - target: {fileID: 5200293685434616043, guid: 63912a3fcd25cae49908f403aff520a5, type: 3}
+      propertyPath: m_Color.a
+      value: 0.6627451
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

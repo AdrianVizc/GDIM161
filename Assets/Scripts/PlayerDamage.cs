@@ -6,6 +6,7 @@ using System.Linq;
 using Photon.Realtime;
 using UnityEngine;
 using Hashtable = ExitGames.Client.Photon.Hashtable;
+using System.Security.Cryptography;
 
 public class PlayerDamage : MonoBehaviourPunCallbacks, IDamageable
 {
@@ -36,7 +37,7 @@ public class PlayerDamage : MonoBehaviourPunCallbacks, IDamageable
         Debug.Log("before rpcdeath");
     }
     
-    public void OnChildCollision(Collision collision)
+    public void OnChildCollision()
     {
         view.RPC(nameof(RPC_FellOff), view.Owner);
     }
@@ -45,6 +46,7 @@ public class PlayerDamage : MonoBehaviourPunCallbacks, IDamageable
     void RPC_FellOff()
     {
         Die();
+        Debug.Log("rpc went through");
     }
 
     [PunRPC]
