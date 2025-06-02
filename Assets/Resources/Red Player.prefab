@@ -206,7 +206,7 @@ MonoBehaviour:
   maxSlideTime: 0.75
   slideForce: 350
   slideYScale: 0.5
-  slideKey: 306
+  slideKey: 304
   animator: {fileID: 8306017738188161837}
 --- !u!114 &3443560365244335146
 MonoBehaviour:
@@ -1192,7 +1192,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.5
+  near clip plane: 0.6
   far clip plane: 1000
   field of view: 60
   orthographic: 0
