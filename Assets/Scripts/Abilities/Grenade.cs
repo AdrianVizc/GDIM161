@@ -17,7 +17,7 @@ public class Grenade : MonoBehaviour
     private bool hasExploded;
     private float countdown;
 
-    PhotonView photonView;
+    private PhotonView photonView;
 
     void Start()
     {
@@ -38,17 +38,21 @@ public class Grenade : MonoBehaviour
 
     private void Explode()
     {
-        // Instantiate the explosion effect across the network
+        // Spawn explosion effect network-wide
         if (explosionEffect != null)
         {
-            PhotonNetwork.Instantiate(explosionEffect.name, transform.position, Quaternion.identity);
+            GameObject explosionInstance = PhotonNetwork.Instantiate(explosionEffect.name, transform.position, Quaternion.identity);
+
+            // Scale effect based on explosion radius
+            float scale = explosionRadius * 1.5f; // diameter
+            explosionInstance.transform.localScale = new Vector3(scale, scale, scale);
         }
 
-        // Damage players in range (only done by owner)
-        Collider[] explosionRange = Physics.OverlapSphere(transform.position, explosionRadius);
-
+        // Damage players in range (owner only)
         if (photonView.IsMine)
         {
+            Collider[] explosionRange = Physics.OverlapSphere(transform.position, explosionRadius);
+
             foreach (Collider collider in explosionRange)
             {
                 if (collider.CompareTag("Player"))
@@ -59,7 +63,7 @@ public class Grenade : MonoBehaviour
             }
         }
 
-        // Destroy the grenade across the network
+        // Destroy grenade network-wide
         PhotonNetwork.Destroy(gameObject);
     }
 
