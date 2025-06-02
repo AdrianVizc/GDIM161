@@ -222,7 +222,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_rivePanel: {fileID: 1150641858668009632}
-  m_asset: {fileID: -4516626237390682484, guid: e85dca7f732f7a041b92df62d86b2c51, type: 3}
+  m_asset: {fileID: -4516626237390682484, guid: ea833cd3308d55b4892d9363203c1223, type: 3}
   m_artboardName: Artboard
   m_stateMachineName: State Machine 1
   m_fit: 1
@@ -562,7 +562,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 1566.371, y: 372.0346}
+  m_AnchoredPosition: {x: 1567.2, y: 426.6}
   m_SizeDelta: {x: -1661.7098, y: -1066.6692}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!222 &604718707858513304
@@ -602,8 +602,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4285303452
-  m_fontColor: {r: 0.6132076, g: 0.54270315, b: 0.42519584, a: 1}
+    rgba: 4287803328
+  m_fontColor: {r: 0.754717, g: 0.6866323, b: 0.5731577, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -772,7 +772,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 20.3, y: -70.909}
+  m_AnchoredPosition: {x: 21.128983, y: -16.343567}
   m_SizeDelta: {x: 351.5684, y: 187.1436}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &2692163693498881760
