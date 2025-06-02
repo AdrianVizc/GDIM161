@@ -19,15 +19,12 @@ public class Grenade : MonoBehaviour
 
     PhotonView photonView;
 
-    // Start is called before the first frame update
     void Start()
     {
         photonView = GetComponent<PhotonView>();
-
         countdown = explosionDelay;
     }
 
-    // Update is called once per frame
     void Update()
     {
         countdown -= Time.deltaTime;
@@ -41,10 +38,15 @@ public class Grenade : MonoBehaviour
 
     private void Explode()
     {
-        //Insert Explosion Effect logic...
+        // Instantiate the explosion effect across the network
+        if (explosionEffect != null)
+        {
+            PhotonNetwork.Instantiate(explosionEffect.name, transform.position, Quaternion.identity);
+        }
 
+        // Damage players in range (only done by owner)
         Collider[] explosionRange = Physics.OverlapSphere(transform.position, explosionRadius);
-        
+
         if (photonView.IsMine)
         {
             foreach (Collider collider in explosionRange)
@@ -55,8 +57,9 @@ public class Grenade : MonoBehaviour
                     Debug.Log("Hit by: " + collider.name);
                 }
             }
-        }                
+        }
 
+        // Destroy the grenade across the network
         PhotonNetwork.Destroy(gameObject);
     }
 

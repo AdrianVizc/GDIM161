@@ -11,7 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Lobby.unity
     guid: 3f807218b3ff2634182adc6c16e7dc74
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/GNOME Map 1.0.unity
     guid: 3a7a7eeb3a1537d44a8bf06bc1f42b36
   - enabled: 1
