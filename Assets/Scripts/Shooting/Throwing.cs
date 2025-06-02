@@ -16,7 +16,9 @@ public class Throwing : MonoBehaviour
 
     public void ThrowGrenade()
     {
-        GameObject nade = PhotonNetwork.Instantiate(grenadePrefab.name, throwingPoint.position, throwingPoint.rotation);
+        //offset bomb spawn a bit so it doesnt go through ground
+        Vector3 spawnPos = throwingPoint.position + Vector3.up * 0.5f;
+        GameObject nade = PhotonNetwork.Instantiate(grenadePrefab.name, spawnPos, throwingPoint.rotation);
         Rigidbody rb = nade.GetComponent<Rigidbody>();
         rb.velocity = throwingPoint.forward * throwingForce;
     }
