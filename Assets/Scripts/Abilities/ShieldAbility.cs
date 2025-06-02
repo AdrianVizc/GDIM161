@@ -19,6 +19,29 @@ public class ShieldAbility : Ability
         //Debug.Log("Health: " + 3);
 
         ObjectSpawner spawnShield = GameObject.Find("Shield").GetComponent<ObjectSpawner>();
+        PhotonView photonView;
+        photonView = parent.gameObject.GetComponentInParent<PhotonView>();
+        if (photonView != null)
+        {
+            if (photonView.IsMine)
+            {
+                GameObject shield = GameObject.Find("BarrierOverlay");
+                if (shield != null)
+                {
+                    CanvasGroup canvasGroup = shield.GetComponent<CanvasGroup>();
+                    canvasGroup.alpha = 1;
+                }
+                else
+                {
+                    Debug.Log("shield overlay null");
+                }
+            }
+        }
+        else
+        {
+            Debug.Log("photon null");
+        }
+        
         spawnShield.Spawn();
 
         
@@ -32,5 +55,29 @@ public class ShieldAbility : Ability
         //Shield barrier = parent.GetComponentInChildren<Shield>();
         //barrier.playerShield.SetActive(false);
         //barrier.Hide();
+        //shield.gameObject.SetActive(true);
+
+        PhotonView photonView;
+        photonView = parent.gameObject.GetComponentInParent<PhotonView>();
+        if (photonView != null)
+        {
+            if (photonView.IsMine)
+            {
+                GameObject shield = GameObject.Find("BarrierOverlay");
+                if (shield != null)
+                {
+                    CanvasGroup canvasGroup = shield.GetComponent<CanvasGroup>();
+                    canvasGroup.alpha = 0;
+                }
+                else
+                {
+                    Debug.Log("shield overlay null");
+                }
+            }
+        }
+        else
+        {
+            Debug.Log("photon null");
+        }
     }
 }

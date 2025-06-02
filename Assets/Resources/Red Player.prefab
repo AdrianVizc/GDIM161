@@ -915,8 +915,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwingPoint: {fileID: 8161004569278225916}
-  grenadePrefab: {fileID: 7467164816764407625, guid: 219d8208955c06442b3a2e952aa70f62, type: 3}
-  throwingForce: 30
+  grenadePrefab: {fileID: 6038766468759247429, guid: ee91c826015e6494aa5059416d776fa6, type: 3}
+  throwingForce: 40
 --- !u!1 &5260260867499821343
 GameObject:
   m_ObjectHideFlags: 0

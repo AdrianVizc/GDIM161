@@ -36,6 +36,7 @@ public class InGameAbilityCooldownUI : MonoBehaviour
     [SerializeField] private Sprite multishot;
     [SerializeField] private Sprite mine;
     [SerializeField] private Sprite overload;
+    [SerializeField] private Sprite grenade;
 
     [Space]
 
@@ -108,7 +109,7 @@ public class InGameAbilityCooldownUI : MonoBehaviour
 
     private void SetAbilityIcon(string playerPref, GameObject abilityIconGameObject)
     {
-        switch (playerPref)
+        switch (playerPref) //playerPref is the tag name of the ability icon buttons in the Lobby Scene to choose your abilities
         {
             case "Dash":
                 abilityIconGameObject.GetComponent<Image>().sprite = dash; 
@@ -128,9 +129,9 @@ public class InGameAbilityCooldownUI : MonoBehaviour
             case "Overload":
                 abilityIconGameObject.GetComponent<Image>().sprite = overload;
                 break;
-            /*case "Grenade":
+            case "Grenade":
                 abilityIconGameObject.GetComponent<Image>().sprite = grenade;
-                break;*/
+                break;
             case "Wall":
                 abilityIconGameObject.GetComponent<Image>().sprite = wall;
                 break;
@@ -192,9 +193,9 @@ public class InGameAbilityCooldownUI : MonoBehaviour
         }
     }
 
-    private void CooldownHandler(string playerPref, GameObject cooldownObject, GameObject timerText)
+    private void CooldownHandler(string playerPref, GameObject cooldownObject, GameObject timerText) //Needs reference to the ability script
     {
-        switch (playerPref)
+        switch (playerPref) //playerPref is the name of the original ability script
         {
             case "Dash":
 
@@ -216,7 +217,7 @@ public class InGameAbilityCooldownUI : MonoBehaviour
                 CheckAbilityHolder(playerPref, cooldownObject, timerText);
                 break;
 
-            case "PlaceMine":
+            case "Place Mine":
 
                 CheckAbilityHolder(playerPref, cooldownObject, timerText);
                 break;
@@ -226,9 +227,11 @@ public class InGameAbilityCooldownUI : MonoBehaviour
                 CheckAbilityHolder(playerPref, cooldownObject, timerText);
                 break;
 
-            /*case "Grenade":
+            case "Grenade":
 
-                break;*/
+                CheckAbilityHolder(playerPref, cooldownObject, timerText);
+                break;
+
             case "Build Wall":
 
                 CheckAbilityHolder(playerPref, cooldownObject, timerText);

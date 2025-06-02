@@ -923,8 +923,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   throwingPoint: {fileID: 8161004569278225916}
-  grenadePrefab: {fileID: 7467164816764407625, guid: 219d8208955c06442b3a2e952aa70f62, type: 3}
-  throwingForce: 30
+  grenadePrefab: {fileID: 6038766468759247429, guid: ee91c826015e6494aa5059416d776fa6, type: 3}
+  throwingForce: 40
 --- !u!1 &5260260867499821343
 GameObject:
   m_ObjectHideFlags: 0
@@ -1755,54 +1755,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerUICanvas
       objectReference: {fileID: 0}
-    - target: {fileID: 3202478148582529089, guid: 63912a3fcd25cae49908f403aff520a5, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3202478148582529089, guid: 63912a3fcd25cae49908f403aff520a5, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3202478148582529089, guid: 63912a3fcd25cae49908f403aff520a5, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3202478148582529089, guid: 63912a3fcd25cae49908f403aff520a5, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4027915435867534361, guid: 63912a3fcd25cae49908f403aff520a5, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4027915435867534361, guid: 63912a3fcd25cae49908f403aff520a5, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4027915435867534361, guid: 63912a3fcd25cae49908f403aff520a5, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4027915435867534361, guid: 63912a3fcd25cae49908f403aff520a5, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4119168413879173242, guid: 63912a3fcd25cae49908f403aff520a5, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4119168413879173242, guid: 63912a3fcd25cae49908f403aff520a5, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4119168413879173242, guid: 63912a3fcd25cae49908f403aff520a5, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4119168413879173242, guid: 63912a3fcd25cae49908f403aff520a5, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4191390644799538528, guid: 63912a3fcd25cae49908f403aff520a5, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -1816,21 +1768,9 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3068073903033641584}
     - target: {fileID: 4577153280577226628, guid: 63912a3fcd25cae49908f403aff520a5, type: 3}
-      propertyPath: abilityHolder
-      value: 
-      objectReference: {fileID: 1982902666728735694}
-    - target: {fileID: 4577153280577226628, guid: 63912a3fcd25cae49908f403aff520a5, type: 3}
-      propertyPath: playerCapsule
-      value: 
-      objectReference: {fileID: 3068073903033641584}
-    - target: {fileID: 4577153280577226628, guid: 63912a3fcd25cae49908f403aff520a5, type: 3}
       propertyPath: abilityHolderRef
       value: 
       objectReference: {fileID: 1982902666728735694}
-    - target: {fileID: 5200293685434616043, guid: 63912a3fcd25cae49908f403aff520a5, type: 3}
-      propertyPath: m_Color.a
-      value: 0.6627451
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

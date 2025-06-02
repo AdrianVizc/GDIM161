@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Shield
   cooldownTime: 12
-  activeTime: 2
+  activeTime: 1
